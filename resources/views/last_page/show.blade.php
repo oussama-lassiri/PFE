@@ -33,8 +33,8 @@
     @endforeach
 </div>
 
-<div class="centered"> <a href="#" class="lgbtn green">Informations sur venduer</a> </div>
-<div class="col info">
+<div class="centered"> <a href="#" class="lgbtn green" id="info">Informations sur venduer</a> </div>
+<div class="col info" >
     <div class="card">
         <div class="card-body">
             <!--info du concessionnaire immobilier-->
@@ -136,9 +136,8 @@
 </div>
 
 <script>
-  function toggleText(id){
-    var x = document.getElementById("");
-    if(id === 1){
+  function toggleText(){
+    var x = document.getElementById("info");
       if (x.style.display === "none") {
         x.style.display = "block";
       } else {
@@ -148,7 +147,6 @@
     z.style.display = "none";
     $("#Immeuble_btn").hide(); 
     $("#Immeuble_btn").show();
-    }
   }
 </script>
 

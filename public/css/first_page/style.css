@@ -1,0 +1,240 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #FFEFBA;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+    }
+
+.container{
+    position: relative;
+    top: 15%;
+}
+
+h1, h3 {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.quotes {
+    width: 80vw;
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: 2;
+    padding-bottom: 2%;
+    }
+
+.quotes .box {
+    position: relative;
+    width: 25vw;
+    height: 50vh;
+    min-height: 320px;
+    background: #f2f2f2;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+    z-index: 2;
+    box-sizing: border-box;
+    padding: 30px;
+    box-shadow: -10px 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+.quotes .box::before {
+    content: '\201C';
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    width: 100%;
+    height: 100%;
+    font-size: 120px;
+    opacity: 0.2;
+    background: transparent;
+    pointer-events: none;
+    }
+
+.quotes .box::after {
+    content: '\201D';
+    position: absolute;
+    bottom: -10%;
+    right: 5%;
+    font-size: 120px;
+    opacity: 0.2;
+    background: transparent;
+    filter: invert(1);
+    pointer-events: none;
+    }
+
+.quotes .box p {
+    margin: 0;
+    padding: 10px;
+    font-size: 4rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute;
+    left: +20px;
+    top: 20%;
+    }
+
+.quotes .box .explique{
+    position: absolute;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    top: 50%;
+    left: 20%;
+    }
+
+.quotes .box:hover {
+    color: #f2f2f2;
+    box-shadow: 20px 50px 100px rgba(0, 0, 0, 0.5);
+    }
+
+.quotes .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    pointer-events: none;
+    width: 100%;
+    height: 150%;
+    overflow: hidden;
+    }
+
+.quotes .box.box1:hover,
+.quotes .box.box1:hover~.bg {
+  
+    background: #e2a9e5 ;
+    background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
+    background: -webkit-linear-gradient(-45deg, #e2a9e5 15%,#2b94e5 100%);
+    background: linear-gradient(135deg, #e2a9e5 15%,#2b94e5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2a9e5', endColorstr='#2b94e5',GradientType=1 );
+    }
+
+.quotes .box.box2:hover,
+.quotes .box.box2:hover~.bg {
+    background: #632c65;
+    background: -moz-linear-gradient(-45deg, #632c65 15%, #56a5e2 100%);
+    background: -webkit-linear-gradient(-45deg, #632c65 15%,#56a5e2 100%);
+    background: linear-gradient(135deg, #632c65 15%,#56a5e2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#632c65', endColorstr='#56a5e2',GradientType=1 );
+    }
+
+.quotes .box.box3:hover,
+.quotes .box.box3:hover~.bg {
+    background: #4b384c;
+    background: -moz-linear-gradient(-45deg, #4b384c 15%, #da5de2 100%);
+    background: -webkit-linear-gradient(-45deg, #4b384c 15%,#da5de2 100%);
+    background: linear-gradient(135deg, #4b384c 15%,#da5de2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b384c', endColorstr='#da5de2',GradientType=1 );
+    }
+
+.noselect {
+      -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+          -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+.noselect {
+      width: 150px;
+      height: 50px;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      position: absolute;
+      top: 70%;
+      left: 28%;
+      align-items: center;
+      justify-content: center;
+      background-color: #7f5a83;
+      background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+      background-size: 200% 100%;
+      background-position: left;
+      background-repeat: no-repeat;
+      transition: 500ms;
+    }
+
+.noselect:before {
+      content: 'Select';
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 40px;
+      background-color: #1b2845;
+      background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+      transition: 500ms;
+    }
+
+.noselect:hover {
+      background-position: right;
+    }
+
+.noselect:hover:before {
+      color: rgba(255,255,255,0.8);
+    }
+
+.noselect:focus {
+      outline: none;
+    }
+
+.selections{
+        background:    #f650f6;
+        background:    linear-gradient(#f650f6, #6fa8dc);
+        border:        1px solid #556699;
+        border-radius: 1000px;
+        box-shadow:    1px 1px #444444;
+        padding:       20px 46px;
+        color:         #ffffff;
+        display:       inline-block;
+        font:          normal bold 26px/1 "Roboto", sans-serif;
+        text-align:    center;
+    }
+    
+    
+.btn-grad {background-image: linear-gradient(to right, #42275a 0%, #734b6d  51%, #42275a  100%)}
+.btn-grad {
+       margin: 10px;
+       padding: 15px 45px;
+       text-align: center;
+       text-transform: uppercase;
+       transition: 0.5s;
+       background-size: 200% auto;
+       color: white;            
+       box-shadow: 0 0 20px #eee;
+       border-radius: 10px;
+     }
+
+.btn-grad:hover {
+       background-position: right center; /* change the direction of the change here */
+       color: #fff;
+       text-decoration: none;
+     }
+    
+#Agricole_btn {
+         position: absolute;
+         left: 32%;
+     }
+
+#Immeuble_btn {
+        position: absolute;
+        left: 23%;
+    }
+
+#Industrie_btn {
+        position: absolute;
+        left: 23%;
+    }

@@ -44,6 +44,7 @@ th{
     margin-bottom:30px; 
 }
 .carousel {
+    position:relative;
     color: #170724;
     border-style: ridge;
     --carousel-button-bg: #fff;
@@ -68,7 +69,7 @@ th{
     }
 .col-8{
     position: relative;
-    margin-left: 10%;
+    margin-left: 0%;
     width: 700px;
     bottom: 50%;
     padding-bottom: 0;
@@ -76,21 +77,20 @@ th{
 
 .dealer-info{
     position: relative;
-    left: 30%;
+    left: 27%;
 }
 
 .info{
     position:relative;
     width: max-content;
-    top: 20%;
-    left: 73%
+    left: 36%;
 }
 
 .centered {
     position:relative;
     width: max-content;
     top: 20%;
-    left: 70%
+    left: 33%
 }
 
 .lgbtn {

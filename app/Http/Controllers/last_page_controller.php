@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\annonce;
+use App\Models\immobilier;
+use App\Models\service;
+use App\Models\terrain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -38,7 +41,7 @@ class last_page_controller extends Controller
     {
         $request->validate([
             'imageFile' => 'required',
-            'imageFile.*' => 'mimes:jpeg,jpg,png,pdf|max:2048'
+            'imageFile.*' => 'mimes:jpeg,jpg,png,pdf|max:4048'
           ]);
       
           if($request->hasfile('imageFile')) {
@@ -74,22 +77,50 @@ class last_page_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   $annonce = annonce::find(5);
+    {   $annonce = annonce::find(7);
+        $bein_type = $annonce['bein_type'];
+        
+        if($bein_type == "immoblier")
+            $bein = immobilier::find($annonce['bein_ID']);
+        if($bein_type == "terrain")
+            $bein = terrain::find($annonce['bein_ID']);
+        if($bein_type == "service")
+            $bein = service::find($annonce['bein_ID']);    
+
         $data = Str::beforeLast(Str::after($annonce['images_path'], "[\""), "\"]");
         $data = Str::remove("\"", $data);
-        $items = array();
+        $img = array();
         while($data != ""){
             $value = Str::afterLast($data, ",");
-            array_push($items, $value);
+            array_push($img, $value);
             $data = Str::beforeLast($data, ",");
             if(!Str::contains($data, ",")) {
                 $value = Str::afterLast($data, ",");
-                array_push($items, $value);
+                array_push($img, $value);
                 break;
             }
         }
 
-        return view('last_page.show',['annonce' => $items]);
+        $data = Str::beforeLast(Str::after($bein['supp'], "[\""), "\"]");
+        $data = Str::remove("\"", $data);
+        $supp = array();
+        while($data != ""){
+            $value = Str::afterLast($data, ",");
+            array_push($supp, $value);
+            $data = Str::beforeLast($data, ",");
+            if(!Str::contains($data, ",")) {
+                $value = Str::afterLast($data, ",");
+                array_push($supp, $value);
+                break;
+            }
+        }
+
+        return view('last_page.show',[
+                    'annonce' => $annonce,
+                    'img' => $img,
+                    'bein' => $bein,
+                    'supp' => $supp
+                    ]);
     }
 
     /**

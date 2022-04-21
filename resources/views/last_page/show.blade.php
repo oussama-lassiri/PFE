@@ -27,35 +27,36 @@
     
 @section('content')
 
-<div id="myCarousel" class="carousel" align = "center">
-    @foreach ($annonce as $item)
-        <div class="carousel__slide"><a href="\uploads\{{$item}}" data-fancybox="gallery" data-caption="{{$item}}"> <img src="\uploads\{{$annonce[0]}}" width="400" height="400"> </a></div>
-    @endforeach
-</div>
+<div class="container">
+  <div id="myCarousel" class="carousel" align = "center">
+      @foreach ($img as $item)
+          <div class="carousel__slide"><a href="\uploads\{{$item}}" data-fancybox="gallery" data-caption="{{$item}}"> <img src="\uploads\{{$item}}" width="400" height="400"> </a></div>
+      @endforeach
+  </div>
 
-<div class="centered"> <a href="#" class="lgbtn green" id="info">Informations sur venduer</a> </div>
-<div class="col info" >
-    <div class="card">
-        <div class="card-body">
-            <!--info du concessionnaire immobilier-->
-        <div class="col-xs-4 col-md-6 -mb-4 dealer-face dealer-name dealer-info">
-                <img src="\img\client-face1.png" class="img-circle rounded-circle">
-                <h3 class="dealer-name">
-                    <span>Kamal</span>        
-                </h3>
-        </div>
-        <span>Concessionnaire immobilier</span>        
-        <ul>                                       
-            <li><i class="pe-7s-map-marker strong"> </i> 80100 Agadir, your adress her</li>
-            <li><i class="pe-7s-mail strong"> </i> email@youremail.com</li>
-            <li><i class="pe-7s-call strong"> </i> +226 908 967 59</li>
-        </ul>
-        </div>
-    </div>
-</div>
+  <div class="centered"> <button href="#" class="lgbtn green" onclick="toggleText()">Informations sur venduer</button> </div>
+  <div class="col info animate__animated animate__heartBeat" id="info" style="display: none;">
+      <div class="card">
+          <div class="card-body">
+              <!--info du concessionnaire immobilier-->
+          <div class="col-xs-4 col-md-6 -mb-4 dealer-face dealer-name dealer-info">
+                  <img src="\img\client-face1.png" class="img-circle rounded-circle">
+                  <h3 class="dealer-name">
+                      <span>Kamal</span>        
+                  </h3>
+          </div>
+          <span>Concessionnaire immobilier</span>        
+          <ul>                                       
+              <li><i class="pe-7s-map-marker strong"> </i> 80100 Agadir, your adress her</li>
+              <li><i class="pe-7s-mail strong"> </i> email@youremail.com</li>
+              <li><i class="pe-7s-call strong"> </i> +226 908 967 59</li>
+          </ul>
+          </div>
+      </div>
+  </div>
 
-<div class="col-8 container">
-    
+
+<div class="col-8">
     <div class="d-flex bd-highlight">
           <div class="p-2 flex-fill bd-highlight">
             <span>Chambre</span>
@@ -70,13 +71,13 @@
 
     <div class="d-flex bd-highlight">
       <div class="p-2 flex-fill bd-highlight">
-        <span><i class='Medium material-icons' >hotel</i>   1</span>
+        <span><i class='Medium material-icons' >hotel</i>   {{$bein['chambre']}}</span>
       </div>
       <div class="p-2 flex-fill bd-highlight">
-        <span><i class='Medium material-icons' >weekend </i>  1</span>
+        <span><i class='Medium material-icons' >weekend </i>  {{$bein['salon']}}</span>
       </div>
       <div class="p-2 flex-fill bd-highlight">
-        <span>  <i class="Medium material-icons ">bathtub</i>   1</span>
+        <span>  <i class="Medium material-icons ">bathtub</i>   {{$bein['salle_de_bain']}}</span>
       </div>
     </div>
 
@@ -94,25 +95,31 @@
     
     <div class="d-flex bd-highlight">
       <div class="p-2 flex-fill bd-highlight">
-        <span><img src="\img\room.png">    75 m²</span>
+        <span><img src="\img\room.png">    {{$bein['surface_totale']}}</span>
       </div>
       <div class="p-2 flex-fill bd-highlight">
-        <span><i class='Medium material-icons' >roofing</i>    5 ans</span>
+        <span><i class='Medium material-icons' >roofing</i>    {{$bein['age_de_bien']}}</span>
       </div>
       <div class="p-2 flex-fill bd-highlight">
-        <span><i class='Medium material-icons' >place</i>   Agadir</span>
+        <span><i class='Medium material-icons' >place</i>   {{$annonce['ville']}}</span>
       </div>
-    </div>
+    </div><br>
 
     <div class="col">
         <h4 class="card-title">Description</h4>
         <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
-        <p class="card-text">Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>
+        <p class="card-text">{{$annonce['description']}}</p>
         <br>
         <h4 class="card-title">Caractéristiques supplémentaires</h4>
         <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
-        <p class="card-text">climatisé / meublé / sécurisée /jardin </p>
-    </div>
+        <div class="card-text" style="width: 18rem;">
+          <ul class="list-group list-group-flush">
+            @foreach ($supp as $item)
+                <li class="list-group-item">{{$item}}</li>
+            @endforeach
+          </ul>
+        </div>
+    </div><br>
 
     <div class="col" >
         <h4 class="card-title">Video du bien</h4>
@@ -134,7 +141,7 @@
       </div>
         -->
 </div>
-
+</div>
 <script>
   function toggleText(){
     var x = document.getElementById("info");
@@ -143,10 +150,9 @@
       } else {
         x.style.display = "none";
       }
-    y.style.display = "none";
-    z.style.display = "none";
-    $("#Immeuble_btn").hide(); 
-    $("#Immeuble_btn").show();
+
+    $("#info").hide(); 
+    $("#info").show();
   }
 </script>
 

@@ -18,6 +18,10 @@
                 .dropdown-menu li{
                     position: relative;
                 }
+                .annonce{
+                    position: relative;
+                    left: 30%;
+                }
                 .dropdown-menu .submenu{ 
                     display: none;
                     position: absolute;
@@ -162,9 +166,15 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="">Contact</a>
+                        <a class="nav-link"  href="#">Contact</a>
                     </li>
                 </ul>
+
+                <div class="p-2 annonce bd-highlight animate__animated animate__swing" >   <!-- class="d-grid gap-2  d-md-flex justify-content-md-end " -->
+                    <a href="{{route('first_page.index')}}"><button class="btn btn-info me-md-2 " type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 20 20">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>créé Annonce</button></a>
+                </div>
             </div>
             
 
@@ -176,11 +186,41 @@
                     </button>
                 </div>
 
-                <div class="p-2 bd-highlight" >   <!-- class="d-grid gap-2  d-md-flex justify-content-md-end " -->
-                    <a href="{{route('first_page.index')}}"><button class="btn btn-info me-md-2 " type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 20 20">
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>Annonce</button></a>
-                </div>
+                <ul class="navbar-nav ">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Connexion</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">S'inscrire</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+                
             </div>
            
         </div>

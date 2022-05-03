@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class second_page_controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['first_page']]);
+    }
+
     public function appartement()
     {
         return view('second_page.appartement');

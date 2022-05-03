@@ -4,6 +4,7 @@ use App\Http\Controllers\second_page;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\last_page_controller;
 use App\Http\Controllers\second_page_controller;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::get('second_page/terrain_ferme', [second_page_controller::class, 'terrain
 Route::get('second_page/store', [second_page_controller::class, 'store'])->name('second_page.store');
 
 Route::resource('last_page', last_page_controller::class) ; 
+
+Auth::routes();

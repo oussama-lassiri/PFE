@@ -16,8 +16,10 @@ class last_page_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
-    {
+    {    
+        $this->middleware('auth', ['except' => ['second_page']]);
         return view('last_page.index');
     }
 
@@ -53,6 +55,7 @@ class last_page_controller extends Controller
               }
       
               $fileModal = new annonce();
+              $fileModal->user_ID = $request->input('user_ID');
               $fileModal->bein_type = $request->input('bein_type');
               $fileModal->bein_ID = $request->input('bein_ID');
               $fileModal->images_name = json_encode($imgData);

@@ -1,6 +1,7 @@
 @extends('nav')
 @section('style')
 <link rel="stylesheet" href="css\first_page\style.css">
+<title>Première page</title>
 @endsection
 @section('content')
 <div class="container">
@@ -17,7 +18,7 @@
     </div>
     <div class="card">
         <div class="box box2 animate__animated animate__bounceInDown">
-            <p >Terrain</p>
+            <p class="terrainp">Terrain</p>
             <div class="explique" style="left: 90px;">(Terrains Et Fermes)</div>
             <button class="noselect" onclick="toggleText(2)"></button>
         </div>
@@ -25,7 +26,7 @@
     </div>
     <div class="card">
         <div class="box box3 animate__animated animate__bounceInRight">
-            <p  class="entreprise">Service</p>
+            <p  class="service">Service</p>
             <div class="explique">(Bureaux, Plateaux, Magasins)</div>
             <button class="noselect" onclick="toggleText(3)"></button>
         </div>

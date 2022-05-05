@@ -31,7 +31,7 @@ Route::get('second_page/appartement', [second_page_controller::class, 'apparteme
 Route::get('second_page/maisson_villa', [second_page_controller::class, 'maisson_villa']);
 Route::get('second_page/magasin', [second_page_controller::class, 'magasin'])->name('second_page.magasin');
 Route::get('second_page/terrain_ferme', [second_page_controller::class, 'terrain_ferme']);
-Route::get('second_page/store', [second_page_controller::class, 'store'])->name('second_page.store');
+Route::post('second_page/store', [second_page_controller::class, 'store'])->name('second_page.store');
 
 Route::resource('last_page', last_page_controller::class) ; 
 

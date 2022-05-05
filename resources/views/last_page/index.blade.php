@@ -1,3 +1,7 @@
+@if (!isset($beinID) || !isset(Auth::user()->id))
+<br><br><br><br>
+   Error: wrong passage! 
+@else
 @extends('nav')
 
 @section('style')
@@ -130,14 +134,15 @@
                 </div>
 
                 <div class="info">
-                    <input type="text" name="bein_ID" value="{{$beinID}}" hidden>
-                    <input type="text" name="bein_type" value="{{$type}}" hidden>
+                    <input type="text" name="bein_ID" value="{{ $beinID }}" hidden>
+                    <input type="text" name="bein_type" value="{{ $type }}" hidden>
+                    <input type="text" name="user_ID" value="{{ Auth::user()->id}}" hidden>
                     <label for="prix">Prix  </label><br>
-                    <input type="number" id="prix" name="prix" placeholder="--Saisissez" class="form-control">
+                    <input type="number" id="prix" name="prix" placeholder="--Saisissez" class="form-control" required>
                     <label for="ville">Ville  </label><br>
-                    <input type="text" id="ville" name="ville" placeholder="--Saisissez" class="form-control">
+                    <input type="text" id="ville" name="ville" placeholder="--Saisissez" class="form-control" required >
                     <label for="Titre">Titre  </label><br>
-                    <input type="text" id="Titre" name="titre" placeholder="--Saisissez" class="form-control">
+                    <input type="text" id="Titre" name="titre" placeholder="--Saisissez" class="form-control" required>
                     <label for="Description">Description </label><br>
                     <textarea id="Description" name="description" placeholder="--Saisissez" class="form-control"></textarea>
                 </div>
@@ -177,3 +182,5 @@
         });    
     </script>
 @endsection
+
+@endif

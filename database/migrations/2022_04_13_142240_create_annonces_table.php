@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('images_name')->nullable();
             $table->string('images_path')->nullable();
+            $table->integer('user_ID');
             $table->integer('bein_ID');
             $table->string('bein_type');
             $table->string('ville');

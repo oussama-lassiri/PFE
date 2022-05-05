@@ -238,3 +238,9 @@ h1, h3 {
         position: absolute;
         left: 23%;
     }
+
+.terrainp{
+        position: relative;
+        padding-right: 80%;
+        margin-right: 80%;
+}

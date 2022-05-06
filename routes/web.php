@@ -4,6 +4,7 @@ use App\Http\Controllers\second_page;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\last_page_controller;
 use App\Http\Controllers\second_page_controller;
+use App\Http\Controllers\AnnonceController;
 use Illuminate\Support\Facades\Auth;
 
 /*

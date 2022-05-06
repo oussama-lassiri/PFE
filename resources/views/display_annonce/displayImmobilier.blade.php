@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="\css\style.css">
     <title>Annonce</title>
 @endsection
-    
+
 @section('content')
     <div class="container">
         <div class="row ">
@@ -20,13 +20,13 @@
                       <img src="img\property1.jpg" style="width: 600px;" >
                       <div class="text">Caption Text</div>
                     </div>
-                    
+
                     <div class="mySlides fade">
                       <div class="numbertext">Location</div>
                       <img src="img\property2.jpg" style="width: 600px; ">
                       <div class="text">Caption Two</div>
                     </div>
-                    
+
                     <div class="mySlides fade">
                       <div class="numbertext">Location</div>
                       <img src="img\property3.jpg" style="width: 600px; ">
@@ -37,69 +37,48 @@
                         <img src="img\property4.jpg" style="width: 600px; " >
                         <div class="text">Caption Three</div>
                     </div>
-                    
+
                     <a class="prev" onclick="plusSlides(-1)">❮</a>
                     <a class="next" onclick="plusSlides(1)">❯</a>
-                    
+
                 </div>
-                
-                    
+
+
                 <div style="text-align:center">
-                      <span class="dot" onclick="currentSlide(1)"></span> 
-                      <span class="dot" onclick="currentSlide(2)"></span> 
-                      <span class="dot" onclick="currentSlide(3)"></span> 
-                      <span class="dot" onclick="currentSlide(4)"></span>    
+                      <span class="dot" onclick="currentSlide(1)"></span>
+                      <span class="dot" onclick="currentSlide(2)"></span>
+                      <span class="dot" onclick="currentSlide(3)"></span>
+                      <span class="dot" onclick="currentSlide(4)"></span>
                 </div>
                 <br>
-                
-                <div class="d-flex bd-highlight">
-                      <div class="p-2 flex-fill bd-highlight">
-                        <span>Chambre</span>
-                      </div>
-                      <div class="p-2 flex-fill bd-highlight">
-                        <span>Salon</span>
-                      </div>
-                      <div class="p-2 flex-fill bd-highlight">
-                        <span>Salle de bain</span>
-                      </div>
-                </div>
 
-                <div class="d-flex bd-highlight">
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span><i class='Medium material-icons' >hotel</i>   1</span>
-                  </div>
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span><i class='Medium material-icons' >weekend </i>  1</span>
-                  </div>
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span>  <i class="Medium material-icons ">bathtub</i>   1</span>
-                  </div>
-                </div>
+                <table>
+                    <tr>
+                        <td><i class='Medium material-icons' >hotel</i>Chambre</td>
+                        <td width="50%">1</td>
+                    </tr>
+                    <tr>
+                        <td><i class='Medium material-icons' >weekend </i>Salon</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td><i class="Medium material-icons ">bathtub</i>Salle de bain</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td><img src="img\room.png">Surface totale </td>
+                        <td>75 m²</td>
+                    </tr>
+                    <tr>
+                        <td><i class='Medium material-icons' >roofing</i>Age de bien</td>
+                        <td>5 ans</td>
+                    </tr>
+                    <tr>
+                        <td><i class='Medium material-icons' >place</i>Ville</td>
+                        <td>Agadir</td>
+                    </tr>
+                </table>
 
-                <div class="d-flex bd-highlight">
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span>Surface totale</span>
-                  </div>
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span>Age de bien</span>
-                  </div>
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span>ville</span>
-                  </div>
-                </div>
-                
-                <div class="d-flex bd-highlight">
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span><img src="img\room.png">    75 m²</span>
-                  </div>
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span><i class='Medium material-icons' >roofing</i>    5 ans</span>
-                  </div>
-                  <div class="p-2 flex-fill bd-highlight">
-                    <span><i class='Medium material-icons' >place</i>   Agadir</span>
-                  </div>
-                </div>
-    
                 <div class="col">
                     <h4 class="card-title">Description</h4>
                     <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
@@ -109,8 +88,8 @@
                     <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
                     <p class="card-text">climatisé / meublé / sécurisée /jardin </p>
                 </div>
-               
-                
+
+
 
                 <div class="col" >
                   <h4 class="card-title">Video du bien</h4>
@@ -118,7 +97,7 @@
                     <div class="card">
                         <div class="card-body">
                           <a class="video-popup" href="yout" title="Virtual Tour">
-                            <img src="img\property-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">            
+                            <img src="img\property-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
                         </a>
                         </div>
                     </div>
@@ -126,7 +105,7 @@
                 </div>
                   <!-- End video area  -->
 
-                    <!-- for youtube videos 
+                    <!-- for youtube videos
                   <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
                   </div>
@@ -144,23 +123,23 @@
                     </a>
                 </div>
                 <h3 class="dealer-name">
-                    <span>Concessionnaire immobilier</span>        
+                    <span>Concessionnaire immobilier</span>
                 </h3>
-                <ul>                                       
+                <ul>
                     <li><i class="pe-7s-map-marker strong"> </i> 80100 Agadir, your adress her</li>
                     <li><i class="pe-7s-mail strong"> </i> email@youremail.com</li>
                     <li><i class="pe-7s-call strong"> </i> +226 908 967 59</li>
                 </ul>
                 </div>
-               
+
               </div>
             </div>
         </div>
-    
+
             <div class="col-md-auto">
                 <div class="clear">
                 <div class="col-xs-8 col-sm-8 ">
-                    
+
                     <div class="dealer-social-media">
                         <a class="twitter" target="_blank" href="">
                             <i class="fa fa-twitter"></i>
@@ -173,10 +152,10 @@
                         </a>
                         <a class="linkedin" target="_blank" href="">
                             <i class="fa fa-linkedin"></i>
-                        </a> 
+                        </a>
                         <a class="instagram" target="_blank" href="">
                             <i class="fa fa-instagram"></i>
-                        </a>       
+                        </a>
                     </div>
 
                 </div>
@@ -194,28 +173,28 @@
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
-        
+
         function plusSlides(n) {
           showSlides(slideIndex += n);
         }
-        
+
         function currentSlide(n) {
           showSlides(slideIndex = n);
         }
-        
+
         function showSlides(n) {
           let i;
           let slides = document.getElementsByClassName("mySlides");
           let dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1}    
+          if (n > slides.length) {slideIndex = 1}
           if (n < 1) {slideIndex = slides.length}
           for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
+            slides[i].style.display = "none";
           }
           for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
           }
-          slides[slideIndex-1].style.display = "block";  
+          slides[slideIndex-1].style.display = "block";
           dots[slideIndex-1].className += " active";
         }
     </script>

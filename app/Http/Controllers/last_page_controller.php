@@ -80,13 +80,16 @@ class last_page_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   $annonce = annonce::find(7);
+    {   
+        $annonce = annonce::find(6);
         $bein_type = $annonce['bein_type'];
         
         if($bein_type == "immoblier")
             $bein = immobilier::find($annonce['bein_ID']);
+
         if($bein_type == "terrain")
             $bein = terrain::find($annonce['bein_ID']);
+
         if($bein_type == "service")
             $bein = service::find($annonce['bein_ID']);    
 

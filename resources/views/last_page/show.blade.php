@@ -55,8 +55,8 @@
       </div>
   </div>
 
-
-<div class="col-8">
+@if ($annonce['bein_type'] == "immoblier")
+    <div class="col-8">
     <div class="d-flex bd-highlight">
           <div class="p-2 flex-fill bd-highlight">
             <span>Chambre</span>
@@ -104,7 +104,71 @@
         <span><i class='Medium material-icons' >place</i>   {{$annonce['ville']}}</span>
       </div>
     </div><br>
+@endif
+@if ($annonce['bein_type'] == "terrain")
+<div class="d-flex bd-highlight">
+  <div class="p-2 flex-fill bd-highlight">
+    <span>Zonning</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span>Surface totale </span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span>ville</span>
+  </div>
+</div>
 
+<div class="d-flex bd-highlight">
+ 
+  <div class="p-2 flex-fill bd-highlight">
+    <span> <img src="https://img.icons8.com/external-itim2101-lineal-itim2101/64/000000/external-real-estate-calculate-itim2101-lineal-itim2101.png" width="30x30"/>  {{$bein['zonning']}}</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span><img src="\img\room.png">    {{$bein['surface_totale']}}</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span><i class='Medium material-icons' >place</i>   {{$annonce['ville']}}</span>
+  </div>
+</div><br>
+@endif
+
+@if ($annonce['bein_type'] == "service")
+<div class="d-flex bd-highlight">
+  <div class="p-2 flex-fill bd-highlight">
+    <span>Nombre de pièces</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span>Etage </span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span>Surface totale</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span>Surface soupente</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span>ville</span>
+  </div>
+</div>
+
+<div class="d-flex bd-highlight">
+  <div class="p-2 flex-fill bd-highlight">
+    <span><img src="https://img.icons8.com/wired/64/000000/door-opened.png" width="30x30"/>    {{$bein['nbr_piece']}}</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span> <img src="https://img.icons8.com/cotton/64/000000/stairs.png" width="30x30"/>  {{$bein['etage']}}</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span><img src="\img\room.png">    {{$bein['surface_totale']}}</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span><img src="\img\room.png">    {{$bein['surface_soupente']}}</span>
+  </div>
+  <div class="p-2 flex-fill bd-highlight">
+    <span><i class='Medium material-icons' >place</i>   {{$annonce['ville']}}</span>
+  </div>
+</div><br>
+@endif
     <div class="col">
         <h4 class="card-title">Description</h4>
         <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">

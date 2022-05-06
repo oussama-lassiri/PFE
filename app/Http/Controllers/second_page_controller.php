@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\annonce;
 use App\Models\terrain;
 use App\Models\immobilier;
 use App\Models\service;
+use App\Models\user;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class second_page_controller extends Controller
@@ -32,6 +35,28 @@ class second_page_controller extends Controller
     public function terrain_ferme()
     {
         return view('second_page.terrain_ferme')->with(Request('category'));
+    }
+
+    public function user()
+    {   
+        $les_annonce = annonce::all();
+        $annonce = array();
+        $value = array();
+        $i=1;
+        $user = User::find(Request('userID'));
+        foreach($les_annonce as $an){
+            if($an['user_ID'] == $user['id']){
+                $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
+                $$an['images_path'] = Str::remove("\"", $an['images_path']);
+                $an['images_path'] = Str::before($an['images_path'], ",") ;
+                $an['images_path'] = Str::before($an['images_path'], "\"") ;
+                array_push($annonce, $an);
+            }
+        }
+        return view('user')->with(['user'=> User::find(Request('userID')),
+                                    'annonce'=> $annonce
+                                    ]
+                                );
     }
 
     public function store(Request $request){

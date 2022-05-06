@@ -36,3 +36,6 @@ Route::post('second_page/store', [second_page_controller::class, 'store'])->name
 Route::resource('last_page', last_page_controller::class) ; 
 
 Auth::routes();
+Route::get('service',[\App\Http\Controllers\AnnonceController::class,'displayService'])->name('displayService');
+Route::get('terrain',[\App\Http\Controllers\AnnonceController::class,'displayTerrain'])->name('displayTerrain');
+Route::get('immobilier',[\App\Http\Controllers\AnnonceController::class,'displayImmobilier'])->name('displayImmobilier');

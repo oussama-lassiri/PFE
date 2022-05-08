@@ -19,7 +19,7 @@ class last_page_controller extends Controller
      */
 
     public function index()
-    {    
+    {
         $this->middleware('auth', ['except' => ['second_page']]);
         return view('last_page.index');
     }
@@ -46,15 +46,15 @@ class last_page_controller extends Controller
             'imageFile' => 'required',
             'imageFile.*' => 'mimes:jpeg,jpg,png,pdf|max:4048'
           ]);
-      
+
           if($request->hasfile('imageFile')) {
               foreach($request->file('imageFile') as $file)
               {
                   $name = $file->getClientOriginalName();
-                  $file->move(public_path().'/uploads/', $name);  
-                  $imgData[] = $name;  
+                  $file->move(public_path().'/uploads/', $name);
+                  $imgData[] = $name;
               }
-      
+
               $fileModal = new annonce();
               $fileModal->user_ID = $request->input('user_ID');
               $fileModal->bein_type = $request->input('bein_type');
@@ -67,7 +67,7 @@ class last_page_controller extends Controller
               $fileModal->description = strip_tags( $request->input('description') );
               $fileModal->prix = $request->input('prix');
               $fileModal->etat = "inactive";
-            
+
               $fileModal->save();
             //redirect
              return back()->with('success', 'Cree avec success !');
@@ -81,11 +81,12 @@ class last_page_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-        $annonce = annonce::find(7);
+    {
+        $annonce = annonce::find(2);
         $bein_type = $annonce['bein_type'];
         $user = user::find($annonce['user_ID']);
-        
+        $transaction = $annonce['transaction'];
+
         if($bein_type == "immoblier")
             $bein = immobilier::find($annonce['bein_ID']);
 
@@ -93,7 +94,7 @@ class last_page_controller extends Controller
             $bein = terrain::find($annonce['bein_ID']);
 
         if($bein_type == "service")
-            $bein = service::find($annonce['bein_ID']);    
+            $bein = service::find($annonce['bein_ID']);
 
         $data = Str::beforeLast(Str::after($annonce['images_path'], "[\""), "\"]");
         $data = Str::remove("\"", $data);
@@ -122,14 +123,22 @@ class last_page_controller extends Controller
                 break;
             }
         }
+        if ($transaction == "vente"){
+            $trans = "vendre";
+        }
+        else {
+            $trans = "louer";
+        }
+
 
         return view('last_page.show',[
-                    'annonce' => $annonce,
-                    'img' => $img,
-                    'bein' => $bein,
-                    'supp' => $supp,
-                    'user' => $user
-                    ]);
+            'annonce' => $annonce,
+            'img' => $img,
+            'bein' => $bein,
+            'supp' => $supp,
+            'user' => $user,
+            'trans'=> $trans
+        ]);
     }
 
     /**

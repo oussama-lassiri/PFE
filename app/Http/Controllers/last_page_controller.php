@@ -6,6 +6,7 @@ use App\Models\annonce;
 use App\Models\immobilier;
 use App\Models\service;
 use App\Models\terrain;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -81,8 +82,9 @@ class last_page_controller extends Controller
      */
     public function show($id)
     {   
-        $annonce = annonce::find(6);
+        $annonce = annonce::find(7);
         $bein_type = $annonce['bein_type'];
+        $user = user::find($annonce['user_ID']);
         
         if($bein_type == "immoblier")
             $bein = immobilier::find($annonce['bein_ID']);
@@ -125,7 +127,8 @@ class last_page_controller extends Controller
                     'annonce' => $annonce,
                     'img' => $img,
                     'bein' => $bein,
-                    'supp' => $supp
+                    'supp' => $supp,
+                    'user' => $user
                     ]);
     }
 

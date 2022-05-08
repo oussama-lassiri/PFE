@@ -14,13 +14,20 @@ body {
     overflow: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
+.titre_annonce { font-weight: bold;
+    color: #fff;
+    font-size: 24px;
+    text-align: left;
+}
 .secondTD {text-align: center;}
-.firstTD {text-align: left}
+.firstTD {text-align: left;
+
+}
 td {
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.2);
-    color:#11082A;
-    }  
+    color: rgba(0, 0, 0, 0.99);
+    }
 th{
     font-size: larger;
     height: 40px;
@@ -29,21 +36,21 @@ th{
     color: #fff;
 }
 .title:hover{
-    box-shadow: 0 0 20px rgba(1, 1, 1, 0.1); 
+    box-shadow: 0 0 20px rgba(1, 1, 1, 0.1);
     background: linear-gradient(-30deg, #70E0E4, #03E8F0, #46D0DF, #7C61CE, #6B49C8, #5C37C2, #11082A);
 }
-.title {   
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    color:#DFD02B;   
+.title {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    color:#DFD02B;
     border-style: outset;
     width: max-content;
     border-color: purple;
-    font-family: "Times New Roman", Times, serif;  
-    font-size:2em;   
-    font-weight:300;   
-    letter-spacing:.05em;   
-    text-transform:capitalize;   
-    margin-bottom:30px; 
+    font-family: "Times New Roman", Times, serif;
+    font-size:2em;
+    font-weight:300;
+    letter-spacing:.05em;
+    text-transform:capitalize;
+    margin-bottom:30px;
 }
 .carousel {
     position:relative;

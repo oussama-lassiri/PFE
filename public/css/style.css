@@ -14,7 +14,8 @@ body {
     overflow: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
-.titre_annonce { font-weight: bold;
+.titre_annonce {
+    font-weight: bold;
     color: #fff;
     font-size: 24px;
     text-align: left;
@@ -108,7 +109,7 @@ padding: 15px 55px;
 font-size: 18px;
 text-decoration: none;
 margin: 20px;
-background-color: green;
+background-color: rgba(8, 219, 252, 0.95);
 color: #fff;
 position: relative;
 display: inline-block

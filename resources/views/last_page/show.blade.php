@@ -60,14 +60,14 @@
             </div>
         </div>
         <div class="col-8">
-
+            <span class="titre_annonce">{{$annonce['titre']}}</span>
             <table>
                 <tr class="table-info">
-                    <td class="titre_annonce"><span class="table-info">{{$annonce['titre']}}</span> </td>
-                </tr>
-                <tr class="table-info">
-                    <td class="firstTD"><h4>À {{$trans}}</h4></td>
+                    <td class="firstTD"><h3>À {{$trans}}</h3></td>
+                    <td></td>
                     <td ><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
+                    <td></td>
+
                 </tr>
                 @if ($annonce['bein_type'] == "immoblier")
                     <tr>

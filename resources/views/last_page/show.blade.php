@@ -67,20 +67,27 @@
                 </tr>
                 <tr class="table-info">
                     <td class="firstTD"><h4>À {{$trans}}</h4></td>
-                    <td width="50%" ><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
+                    <td ><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
                 </tr>
                 @if ($annonce['bein_type'] == "immoblier")
                     <tr>
-                        <td class="firstTD"><i class='Medium material-icons' >hotel </i> Chambre</td>
-                        <td class="secondTD">{{$bein['chambre']}}</td>
+                        <td class="firstTD" width="25%"><i class='Medium material-icons' >hotel </i> Chambre</td>
+                        <td class="secondTD" >{{$bein['chambre']}}</td>
+                        <td ><i class='Medium material-icons' >place</i>Ville</td>
+                        <td >{{$annonce['ville']}}</td>
+
                     </tr>
                     <tr>
                         <td class="firstTD"><i class='Medium material-icons' >weekend </i> Salon</td>
                         <td class="secondTD">{{$bein['salon']}}</td>
+                        <td ><i class='Medium material-icons' >roofing</i>Age de bien</td>
+                        <td >{{$bein['age_de_bien']}} ans</td>
                     </tr>
                     <tr>
                         <td class="firstTD"><i class="Medium material-icons ">bathtub</i> Salle de bain</td>
                         <td class="secondTD">{{$bein['salle_de_bain']}}</td>
+                        <td ><img src="img\room.png">Surface totale </td>
+                        <td >{{$bein['surface_totale']}} m²</td>
                     </tr>
                     @if (empty($bein['surface_habitable'])  && empty($bein['nbr_etage']) )
                         <tr>
@@ -99,25 +106,10 @@
                                 </div>
                             </td>
                             <td class="secondTD">{{$bein['nbr_etage']}} étage(s)</td>
-                        </tr>
-                        <tr>
                             <td class="firstTD"><img src="img\room.png">Surface habitable </td>
                             <td class="secondTD">{{$bein['surface_habitable']}} m²</td>
                         </tr>
                     @endif
-
-                    <tr>
-                        <td class="firstTD"><img src="img\room.png">Surface totale </td>
-                        <td class="secondTD">{{$bein['surface_totale']}} m²</td>
-                    </tr>
-                    <tr>
-                        <td class="firstTD"><i class='Medium material-icons' >roofing</i>Age de bien</td>
-                        <td class="secondTD">{{$bein['age_de_bien']}} ans</td>
-                    </tr>
-                    <tr>
-                        <td class="firstTD"><i class='Medium material-icons' >place</i>Ville</td>
-                        <td class="secondTD">{{$annonce['ville']}}</td>
-                    </tr>
                 @endif
                 @if ($annonce['bein_type'] == "terrain")
                     <tr>

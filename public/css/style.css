@@ -20,9 +20,11 @@ body {
     font-size: 24px;
     text-align: left;
 }
-.secondTD {text-align: center;}
-.firstTD {text-align: left;
-
+.secondTD {
+    text-align: center;
+   }
+.firstTD {
+    text-align: left;
 }
 td {
     padding: 15px;

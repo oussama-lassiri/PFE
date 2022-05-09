@@ -20,6 +20,67 @@
             // Your options go here
         });
     </script>
+    <!-- Script for slider -->
+    <script>
+        window.onload = function() {
+
+            var slider1 = new Slider({
+                images: '.slider-1 img',
+                btnPrev: '.slider-1 .buttons .prev',
+                btnNext: '.slider-1 .buttons .next',
+                auto: false
+            });
+
+            var slider2 = new Slider({
+                images: '.slider-2 img',
+                btnPrev: '.slider-2 .buttons .prev',
+                btnNext: '.slider-2 .buttons .next',
+                auto: true,
+                rate: 2000
+            });
+        }
+
+        function Slider(obj) {
+
+            this.images = document.querySelectorAll(obj.images);
+            this.auto = obj.auto;
+            this.btnPrev = obj.btnPrev;
+            this.btnNext = obj.btnNext;
+            this.rate = obj.rate || 1000;
+
+            var i = 0;
+            var slider = this;
+
+            this.prev = function () {
+                slider.images[i].classList.remove('shown');
+                i--;
+
+                if (i < 0) {
+                    i = slider.images.length - 1;
+                }
+
+                slider.images[i].classList.add('shown');
+            }
+
+            this.next = function () {
+                slider.images[i].classList.remove('shown');
+                i++;
+
+                if (i >= slider.images.length) {
+                    i = 0;
+                }
+
+                slider.images[i].classList.add('shown');
+            }
+
+            document.querySelector(slider.btnPrev).onclick = slider.prev;
+            document.querySelector(slider.btnNext).onclick = slider.next;
+
+            if (slider.auto)  {
+                setInterval(slider.next, slider.rate);
+            }
+        };
+    </script>
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
@@ -29,12 +90,16 @@
 @section('content')
 
     <div class="container">
-
         <div id="myCarousel" class="carousel" align = "center">
-              @foreach ($img as $item)
-                        <div class="carousel__slide"><a href="\uploads\{{$item}}" data-fancybox="gallery" data-caption="{{$item}}"> <img src="\uploads\{{$item}}" width="400" height="400"> </a></div>
-              @endforeach
+            @foreach ($img as $item)
+                <div class="carousel__slide">
+                    <a href="\uploads\{{$item}}" data-fancybox="gallery" data-caption="{{$item}}">
+                        <img src="\uploads\{{$item}}" width="400" height="400">
+                    </a>
+                </div>
+            @endforeach
         </div>
+    <br>
         <div class="centered">
             <button href="#" class="lgbtn green" onclick="toggleText()">
                 Informations sur le concessionnaire immobilier
@@ -59,15 +124,13 @@
                 </div>
             </div>
         </div>
+
         <div class="col-8">
             <span class="titre_annonce">{{$annonce['titre']}}</span>
             <table>
                 <tr class="table-info">
-                    <td class="firstTD"><h3>À {{$trans}}</h3></td>
-                    <td></td>
-                    <td ><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
-                    <td></td>
-
+                    <td class="firstTD" colspan="2"><h3>À {{$trans}}</h3></td>
+                    <td colspan="2"><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
                 </tr>
                 @if ($annonce['bein_type'] == "immoblier")
                     <tr>
@@ -86,7 +149,7 @@
                     <tr>
                         <td class="firstTD"><i class="Medium material-icons ">bathtub</i> Salle de bain</td>
                         <td class="secondTD">{{$bein['salle_de_bain']}}</td>
-                        <td ><img src="img\room.png">Surface totale </td>
+                        <td ><img src="\img\room.png">Surface totale </td>
                         <td >{{$bein['surface_totale']}} m²</td>
                     </tr>
                     @if (empty($bein['surface_habitable'])  && empty($bein['nbr_etage']) )
@@ -106,77 +169,77 @@
                                 </div>
                             </td>
                             <td class="secondTD">{{$bein['nbr_etage']}} étage(s)</td>
-                            <td class="firstTD"><img src="img\room.png">Surface habitable </td>
+                            <td class="firstTD"><img src="\img\room.png">Surface habitable </td>
                             <td class="secondTD">{{$bein['surface_habitable']}} m²</td>
                         </tr>
                     @endif
                 @endif
                 @if ($annonce['bein_type'] == "terrain")
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
                                 <span><img src="\img\zoning.png" alt="zone" width="10%">  Zoning</span>
                             </div>
                         </td>
-                        <td class="secondTD">{{$bein['zonning']}}</td>
+                        <td class="secondTD" colspan="2">{{$bein['zonning']}}</td>
                     </tr>
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
                                 <span><img src="\img\room.png"> Surface totale</span>
                             </div>
                         </td>
-                        <td class="secondTD">{{$bein['surface_totale']}} m²</td>
+                        <td class="secondTD" colspan="2">{{$bein['surface_totale']}} m²</td>
                     </tr>
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2" >
                             <div class="p-2 flex-fill bd-highlight">
                                 <span><i class='Medium material-icons' >place</i>  Ville </span>
                             </div>
                         </td>
-                        <td class="secondTD">{{$annonce['ville']}}</td>
+                        <td class="secondTD" colspan="2">{{$annonce['ville']}}</td>
                     </tr>
                 @endif
                 @if ($annonce['bein_type'] == "service")
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
-                                <img src="\img\piece.png" alt="zone" width="8%">  Nombre de pièces
+                                <img src="\img\piece.png" alt="zone" width="10%">  Nombre de pièces
                             </div>
                         </td>
-                        <td class="secondTD" >{{$bein['nbr_piece']}} Pièce(s)</td>
+                        <td class="secondTD" colspan="2">{{$bein['nbr_piece']}} Pièce(s)</td>
                     </tr>
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
-                                <img src="\img\etage.png" width="8%"> Etage
+                                <img src="\img\etage.png" width="10%"> Etage
                             </div>
                         </td>
-                        <td class="secondTD">Numéro {{$bein['etage']}}</td>
+                        <td class="secondTD" colspan="2">Numéro {{$bein['etage']}}</td>
                     </tr>
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
                                 <img src="\img\room.png"> Surface totale
                             </div>
                         </td>
-                        <td class="secondTD">{{$bein['surface_totale']}} m²</td>
+                        <td class="secondTD" colspan="2">{{$bein['surface_totale']}} m²</td>
                     </tr>
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
                                 <img src="\img\room.png"> Surface soupente
                             </div>
                         </td>
-                        <td class="secondTD">{{$bein['surface_soupente']}} m²</td>
+                        <td class="secondTD" colspan="2">{{$bein['surface_soupente']}} m²</td>
                     </tr>
                     <tr>
-                        <td class="firstTD">
+                        <td class="firstTD" colspan="2">
                             <div class="p-2 flex-fill bd-highlight">
                                 <i class='Medium material-icons' >place</i>  Adresse
                             </div>
                         </td>
-                        <td class="secondTD">{{$annonce['ville']}}</td>
+                        <td class="secondTD" colspan="2">{{$annonce['ville']}}</td>
                     </tr>
                 @endif
             </table>

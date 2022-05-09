@@ -70,7 +70,7 @@ class last_page_controller extends Controller
 
               $fileModal->save();
             //redirect
-             return back()->with('success', 'Cree avec success !');
+             return back()->with('success', 'Crée avec success !');
           }
     }
 
@@ -82,7 +82,7 @@ class last_page_controller extends Controller
      */
     public function show($id)
     {
-        $annonce = annonce::find(2);
+        $annonce = annonce::find(3);
         $bein_type = $annonce['bein_type'];
         $user = user::find($annonce['user_ID']);
         $transaction = $annonce['transaction'];

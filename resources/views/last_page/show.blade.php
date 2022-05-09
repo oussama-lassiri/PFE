@@ -2,6 +2,7 @@
 @section('style')
     <title> testing image Desplay </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="\css\style.css">
     <script>
         import { Fancybox, Carousel, Panzoom } from "@fancyapps/ui";
@@ -28,14 +29,16 @@
 @section('content')
 
     <div class="container">
-        <div id="myCarousel" class="carousel" align = "center">
-            @foreach ($img as $item)
-                <div class="carousel__slide"><a href="\uploads\{{$item}}" data-fancybox="gallery" data-caption="{{$item}}"> <img src="\uploads\{{$item}}" width="400" height="400"> </a></div>
-            @endforeach
-        </div>
 
+        <div id="myCarousel" class="carousel" align = "center">
+              @foreach ($img as $item)
+                        <div class="carousel__slide"><a href="\uploads\{{$item}}" data-fancybox="gallery" data-caption="{{$item}}"> <img src="\uploads\{{$item}}" width="400" height="400"> </a></div>
+              @endforeach
+        </div>
         <div class="centered">
-            <button href="#" class="lgbtn green" onclick="toggleText()">Informations sur le concessionnaire immobilier</button>
+            <button href="#" class="lgbtn green" onclick="toggleText()">
+                Informations sur le concessionnaire immobilier
+            </button>
         </div>
         <div class="col info animate__animated animate__heartBeat" id="info" style="display: none;">
             <div class="card">
@@ -47,16 +50,15 @@
                             <span>{{$user['name']}}</span>
                         </h3>
                     </div>
-                    <span>Concessionnaire immobilier</span>
-                    <ul>
-                        <li><i class="pe-7s-map-marker strong"> </i> //put address here </li>
-                        <li><i class="pe-7s-mail strong"> </i> {{$user['email']}}</li>
-                        <li><i class="pe-7s-call strong"> </i> {{$user['phone']}}</li>
+                    <span> <h5> Concessionnaire immobilier </h5></span>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="pe-7s-map-marker strong"> </i> //put address here </li>
+                        <li class="list-group-item"><i class="fas fa-envelope"> </i> {{$user['email']}}</li>
+                        <li class="list-group-item"><i class="fas fa-phone"> </i>{{$user['phone']}}</li>
                     </ul>
                 </div>
             </div>
         </div>
-
         <div class="col-8">
 
             <table>
@@ -69,17 +71,41 @@
                 </tr>
                 @if ($annonce['bein_type'] == "immoblier")
                     <tr>
-                        <td class="firstTD"><i class='Medium material-icons' >hotel</i>Chambre</td>
+                        <td class="firstTD"><i class='Medium material-icons' >hotel </i> Chambre</td>
                         <td class="secondTD">{{$bein['chambre']}}</td>
                     </tr>
                     <tr>
-                        <td class="firstTD"><i class='Medium material-icons' >weekend </i>Salon</td>
+                        <td class="firstTD"><i class='Medium material-icons' >weekend </i> Salon</td>
                         <td class="secondTD">{{$bein['salon']}}</td>
                     </tr>
                     <tr>
-                        <td class="firstTD"><i class="Medium material-icons ">bathtub</i>Salle de bain</td>
+                        <td class="firstTD"><i class="Medium material-icons ">bathtub</i> Salle de bain</td>
                         <td class="secondTD">{{$bein['salle_de_bain']}}</td>
                     </tr>
+                    @if (empty($bein['surface_habitable'])  && empty($bein['nbr_etage']) )
+                        <tr>
+                        <td class="firstTD">
+                            <div class="p-2 flex-fill bd-highlight">
+                                <img src="\img\etage.png" width="8%"> Etage
+                            </div>
+                        </td>
+                        <td class="secondTD">Numéro {{$bein['etage']}} </td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td class="firstTD">
+                                <div class="p-2 flex-fill bd-highlight">
+                                    <img src="\img\etage.png" width="8%"> Nombres d'étages
+                                </div>
+                            </td>
+                            <td class="secondTD">{{$bein['nbr_etage']}} étage(s)</td>
+                        </tr>
+                        <tr>
+                            <td class="firstTD"><img src="img\room.png">Surface habitable </td>
+                            <td class="secondTD">{{$bein['surface_habitable']}} m²</td>
+                        </tr>
+                    @endif
+
                     <tr>
                         <td class="firstTD"><img src="img\room.png">Surface totale </td>
                         <td class="secondTD">{{$bein['surface_totale']}} m²</td>
@@ -90,7 +116,7 @@
                     </tr>
                     <tr>
                         <td class="firstTD"><i class='Medium material-icons' >place</i>Ville</td>
-                        <td class="secondTD">{{$bein['ville']}}</td>
+                        <td class="secondTD">{{$annonce['ville']}}</td>
                     </tr>
                 @endif
                 @if ($annonce['bein_type'] == "terrain")
@@ -134,7 +160,7 @@
                                 <img src="\img\etage.png" width="8%"> Etage
                             </div>
                         </td>
-                        <td class="secondTD">{{$bein['etage']}} étage</td>
+                        <td class="secondTD">Numéro {{$bein['etage']}}</td>
                     </tr>
                     <tr>
                         <td class="firstTD">

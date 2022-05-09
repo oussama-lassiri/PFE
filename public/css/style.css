@@ -7,8 +7,8 @@ body {
     position: relative;
 }
 .apart_info {
-    border-color: #198754;
-    background-color: linear-gradient(#198754, #B0C66A, #F6E382);
+    border-color: #4fc0e8;
+    background-color: linear-gradient(#7a57d0, #4fc0e8, #5be6c3);
     width: 50%;
     border-collapse: collapse;
     overflow: auto;
@@ -38,14 +38,14 @@ th{
 }
 .title:hover{
     box-shadow: 0 0 20px rgba(1, 1, 1, 0.1);
-    background: linear-gradient(-30deg, #70E0E4, #03E8F0, #46D0DF, #7C61CE, #6B49C8, #5C37C2, #11082A);
+    background: linear-gradient(-30deg, #7a57d0, #5be6c3, #4fc0e8, #a7dbee, #6B49C8, #5C37C2, #11082A);
 }
 .title {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    color:#DFD02B;
+    color: #5be6c3;
     border-style: outset;
     width: max-content;
-    border-color: purple;
+    border-color: #7a57d0;
     font-family: "Times New Roman", Times, serif;
     font-size:2em;
     font-weight:300;
@@ -73,13 +73,21 @@ th{
     width: 80%;
     height: 70%;
     margin-right: 6px;
-    background-color: -webkit-linear-gradient(#198754, #B0C66A, #F6E382);
-    background-color: linear-gradient(#198754, #B0C66A, #F6E382);
+    background-color: -webkit-linear-gradient(#7a57d0, #5be6c3, rgb(79, 192, 232));
+    background-color: linear-gradient(#7a57d0, #5be6c3, rgb(79, 192, 232));
     border-radius: 6px;
     }
 .col-8{
     position: relative;
     margin-left: 0%;
+    width: 700px;
+    bottom: 50%;
+    padding-bottom: 0;
+}
+
+.container_col_8{
+    position: relative;
+    margin-left: 50%;
     width: 700px;
     bottom: 50%;
     padding-bottom: 0;
@@ -93,14 +101,14 @@ th{
 .info{
     position:relative;
     width: max-content;
-    left: 36%;
+    left: 38%;
 }
 
 .centered {
     position:relative;
     width: max-content;
     top: 20%;
-    left: 33%
+    left: 25%;
 }
 
 .lgbtn {
@@ -122,14 +130,15 @@ box-shadow: 0px 1px 0px 0px
 }
 
 .green {
-background-color: green;
-box-shadow: 3px 5px 5px #888888;
-border-radius: 2px;
-transition: all .5s ease-in-out
+    background-color: #4fc0e8;
+    box-shadow: 3px 5px 5px #888888;
+    border-radius: 2px;
+    border-color: #4fc0e8;
+    transition: all .5s ease-in-out
 }
 
 .green:hover {
-background-color: #000;
+background-color: #7a57d0;
 color: #fff;
 padding: 20px 60px;
 transform: scale(1.1)

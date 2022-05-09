@@ -53,7 +53,7 @@ class second_page_controller extends Controller
                 array_push($annonce, $an);
             }
         }
-        return view('user')->with(['user'=> User::find(Request('userID')),
+        return view('user1')->with(['user'=> User::find(Request('userID')),
                                     'annonce'=> $annonce
                                     ]
                                 );
@@ -104,6 +104,34 @@ class second_page_controller extends Controller
             $immob_table->save();
             return view('last_page.index')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type')]);
         }
+    }
+
+    public function update_user(Request $request){
+
+        $user = user::find($request->input('id'));
+        $user->name = $request->input('name');
+        $user->ville = $request->input('ville');
+        $user->cin = $request->input('cin');
+        $user->email = $request->input('email');
+        $user->genre = $request->input('genre');
+        $user->phone = $request->input('phone');
+        $user->update();
+
+        $les_annonce = annonce::all();
+        $annonce = array();
+        foreach($les_annonce as $an){
+            if($an['user_ID'] == $user['id']){
+                $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
+                $$an['images_path'] = Str::remove("\"", $an['images_path']);
+                $an['images_path'] = Str::before($an['images_path'], ",") ;
+                $an['images_path'] = Str::before($an['images_path'], "\"") ;
+                array_push($annonce, $an);
+            }
+        }
+        return view('user1')->with(['user'=> $user,
+                                    'annonce'=> $annonce
+                                    ]
+                                );
     }
     
 }

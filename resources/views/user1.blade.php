@@ -1,0 +1,451 @@
+@extends('nav')
+
+@section('style')
+    <link rel="stylesheet" href="\css\user\dist\pop.css">
+    <link rel="stylesheet" href="/css/user/style.css">
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <style>
+        body{
+            margin-top:20px;
+            color: #1a202c;
+            text-align: left;
+        }
+        .main-body {
+            padding: 15px;
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1rem;
+        }
+
+        .gutters-sm {
+            margin-right: -8px;
+            margin-left: -8px;
+        }
+
+        .gutters-sm>.col, .gutters-sm>[class*=col-] {
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+        .mb-3, .my-3 {
+            margin-bottom: 1rem!important;
+        }
+
+        .bg-gray-300 {
+            background-color: #e2e8f0;
+        }
+        .h-100 {
+            height: 100%!important;
+        }
+        .shadow-none {
+            box-shadow: none!important;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+        * {
+        box-sizing: border-box;
+        }
+        body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        }
+        .cont {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        }
+        .card1 {
+        margin: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 300px;
+        }
+        .card-header img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        }
+        .card-body1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+        min-height: 250px;
+        }
+
+        .tag {
+        background: #cccccc;
+        border-radius: 50px;
+        font-size: 12px;
+        margin: 0;
+        color: #fff;
+        padding: 2px 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+        }
+        .tag-teal {
+        background-color: #47bcd4;
+        }
+        .tag-purple {
+        background-color: #5e76bf;
+        }
+        .tag-pink {
+        background-color: #cd5b9f;
+        }
+
+        .card-body1 p {
+        font-size: 13px;
+        margin: 0 0 40px;
+        }
+        .user {
+        display: flex;
+        margin-top: auto;
+        }
+
+        .user img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        }
+        .user-info h5 {
+        margin: 0;
+        }
+        .user-info small {
+        color: #545d7a;
+        }
+
+
+        @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+        .img{
+            width: 250px;
+        }
+
+        button:focus {
+            box-shadow: none ;
+            outline-width: 0;
+        }
+
+        .card{
+            border-radius:11px ;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) ;
+            border-top-color: #52B4DB ;
+        }
+
+        .modal-content{
+            width: calc(330px + 10 * ((100vw - 320px) / 680)) ;
+            border-radius: 11px ;
+        }
+        .card-header{
+            border:0;
+            border-top: 14px solid #52B4DB ;
+            border-radius:11px ;
+            
+        }
+
+        .btn-outline-success{
+            border-radius: 20px ;
+            border:2px solid #52B4DB ;
+
+        }
+
+        .btn-outline-success:hover{
+            color: #fff ;
+            background-color: #52B4DB ;
+        }
+
+        .img{
+            width: 350px ;
+        }
+
+        .card-body{
+            border-radius: 9px ;
+        }
+
+        .btn-outline-success:active, .btn-outline-success.active {
+            box-shadow: none ;
+            outline: none ;
+        }
+
+        @media (max-width: 401px) {
+            .card{
+                width: unset;
+            }   
+        }
+    </style>
+@endsection
+
+@section('content')
+<div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+    
+          <div class="row gutters-sm col-md-12">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{ $user['name'] }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8" id="info">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nom complet</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        {{ $user['name'] }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ $user['email'] }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Téléphone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ $user['phone'] }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">CIN</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ $user['cin'] }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">ville</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ $user['ville'] }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Etat de compte</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ $user['etat'] }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12 centered">
+                      <button class="btn btn-success" onclick="toggleText(3)">Modefie</button>
+                      <button class="btn btn-info " onclick="toggleText(1)">Activer</button>
+                      <button class="btn btn-danger " onclick="toggleText(2)">Supprimer</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-8 card" id="activation" style="display: none;">
+            <div class="row">
+                <h2>Attention!</h2>
+                <hr>
+                <h3>si vous désactivez votre compte, toutes vos annonces seront désactivées. Êtes-vous sûr de vouloir désactiver votre compte ?</h3>
+                <button class="btn btn-success" >Desactiver</button>
+                <button class="btn btn-danger" onclick="toggleText(4)">Annuler</button>
+            </div>
+          </div>
+          <div class="col-md-8 card" id="suppression" style="display: none;">
+            <div class="row">
+                <h2>Attention!</h2>
+                <hr>
+                <h3>si vous supprimez votre compte, toutes vos annonces seront suppremes. Êtes-vous sûr de vouloir suppremes votre compte ?</h3>
+                <button class="btn btn-success" >Desactiver</button>
+                <button class="btn btn-danger" onclick="toggleText(4)">Annuler</button>
+            </div>
+          </div>
+          <div class="tab-pane text-center gallery col-md-8 m-0" id="modification" style="display: none;">
+                    <div class="container modifie">
+                    <form method="POST" action="{{ route('second_page.update_user') }}">
+                        @csrf
+                        @method('PUT')
+                        <input type="text" name="id" value="{{ $user['id']}}" hidden/>
+
+                        <div class="info-item">
+                            <label class="icon" for="name"><i class="fas fa-user"></i></label>
+                            <input type="text" name="name" id="name" value="{{ $user['name']}}" required autocomplete="name" autofocus/>
+                        </div>
+
+                        <div class="info-item">
+                            <label class="icon" for="cin"><i class="fas fa-id-badge "></i></label>
+                            <input type="text"  name="cin" id="cin" value="{{ $user['cin']}}" required autocomplete="cin"/>
+                        </div>
+
+                        <div  class="info-item">
+                            <label class="icon" for="ville"><i class="fas fa-calendar"></i></i></label>
+                            <input type="text" name="ville" id="ville" value="{{ $user['ville']}}"  required autocomplete="ville"/>
+                        </div>
+
+                        <div  class="info-item">
+                            <label class="icon" for="email"><i class="fas fa-envelope"></i></label>
+                            <input type="text" class="" name="email" id="email" value="{{ $user['email']}}"  required autocomplete="email"/>
+                        </div>
+
+                        <div  class="info-item">
+                            <label class="icon" for="phone"><i class="fas fa-phone"></i></label>
+                            <input type="phone" name="phone" id="phone" value="{{ $user['phone']}}" placeholder="Telephone" required autocomplete="phone"/>
+                        </div>
+
+                        <button type="submit" class="sbt">Enregistre</button><button type="button" class="sbt annuler" onclick="toggleText(5)">Annuler</button>
+                    </form>
+                </div>
+  			</div>
+          <div class="cont col-12">
+              @foreach ($annonce as $item)
+              <div class="card1 col-8">
+                <div class="card-header">
+                    <img src="\uploads\{{ $item['images_path'] }}" alt="bein" />
+                </div>
+                <div class="card-body1">
+                  <span class="tag tag-teal"> {{ $item['bein_type'] }} </span>
+                  <h4>
+                    {{ $item['titre'] }}
+                  </h4>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ $item['transaction'] }}</li>
+                    <li class="list-group-item">{{ $item['ville'] }}</li>
+                    <li class="list-group-item">Prix:   {{ $item['prix'] }}DH</li>
+                    <li class="list-group-item">Etat:   {{ $item['etat'] }}</li>
+                  </ul>
+                  <div class="user">
+                    <div class="card-body d-flex justify-content-center">
+                        <a href="#" class="btn btn-success  float-end">Modifie</a>
+                        <a href="#" class="btn btn-danger  float-start">Supprimer</a>
+                        <a href="#" class="btn btn-info ">@if ($item['etat'] == "active")
+                            {{ "desactiver" }}
+                            @else
+                            {{ "Activer" }}
+                        @endif </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+        </div>
+        </div>
+    </div>
+    <script>
+        function toggleText(id){
+            var x = document.getElementById("activation");
+            var y = document.getElementById("suppression");
+            var z = document.getElementById("modification");
+            var w = document.getElementById("info");
+            if(id === 1){
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                w.style.display = "none";
+                y.style.display = "none";
+                z.style.display = "none";
+                $("#activation").hide(); 
+                $("#activation").show();
+                        }
+            if(id === 2){
+                if (y.style.display === "none") {
+                    y.style.display = "block";
+                } else {
+                    y.style.display = "none";
+                }
+                w.style.display = "none";
+                x.style.display = "none";
+                z.style.display = "none";
+                $("#suppression").hide(); 
+                $("#suppression").show();
+            }
+            if(id === 3){
+                if (z.style.display === "none") {
+                    z.style.display = "block";
+                } else {
+                    z.style.display = "none";
+                }
+                w.style.display = "none";
+                y.style.display = "none";
+                x.style.display = "none";
+                $("#modification").hide(); 
+                $("#modification").show();
+            }
+            if(id === 4){
+                if (w.style.display === "none") {
+                    w.style.display = "block";
+                    x.style.display = "none";
+                } else {
+                    w.style.display = "none";
+                    x.style.display = "block";
+                }
+                y.style.display = "none";
+                z.style.display = "none";
+                $("#info").hide(); 
+                $("#info").show();
+            }
+            if(id === 5){
+                if (w.style.display === "none") {
+                    w.style.display = "block";
+                    z.style.display = "none";
+                } else {
+                    w.style.display = "none";
+                    z.style.display = "block";
+                }
+                y.style.display = "none";
+                x.style.display = "none";
+                $("#info").hide(); 
+                $("#info").show();
+            }
+        }
+      </script>
+@endsection

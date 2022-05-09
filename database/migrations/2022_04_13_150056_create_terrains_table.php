@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('terrains', function (Blueprint $table) {
             $table->id();
             $table->integer('surface_totale');
+            $table->string('category');
             $table->string('zonning');
             $table->string('supp');
             $table->timestamps();

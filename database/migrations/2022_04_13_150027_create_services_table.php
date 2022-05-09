@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('surface_totale');
             $table->integer('surface_soupente');
             $table->integer('etage');
+            $table->string('category');
             $table->integer('nbr_piece');
             $table->string('supp');
             $table->timestamps();

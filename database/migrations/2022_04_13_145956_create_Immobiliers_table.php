@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('surface_habitable')->nullable();
             $table->integer('chambre');
             $table->integer('salon');
+            $table->string('category');
             $table->integer('salle_de_bain');
             $table->integer('age_de_bien');
             $table->integer('nbr_etage')->nullable();

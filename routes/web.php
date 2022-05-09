@@ -34,6 +34,7 @@ Route::get('second_page/magasin', [second_page_controller::class, 'magasin'])->n
 Route::get('second_page/terrain_ferme', [second_page_controller::class, 'terrain_ferme']);
 Route::get('second_page/user', [second_page_controller::class, 'user'])->name('user_space');
 Route::get('second_page/store', [second_page_controller::class, 'store'])->name('second_page.store');
+Route::put('second_page/update_user', [second_page_controller::class, 'update_user'])->name('second_page.update_user');
 
 Route::resource('last_page', last_page_controller::class) ; 
 

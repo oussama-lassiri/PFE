@@ -291,23 +291,31 @@
               </div>
           </div>
           <div class="col-md-8 card" id="activation" style="display: none;">
-            <div class="row">
-                <h2>Attention!</h2>
-                <hr>
-                <h3>Si vous désactivez votre compte, toutes vos annonces seront désactivées. Êtes-vous sûr de vouloir désactiver votre compte ?</h3>
-                <button class="btn btn-success" >Désactiver</button>
-                <button class="btn btn-danger" onclick="toggleText(4)">Annuler</button>
+            <div class="row alert alert-info" role="alert">
+
+                    <h3 class="alert-heading">Attention!</h3>
+                    <hr>
+                    <h4>Si vous désactivez votre compte, toutes vos annonces seront désactivées.</h4>
+                    <h5>  Êtes-vous sûr de vouloir désactiver votre compte ?</h5>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-light me-md-2" type="button" onclick="toggleText(4)">Annuler</button>
+                    <button class="btn btn-danger " type="button">Désactiver</button>
+                </div>
             </div>
           </div>
           <div class="col-md-8 card" id="suppression" style="display: none;">
-            <div class="row">
-                <h2>Attention!</h2>
+            <div class="row alert alert-danger" role="alert">
+                <h3 class="alert-heading">Attention!</h3>
                 <hr>
-                <h3>Si vous supprimez votre compte, toutes vos annonces seront supprimées. Êtes-vous sûr de vouloir supprimer votre compte ?</h3>
-                <button class="btn btn-success" >Supprimer</button>
-                <button class="btn btn-danger" onclick="toggleText(4)">Annuler</button>
+                <h4>Si vous supprimez votre compte, toutes vos annonces seront supprimées. </h4>
+                <h5>  Êtes-vous sûr de vouloir supprimer votre compte ?</h5>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-light me-md-2" type="button" onclick="toggleText(4)">Annuler</button>
+                    <button class="btn btn-danger " type="button">Supprimer</button>
+                </div>
             </div>
           </div>
+
           <div class="tab-pane text-center gallery col-md-8 m-0" id="modification" style="display: none;">
                     <div class="container modifie">
                     <form method="POST" action="{{ route('second_page.update_user') }}">

@@ -11,7 +11,7 @@
         <div class="card">
             <div class="box box1 animate__animated animate__bounceInLeft">
                 <p >Immobilier</p>
-                <div class="explique">(Maisson, Villa, Appartement)</div>
+                <div class="explique">(Maison, Villa, Appartement)</div>
                 <button class="noselect" onclick="toggleText(1)"></button>
             </div>
         <div class="bg"></div>
@@ -32,14 +32,14 @@
         </div>
         <div class="bg"></div>
         </div>
-    </div>  
+    </div>
     <div id="Agricole_btn" style="display: none;">
         <a href="second_page/terrain_ferme?category=terrain"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="terrains" value="Terrains"></a>
-        <a href="second_page/terrain_ferme?category=ferme"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="fermes" value="Fermes"></a> 
+        <a href="second_page/terrain_ferme?category=ferme"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="fermes" value="Fermes"></a>
       </div>
     <div id="Immeuble_btn" style="display: none;">
         <a href="second_page/maisson_villa?category=maisson"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="maisson" value="Maisson"></a>
-        <a href="second_page/appartement"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="appartement" value="Appartement"></a>
+        <a href="second_page/appartement?category=appartement"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="appartement" value="Appartement"></a>
         <a href="second_page/maisson_villa?category=villa"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="villa" value="Villa">
    </a> </div>
     <div id="Industrie_btn" style="display: none;">
@@ -61,7 +61,7 @@
       }
     y.style.display = "none";
     z.style.display = "none";
-    $("#Immeuble_btn").hide(); 
+    $("#Immeuble_btn").hide();
     $("#Immeuble_btn").show();
     }
     if(id === 2){
@@ -72,7 +72,7 @@
       }
     x.style.display = "none";
     z.style.display = "none";
-    $("#Agricole_btn").hide(); 
+    $("#Agricole_btn").hide();
     $("#Agricole_btn").show();}
     if(id === 3){
       if (z.style.display === "none") {
@@ -82,7 +82,7 @@
       }
     y.style.display = "none";
     x.style.display = "none";
-    $("#Industrie_btn").hide(); 
+    $("#Industrie_btn").hide();
     $("#Industrie_btn").show();}
   }
   </script>

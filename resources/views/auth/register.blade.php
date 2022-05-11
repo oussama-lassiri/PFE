@@ -10,7 +10,7 @@
         background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
         background: linear-gradient(to right, #FFFFFF, #FFEFBA);
         }
-      h1, h3, input { 
+      h1, h3, input {
       padding: 0;
       margin: 0;
       outline: none;
@@ -44,23 +44,23 @@
       background-size: cover;
       }
       form {
-      width: 50%; 
+      width: 50%;
       padding: 20px;
       margin-bottom: 20px;
-      border-radius: 5px; 
+      border-radius: 5px;
       border: solid 1px #ccc;
-      box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-      background: #ebebeb; 
+      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+      background: #ebebeb;
       }
       input {
       width: calc(100% - 57px);
       height: 36px;
-      padding-left: 10px; 
+      padding-left: 10px;
       margin: 0 0 12px -5px;
       border-radius: 0 5px 5px 0;
       border: solid 1px #cbc9c9;
-      box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-      background: #fff; 
+      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+      background: #fff;
       }
       .icon {
       padding: 9px 15px;
@@ -73,7 +73,7 @@
       .sbt {
       width: 100%;
       padding: 8px;
-      border-radius: 5px; 
+      border-radius: 5px;
       border: none;
       background: #e2a9e5 ;
       background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
@@ -96,7 +96,7 @@
       margin: 6px 0;
       }
 
-      
+
 
 /* Please ❤ this if you like it! */
 
@@ -151,7 +151,7 @@ mark{
 	background-color: var(--dark-blue);
 	z-index: 1;
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox:checked ~ .background-color{
 	background-color: var(--white);
@@ -197,7 +197,7 @@ mark{
 	height: 40px;
 	border-radius: 50%;
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox:not(:checked) + label:before {
 	content: '\eac1';
@@ -239,7 +239,7 @@ mark{
 	text-transform: uppercase;
 	color: var(--white);
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox-tools:not(:checked) + label{
 	background-color: var(--dark-light);
@@ -300,7 +300,7 @@ mark{
 	cursor: pointer;
 	text-transform: uppercase;
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 	-webkit-text-stroke: 1px var(--white);
     text-stroke: 1px var(--white);
     -webkit-text-fill-color: transparent;
@@ -398,7 +398,7 @@ mark{
 	text-transform: uppercase;
 	background-color: var(--dark-light);
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox-booking:not(:checked) + label::before{
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -421,7 +421,7 @@ mark{
 	z-index: -2;
 	background-image: linear-gradient(138deg, var(--red), var(--yellow));
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox-booking:not(:checked) + label::before{
 	top: -1px;
@@ -441,7 +441,7 @@ mark{
 	z-index: -2;
 	background-color: var(--dark-light);
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox-booking:checked + label::after{
 	opacity: 0;
@@ -472,7 +472,7 @@ mark{
 	background-image: linear-gradient(138deg, var(--red), var(--yellow));
 	z-index: 1;
 	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear; 
+	transition: all 300ms linear;
 }
 .checkbox-booking:not(:checked) + label .text::after{
 	width: 0;
@@ -508,7 +508,7 @@ mark{
 	display: block;
 }
     </style>
-    
+
 @endsection
 
 @section('content')
@@ -535,7 +535,7 @@ mark{
 
         <div  class="info-item">
             <label class="icon" for="ville"><i class="fas fa-city"></i></i></label>
-            <input type="text" name="ville" id="ville" placeholder="ville" value="{{ old('ville') }}" required autocomplete="ville"/>
+            <input type="text" name="ville" id="ville" placeholder="Ville" value="{{ old('ville') }}" required autocomplete="ville"/>
         </div>
 
             <div class="section z-bigger justify-content-between">
@@ -554,7 +554,7 @@ mark{
                             </label>
                         </div>
                     </div>
-                </div>	
+                </div>
             </div>
 
         <div  class="info-item">
@@ -588,7 +588,7 @@ mark{
         </div>
 
         <button type="submit" class="sbt">
-            {{ __('cree') }}
+            {{ __('créé') }}
         </button>
     </form>
 </div>

@@ -161,7 +161,7 @@
             border:0;
             border-top: 14px solid #52B4DB ;
             border-radius:11px ;
-            
+
         }
 
         .btn-outline-success{
@@ -191,7 +191,7 @@
         @media (max-width: 401px) {
             .card{
                 width: unset;
-            }   
+            }
         }
     </style>
 @endsection
@@ -199,7 +199,7 @@
 @section('content')
 <div class="container">
     <div class="main-body">
-    
+
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
@@ -209,7 +209,7 @@
             </ol>
           </nav>
           <!-- /Breadcrumb -->
-    
+
           <div class="row gutters-sm col-md-12">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -264,7 +264,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">ville</h6>
+                      <h6 class="mb-0">Ville</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{ $user['ville'] }}
@@ -273,7 +273,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Etat de compte</h6>
+                      <h6 class="mb-0">État de compte</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{ $user['etat'] }}
@@ -282,7 +282,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12 centered">
-                      <button class="btn btn-success" onclick="toggleText(3)">Modefie</button>
+                      <button class="btn btn-success" onclick="toggleText(3)">Modifier</button>
                       <button class="btn btn-info " onclick="toggleText(1)">Activer</button>
                       <button class="btn btn-danger " onclick="toggleText(2)">Supprimer</a>
                     </div>
@@ -291,23 +291,31 @@
               </div>
           </div>
           <div class="col-md-8 card" id="activation" style="display: none;">
-            <div class="row">
-                <h2>Attention!</h2>
-                <hr>
-                <h3>si vous désactivez votre compte, toutes vos annonces seront désactivées. Êtes-vous sûr de vouloir désactiver votre compte ?</h3>
-                <button class="btn btn-success" >Desactiver</button>
-                <button class="btn btn-danger" onclick="toggleText(4)">Annuler</button>
+            <div class="row alert alert-info" role="alert">
+
+                    <h3 class="alert-heading">Attention!</h3>
+                    <hr>
+                    <h4>Si vous désactivez votre compte, toutes vos annonces seront désactivées.</h4>
+                    <h5>  Êtes-vous sûr de vouloir désactiver votre compte ?</h5>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-light me-md-2" type="button" onclick="toggleText(4)">Annuler</button>
+                    <button class="btn btn-danger " type="button">Désactiver</button>
+                </div>
             </div>
           </div>
           <div class="col-md-8 card" id="suppression" style="display: none;">
-            <div class="row">
-                <h2>Attention!</h2>
+            <div class="row alert alert-danger" role="alert">
+                <h3 class="alert-heading">Attention!</h3>
                 <hr>
-                <h3>si vous supprimez votre compte, toutes vos annonces seront suppremes. Êtes-vous sûr de vouloir suppremes votre compte ?</h3>
-                <button class="btn btn-success" >Desactiver</button>
-                <button class="btn btn-danger" onclick="toggleText(4)">Annuler</button>
+                <h4>Si vous supprimez votre compte, toutes vos annonces seront supprimées. </h4>
+                <h5>  Êtes-vous sûr de vouloir supprimer votre compte ?</h5>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-light me-md-2" type="button" onclick="toggleText(4)">Annuler</button>
+                    <button class="btn btn-danger " type="button">Supprimer</button>
+                </div>
             </div>
           </div>
+
           <div class="tab-pane text-center gallery col-md-8 m-0" id="modification" style="display: none;">
                     <div class="container modifie">
                     <form method="POST" action="{{ route('second_page.update_user') }}">
@@ -326,7 +334,7 @@
                         </div>
 
                         <div  class="info-item">
-                            <label class="icon" for="ville"><i class="fas fa-calendar"></i></i></label>
+                            <label class="icon" for="ville"><i class="fas fa-calendar"></i></label>
                             <input type="text" name="ville" id="ville" value="{{ $user['ville']}}"  required autocomplete="ville"/>
                         </div>
 
@@ -357,16 +365,26 @@
                   </h4>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ $item['transaction'] }}</li>
-                    <li class="list-group-item">{{ $item['ville'] }}</li>
-                    <li class="list-group-item">Prix:   {{ $item['prix'] }}DH</li>
+                    <li class="list-group-item">Ville:  {{ $item['ville'] }}</li>
+                    <li class="list-group-item">Prix:   {{ $item['prix'] }} DH</li>
                     <li class="list-group-item">Etat:   {{ $item['etat'] }}</li>
                   </ul>
                   <div class="user">
                     <div class="card-body d-flex justify-content-center">
-                        <a href="#" class="btn btn-success  float-end">Modifie</a>
-                        <a href="#" class="btn btn-danger  float-start">Supprimer</a>
+                        <a href="#" class="btn btn-success  float-end" data-toggle="tooltip"  title="Modifier">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn btn-danger  float-start"  data-toggle="tooltip"  title="Supprimer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </a>
                         <a href="#" class="btn btn-info ">@if ($item['etat'] == "active")
-                            {{ "desactiver" }}
+                            {{ "Désactiver" }}
                             @else
                             {{ "Activer" }}
                         @endif </a>
@@ -379,6 +397,7 @@
         </div>
     </div>
     <script>
+
         function toggleText(id){
             var x = document.getElementById("activation");
             var y = document.getElementById("suppression");
@@ -393,7 +412,7 @@
                 w.style.display = "none";
                 y.style.display = "none";
                 z.style.display = "none";
-                $("#activation").hide(); 
+                $("#activation").hide();
                 $("#activation").show();
                         }
             if(id === 2){
@@ -405,7 +424,7 @@
                 w.style.display = "none";
                 x.style.display = "none";
                 z.style.display = "none";
-                $("#suppression").hide(); 
+                $("#suppression").hide();
                 $("#suppression").show();
             }
             if(id === 3){
@@ -417,7 +436,7 @@
                 w.style.display = "none";
                 y.style.display = "none";
                 x.style.display = "none";
-                $("#modification").hide(); 
+                $("#modification").hide();
                 $("#modification").show();
             }
             if(id === 4){
@@ -430,7 +449,7 @@
                 }
                 y.style.display = "none";
                 z.style.display = "none";
-                $("#info").hide(); 
+                $("#info").hide();
                 $("#info").show();
             }
             if(id === 5){
@@ -443,7 +462,7 @@
                 }
                 y.style.display = "none";
                 x.style.display = "none";
-                $("#info").hide(); 
+                $("#info").hide();
                 $("#info").show();
             }
         }

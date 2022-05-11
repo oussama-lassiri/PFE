@@ -21,11 +21,11 @@
                                 <input type="number" id = "nbr_piece" name = "nbr_piece" placeholder="--Saisissez" class="form-control">
                             </div>
                         </th>
-        
+
                         <th><div>
                                 <label for="etage">Étage  </label><br>
                                 <input type="number" id="etage" name="etage" placeholder="--Saisissez"class="form-control">
-                            </div> 
+                            </div>
                         </th>
                         <th>
                             <div >
@@ -36,31 +36,35 @@
                         <th>
                             <div>
                                 <label for="surface_soupente">Surface Soupente </label><br>
-                                <input type="number" name="surface_soupente" id="surface_soupente" placeholder="--Saisissez " class="form-control"> 
+                                <input type="number" name="surface_soupente" id="surface_soupente" placeholder="--Saisissez " class="form-control">
                             </div>
                         </th>
                     </tr>
                 </table>
             <div class="supp">
                 <h4> <b>Détails supplémentaires</b>  </h4>
-                <p> <i>Vous pouvez sélctionner un ou plusieurs critères. (optionnel)</i> </p><br>
+                <p> <i>Vous pouvez sélectionner un ou plusieurs critères. (optionnel)</i> </p><br>
             </div>
              <ul class="ks-cboxtags">
-                <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Securusee"><label for="checkboxOne">Securusee</label></li>
+                <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Securusee"><label for="checkboxOne">Sécurisée</label></li>
                 <li><input name="supp[]" type="checkbox" id="checkboxTwo" value="Parking"><label for="checkboxTwo">Parking</label></li>
-                <li><input name="supp[]" type="checkbox" id="checkboxThree" value="Climatise"><label for="checkboxThree">Climatise</label></li>
+                <li><input name="supp[]" type="checkbox" id="checkboxThree" value="Climatise"><label for="checkboxThree">Climatisé</label></li>
                 <li><input name="supp[]" type="checkbox" id="checkboxFour" value="Chauffage"><label for="checkboxFour">Chauffage</label></li>
                 <li><input name="supp[]" type="checkbox" id="checkboxFive" value="Ascenseur"><label for="checkboxFive">Ascenseur</label></li>
             </ul>
             </div>
         </fieldset>
         <input type="text" name="type" value="service" hidden >
+<<<<<<< HEAD
         <input type="text" value="{{Request('category')}}" name="category" hidden>
+=======
+        <input type="text" value="service" name="category" hidden>
+>>>>>>> b752dfe02be31e32fb2c609251ac7b8f0ba5a7c2
         <div class="send">
              <button type="submit" class="btn btn-primary float-right" >Suivant</button>
         </div>
     </form>
-   
+
 </div>
-     
+
 @endsection

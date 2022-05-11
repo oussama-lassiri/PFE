@@ -23,7 +23,7 @@ class second_page_controller extends Controller
     }
 
     public function maisson_villa()
-    {   
+    {
         return view('second_page.maisson_villa')->with(Request('category'));
     }
 
@@ -38,7 +38,7 @@ class second_page_controller extends Controller
     }
 
     public function user()
-    {   
+    {
         $les_annonce = annonce::all();
         $annonce = array();
         $value = array();
@@ -80,7 +80,7 @@ class second_page_controller extends Controller
                 $habit_table->nbr_etage = $request->input('nbr_etage');
             }
             $habit_table->supp = implode(',', $request->get('supp'));
-            
+
             $habit_table->save();
             return view('last_page.index')->with(['beinID'=>$habit_table->id, 'type'=>$request->input('type')]);
         }
@@ -92,6 +92,7 @@ class second_page_controller extends Controller
             $service_table->category = $request->input('category');
             $service_table->etage = $request->input('etage');
             $service_table->nbr_piece = $request->input('nbr_piece');
+            $service_table->category = $request->input('category');
             $service_table->supp = implode(',', $request->get('supp'));
 
             $service_table->save();
@@ -103,6 +104,7 @@ class second_page_controller extends Controller
             $immob_table->surface_totale = $request->input('surface_totale');
             $immob_table->category = $request->input('category');
             $immob_table->zonning = $request->get('zonning');
+            $immob_table->category = $request->input('category');
             $immob_table->supp = implode(',', $request->get('supp'));
 
             $immob_table->save();
@@ -137,5 +139,5 @@ class second_page_controller extends Controller
                                     ]
                                 );
     }
-    
+
 }

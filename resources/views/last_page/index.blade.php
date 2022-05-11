@@ -128,8 +128,8 @@
                     <select class="select-css" name="transaction">
                         <option value="empty">Type de transaction</option>
                         <option value="vente">Vente</option>
-                        <option value="location_mois">Location (mois)</option>
-                        <option value="location_jour">Location (jour)</option>
+                        <option value="location mois">Location (mois)</option>
+                        <option value="location jour">Location (jour)</option>
                     </select>
                 </div>
 

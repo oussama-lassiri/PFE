@@ -82,7 +82,7 @@ class last_page_controller extends Controller
      */
     public function show($id)
     {
-        $annonce = annonce::find(2);
+        $annonce = annonce::find(6);
         $bein_type = $annonce['bein_type'];
         $user = user::find($annonce['user_ID']);
         $transaction = $annonce['transaction'];
@@ -126,8 +126,11 @@ class last_page_controller extends Controller
         if ($transaction == "vente"){
             $trans = "vendre";
         }
-        else {
-            $trans = "louer";
+        if($transaction == "location jour") {
+            $trans = "louer(jour)";
+        }
+        if($transaction == "location mois") {
+            $trans = "louer(mois)";
         }
 
 

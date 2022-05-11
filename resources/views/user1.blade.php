@@ -353,13 +353,23 @@
                 </div>
   			</div>
           <div class="cont col-12">
+            <?php $i= 0; ?>
               @foreach ($annonce as $item)
               <div class="card1 col-8">
                 <div class="card-header">
                     <img src="\uploads\{{ $item['images_path'] }}" alt="bein" />
                 </div>
                 <div class="card-body1">
-                  <span class="tag tag-teal"> {{ $item['bein_type'] }} </span>
+                  @if($item['bein_type'] == "immoblier")
+                  <span class="tag tag-teal"> {{ $bein_category["$i"] }} </span>
+                  @endif
+                  @if ($item['bein_type'] == "terrain")
+                  <span class="tag tag-purple"> {{ $bein_category["$i"] }} </span>
+                  @endif
+                  @if($item['bein_type'] == "service")
+                  <span class="tag tag-pink"> {{ $bein_category["$i"] }} </span>
+                  @endif
+                  <?php $i++ ?>
                   <h4>
                     {{ $item['titre'] }}
                   </h4>

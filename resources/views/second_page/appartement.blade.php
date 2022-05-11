@@ -74,11 +74,7 @@
                 </div>
             </fieldset>
             <input type="text" value="immoblier" name="type" hidden>
-<<<<<<< HEAD
             <input type="text" value="Appartement" name="category" hidden>
-=======
-            <input type="text" value="appartement" name="category" hidden>
->>>>>>> b752dfe02be31e32fb2c609251ac7b8f0ba5a7c2
             <div class="send">
                 <button type="submit" class="btn btn-primary" >Suivant</button>
             </div>

@@ -41,11 +41,21 @@ class second_page_controller extends Controller
     {
         $les_annonce = annonce::all();
         $annonce = array();
-        $value = array();
-        $i=1;
         $user = User::find(Request('userID'));
+        $i = 0;
+        $bein_category = array();
         foreach($les_annonce as $an){
             if($an['user_ID'] == $user['id']){
+                $bein_type = $an['bein_type'];
+                if($bein_type == "immoblier")
+                    $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
+    
+                if($bein_type == "terrain")
+                    $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
+        
+                if($bein_type == "service")
+                    $bein_category[$i] = service::find($an['bein_ID'])['category'];
+                $i++;
                 $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
                 $$an['images_path'] = Str::remove("\"", $an['images_path']);
                 $an['images_path'] = Str::before($an['images_path'], ",") ;
@@ -54,7 +64,8 @@ class second_page_controller extends Controller
             }
         }
         return view('user1')->with(['user'=> User::find(Request('userID')),
-                                    'annonce'=> $annonce
+                                    'annonce'=> $annonce,
+                                    'bein_category' => $bein_category
                                     ]
                                 );
     }

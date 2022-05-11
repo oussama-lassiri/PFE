@@ -74,7 +74,7 @@
                 </div>
             </fieldset>
             <input type="text" value="immoblier" name="type" hidden>
-            <input type="text" value="app" name="category" hidden>
+            <input type="text" value="Appartement" name="category" hidden>
             <div class="send">
                 <button type="submit" class="btn btn-primary" >Suivant</button>
             </div>

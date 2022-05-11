@@ -82,7 +82,7 @@ class last_page_controller extends Controller
      */
     public function show($id)
     {
-        $annonce = annonce::find(1);
+        $annonce = annonce::find(2);
         $bein_type = $annonce['bein_type'];
         $user = user::find($annonce['user_ID']);
         $transaction = $annonce['transaction'];
@@ -104,7 +104,7 @@ class last_page_controller extends Controller
             array_push($img, $value);
             $data = Str::beforeLast($data, ",");
             if(!Str::contains($data, ",")) {
-                $value = Str::afterLast($data, ",");
+                $value = Str::afterLast($data, ",") ;
                 array_push($img, $value);
                 break;
             }

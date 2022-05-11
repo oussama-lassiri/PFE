@@ -45,6 +45,7 @@
             </div>
         </fieldset>
         <input type="text" name="type" value="terrain" hidden>
+        <input type="text" value="{{Request('category')}}" name="category" hidden>
         <div class="send">
             <button type="submit" class="btn btn-primary float-right" >Suivant</button>
         </div>

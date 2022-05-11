@@ -30,7 +30,7 @@
 
             <div class="user-image mb-3 text-center">
                 <div class="imgPreview"> </div>
-            </div>            
+            </div>
 
             <div class="custom-file">
                 <input type="file" name="imageFile[]" class="custom-file-input" id="images" multiple="multiple">
@@ -73,7 +73,7 @@
                 <div class="container">
                     <div class="title">
                         <h1>Informations sur votre appartement :</h1>
-                    </div>  
+                    </div>
                     <table>
                         <tr>
                             <th>
@@ -82,11 +82,11 @@
                                     <input type="number" id = "chambre" name = "chambre" placeholder="--Saisissez" class="form-control">
                                 </div>
                             </th>
-            
+
                             <th><div class="">
                                     <label for="salle_de_bain">Salle de bain  </label><br>
                                     <input type="number" id="salle_de_bain" name="salle_de_bain" placeholder="--Saisissez"class="form-control">
-                                </div> 
+                                </div>
                             </th>
                             <th>
                                 <div >
@@ -99,40 +99,40 @@
                             <th>
                                 <div>
                                     <label for="etage">Numero d'étage  </label><br>
-                                    <input type="number" name="etage" id="etage" placeholder="Saisissez 0 pour RDC" class="form-control"> 
+                                    <input type="number" name="etage" id="etage" placeholder="Saisissez 0 pour RDC" class="form-control">
                                 </div>
                             </th>
                             <th>
                                 <div class="">
                                     <label for="surface_total">Surface totale (en m<sup>2</sup>)</label><br>
-                                    <input type="number" name="surface_totale" id="surface_totale" placeholder="                                 m&sup2" class="form-control" > 
+                                    <input type="number" name="surface_totale" id="surface_totale" placeholder="                                 m&sup2" class="form-control" >
                                 </div>
                             </th>
                             <th>
                                 <div class="">
                                     <label for="age_de_bien">&Acircge de bien </label><br>
-                                    <input type="number" name="age_de_bien" id="age_de_bien" placeholder="--Saisissez" class="form-control"> 
+                                    <input type="number" name="age_de_bien" id="age_de_bien" placeholder="--Saisissez" class="form-control">
                                 </div>
                             </th>
                         </tr>
                     </table>
                     <div class="supp">
                         <h4> <b>Détails supplémentaires</b>  </h4>
-                        <p> <i>Vous pouvez sélctionner un ou plusieurs critères. (optionnel)</i> </p><br>
+                        <p> <i>Vous pouvez sélectionner un ou plusieurs critères. (optionnel)</i> </p><br>
                     </div>
                     <ul class="ks-cboxtags">
-                        <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Terrase"><label for="checkboxOne">Terrase</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxTwo" value="Securusee"><label for="checkboxTwo">Securusee</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Terrase"><label for="checkboxOne">Terrasse</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxTwo" value="Securusee"><label for="checkboxTwo">Sécurisée</label></li>
                         <li><input name="supp[]" type="checkbox" id="checkboxThree" value="Parking"><label for="checkboxThree">Parking</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxFour" value="Climatise"><label for="checkboxFour">Climatise</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxFour" value="Climatise"><label for="checkboxFour">Climatisé</label></li>
                         <li><input name="supp[]" type="checkbox" id="checkboxFive" value="Chauffage"><label for="checkboxFive">Chauffage</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxSix" value="Cuisine equipe"><label for="checkboxSix">Cuisine equipe</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxSeven" value="Meuble"><label for="checkboxSeven">Meuble</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxSix" value="Cuisine equipe"><label for="checkboxSix">Cuisine équipé</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxSeven" value="Meuble"><label for="checkboxSeven">Meublé</label></li>
                     </ul>
                 </div>
             </fieldset>
             <input type="text" value="immoblier" name="type" hidden>
-            <input type="text" value="app" name="category" hidden>
+            <input type="text" value="appartement" name="category" hidden>
             <div class="send">
                 <button type="submit" class="btn btn-primary" >Suivant</button>
             </div>
@@ -156,11 +156,11 @@
                                     <input type="number" id = "nbr_piece" name = "nbr_piece" placeholder="--Saisissez" class="form-control">
                                 </div>
                             </th>
-            
+
                             <th><div>
                                     <label for="etage">Étage  </label><br>
                                     <input type="number" id="etage" name="etage" placeholder="--Saisissez"class="form-control">
-                                </div> 
+                                </div>
                             </th>
                             <th>
                                 <div >
@@ -171,19 +171,19 @@
                             <th>
                                 <div>
                                     <label for="surface_soupente">Surface Soupente </label><br>
-                                    <input type="number" name="surface_soupente" id="surface_soupente" placeholder="--Saisissez " class="form-control"> 
+                                    <input type="number" name="surface_soupente" id="surface_soupente" placeholder="--Saisissez " class="form-control">
                                 </div>
                             </th>
                         </tr>
                     </table>
                 <div class="supp">
                     <h4> <b>Détails supplémentaires</b>  </h4>
-                    <p> <i>Vous pouvez sélctionner un ou plusieurs critères. (optionnel)</i> </p><br>
+                    <p> <i>Vous pouvez sélectionner un ou plusieurs critères. (optionnel)</i> </p><br>
                 </div>
                  <ul class="ks-cboxtags">
-                    <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Securusee"><label for="checkboxOne">Securusee</label></li>
+                    <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Sécurisée"><label for="checkboxOne">Securusee</label></li>
                     <li><input name="supp[]" type="checkbox" id="checkboxTwo" value="Parking"><label for="checkboxTwo">Parking</label></li>
-                    <li><input name="supp[]" type="checkbox" id="checkboxThree" value="Climatise"><label for="checkboxThree">Climatise</label></li>
+                    <li><input name="supp[]" type="checkbox" id="checkboxThree" value="Climatisé"><label for="checkboxThree">Climatise</label></li>
                     <li><input name="supp[]" type="checkbox" id="checkboxFour" value="Chauffage"><label for="checkboxFour">Chauffage</label></li>
                     <li><input name="supp[]" type="checkbox" id="checkboxFive" value="Ascenseur"><label for="checkboxFive">Ascenseur</label></li>
                 </ul>
@@ -213,11 +213,11 @@
                                     <input type="number" id = "chambre" name = "chambre" placeholder="--Saisissez" class="form-control">
                                 </div>
                             </th>
-            
+
                             <th><div class="">
                                     <label for="salle_de_bain">Salle de bain  </label><br>
                                     <input type="number" id="salle_de_bain" name="salle_de_bain" placeholder="--Saisissez"class="form-control">
-                                </div> 
+                                </div>
                             </th>
                             <th>
                                 <div >
@@ -228,47 +228,47 @@
                             <th>
                                 <div>
                                     <label for="nbr_etage">Nombre d'étage  </label><br>
-                                    <input type="number" name="nbr_etage" id="nbr_etage" placeholder="Saisissez 0 pour RDC" class="form-control"> 
+                                    <input type="number" name="nbr_etage" id="nbr_etage" placeholder="Saisissez 0 pour RDC" class="form-control">
                                 </div>
                             </th>
                         </tr>
                         <tr>
-                            
+
                             <th>
                                 <div class="">
                                     <label for="surface_totale">Surface totale (en m<sup>2</sup>)</label><br>
-                                    <input type="number" name="surface_totale" id="surface_totale" placeholder="                                 m&sup2" class="form-control" > 
+                                    <input type="number" name="surface_totale" id="surface_totale" placeholder="                                 m&sup2" class="form-control" >
                                 </div>
                             </th>
                             <th>
                                 <div class="">
                                     <label for="surface_habitable">Surface habitable (en m<sup>2</sup>)</label><br>
-                                    <input type="number" name="surface_habitable" id="surface_habitable" placeholder="                                 m&sup2" class="form-control" > 
+                                    <input type="number" name="surface_habitable" id="surface_habitable" placeholder="                                 m&sup2" class="form-control" >
                                 </div>
                             </th>
                             <th>
                                 <div class="">
                                     <label for="age_de_bien">&Acircge de bien </label><br>
-                                    <input type="number" name="age_de_bien" id="age_de_bien" placeholder="--Saisissez" class="form-control"> 
+                                    <input type="number" name="age_de_bien" id="age_de_bien" placeholder="--Saisissez" class="form-control">
                                 </div>
                             </th>
                         </tr>
                     </table>
                     <div class="supp">
                         <h4> <b>Détails supplémentaires</b>  </h4>
-                        <p> <i>Vous pouvez sélctionner un ou plusieurs critères. (optionnel)</i> </p><br>
-                    </div>  
+                        <p> <i>Vous pouvez sélectionner un ou plusieurs critères. (optionnel)</i> </p><br>
+                    </div>
                     <ul class="ks-cboxtags">
-                        <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Terrase"><label for="checkboxOne">Terrase</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxTwo" value="Securusee"><label for="checkboxTwo">Securusee</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxOne" value="Terrase"><label for="checkboxOne">Terrasse</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxTwo" value="Securusee"><label for="checkboxTwo">Sécurisée</label></li>
                         <li><input name="supp[]" type="checkbox" id="checkboxThree" value="Jardin"><label for="checkboxThree">Jardin</label></li>
                         <li><input name="supp[]" type="checkbox" id="checkboxFour" value="Piscine"><label for="checkboxFour">Piscine</label></li>
                         <li><input name="supp[]" type="checkbox" id="checkboxFive" value="Garage"><label for="checkboxFive">Garage</label></li>
                         <li><input name="supp[]" type="checkbox" id="checkboxSix" value="Parking"><label for="checkboxSix">Parking</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxEight" value="Climatise"><label for="checkboxEight">Climatise</label></li><br>
+                        <li><input name="supp[]" type="checkbox" id="checkboxEight" value="Climatise"><label for="checkboxEight">Climatisé</label></li><br>
                         <li><input name="supp[]" type="checkbox" id="checkboxNine" value="Chauffage"><label for="checkboxNine">Chauffage</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxTen" value="Cuisine equipe"><label for="checkboxTen">Cuisine equipe</label></li>
-                        <li><input name="supp[]" type="checkbox" id="checkboxEleven" value="Meuble"><label for="checkboxEleven">Meuble</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxTen" value="Cuisine equipe"><label for="checkboxTen">Cuisine équipé</label></li>
+                        <li><input name="supp[]" type="checkbox" id="checkboxEleven" value="Meuble"><label for="checkboxEleven">Meublé</label></li>
                     </ul>
                 </div>
             </fieldset>
@@ -277,7 +277,7 @@
             <div class="send">
                 <button type="submit" class="btn btn-primary float-right" >Suivant</button>
             </div>
-        </form>   
+        </form>
     </div>
 
     {{-- terrain --}}
@@ -291,10 +291,10 @@
                     </div>
                     <table>
                         <tr>
-                            <th class="col order-first">    
+                            <th class="col order-first">
                                 <label for="surface_totale" class="form-label"> <b> Surface totale</b>  </label>
                                 <input class="form-control" type="number" name="surface_totale" id="surface_totale" placeholder="                            m&sup2"  required>
-                            </th> 
+                            </th>
                         </tr>
                         <tr>
                             <th class="col order-last"><label for="zone" class="form-label"> <b>Zonning</b> </label>
@@ -352,6 +352,6 @@
     $('#images').on('change', function() {
         multiImgPreview(this, 'div.imgPreview');
     });
-    });    
+    });
 </script>
 @endsection

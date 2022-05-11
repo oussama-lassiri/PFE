@@ -70,7 +70,7 @@ class last_page_controller extends Controller
 
               $fileModal->save();
             //redirect
-             return back()->with('success', 'Crée avec success !');
+             return back()->with('success', 'Créé avec succès  !');
           }
     }
 

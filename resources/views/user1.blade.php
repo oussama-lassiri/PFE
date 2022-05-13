@@ -199,7 +199,21 @@
 @section('content')
 <div class="container">
     <div class="main-body">
+      @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <strong>{{ $message }}</strong>
+        </div>
+      @endif
 
+      @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
@@ -283,7 +297,12 @@
                   <div class="row">
                     <div class="col-sm-12 centered">
                       <button class="btn btn-success" onclick="toggleText(3)">Modifier</button>
-                      <button class="btn btn-info " onclick="toggleText(1)">Activer</button>
+                      @if ($user['etat'] == "desactive")
+                        <button class="btn btn-info " onclick="toggleText(1)">Activer</button>
+                      @endif
+                      @if ($user['etat'] == "active")
+                        <button class="btn btn-dark " onclick="toggleText(1)">Desactive</button>
+                      @endif
                       <button class="btn btn-danger " onclick="toggleText(2)">Supprimer</a>
                     </div>
                   </div>
@@ -292,15 +311,29 @@
           </div>
           <div class="col-md-8 card" id="activation" style="display: none;">
             <div class="row alert alert-info" role="alert">
-
+              <form method="POST" action="{{ route('second_page.update_user') }}">
+                @csrf
+                @method('put')
+                <input type="text" name="id" value="{{ $user['id']}}" hidden/>
                     <h3 class="alert-heading">Attention!</h3>
                     <hr>
-                    <h4>Si vous désactivez votre compte, toutes vos annonces seront désactivées.</h4>
-                    <h5>  Êtes-vous sûr de vouloir désactiver votre compte ?</h5>
+                    @if ($user['etat'] == "desactive")
+                      <h4>Si vous active votre compte, toutes vos annonces seront active.</h4>
+                      <h5>  Êtes-vous sûr de vouloir active votre compte ?</h5>
+                    @endif
+                    @if ($user['etat'] == "active")
+                      <h4>Si vous désactiver votre compte, toutes vos annonces seront désactiver.</h4>
+                      <h5>  Êtes-vous sûr de vouloir désactiver votre compte ?</h5>
+                    @endif
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button class="btn btn-light me-md-2" type="button" onclick="toggleText(4)">Annuler</button>
-                    <button class="btn btn-danger " type="button">Désactiver</button>
+                    @if ($user['etat'] == "desactive")
+                      <button class="btn btn-info" type="submit" name="etat" value="active">Activer</button>
+                    @else
+                      <button class="btn btn-danger " type="submit" name="etat" value="desactive">Désactiver</button>
+                    @endif
                 </div>
+              </form>
             </div>
           </div>
           <div class="col-md-8 card" id="suppression" style="display: none;">
@@ -322,7 +355,6 @@
                         @csrf
                         @method('PUT')
                         <input type="text" name="id" value="{{ $user['id']}}" hidden/>
-
                         <div class="info-item">
                             <label class="icon" for="name"><i class="fas fa-user"></i></label>
                             <input type="text" name="name" id="name" value="{{ $user['name']}}" required autocomplete="name" autofocus/>
@@ -348,60 +380,60 @@
                             <input type="phone" name="phone" id="phone" value="{{ $user['phone']}}" placeholder="Telephone" required autocomplete="phone"/>
                         </div>
 
-                        <button type="submit" class="sbt">Enregistre</button><button type="button" class="sbt annuler" onclick="toggleText(5)">Annuler</button>
+                        <button type="submit" class="sbt" name="modifie" value="modifie">Enregistre</button><button type="button" class="sbt annuler" onclick="toggleText(5)">Annuler</button>
                     </form>
                 </div>
   			</div>
           <div class="cont col-12">
             <?php $i= 0; ?>
               @foreach ($annonce as $item)
-              <div class="card1 col-8">
-                <div class="card-header">
-                    <img src="\uploads\{{ $item['images_path'] }}" alt="bein" />
-                </div>
-                <div class="card-body1">
-                  @if($item['bein_type'] == "immoblier")
-                  <span class="tag tag-teal"> {{ $bein_category["$i"] }} </span>
-                  @endif
-                  @if ($item['bein_type'] == "terrain")
-                  <span class="tag tag-purple"> {{ $bein_category["$i"] }} </span>
-                  @endif
-                  @if($item['bein_type'] == "service")
-                  <span class="tag tag-pink"> {{ $bein_category["$i"] }} </span>
-                  @endif
-                  <?php $i++ ?>
-                  <h4>
-                    {{ $item['titre'] }}
-                  </h4>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{ $item['transaction'] }}</li>
-                    <li class="list-group-item">Ville:  {{ $item['ville'] }}</li>
-                    <li class="list-group-item">Prix:   {{ $item['prix'] }} DH</li>
-                    <li class="list-group-item">Etat:   {{ $item['etat'] }}</li>
-                  </ul>
-                  <div class="user">
-                    <div class="card-body d-flex justify-content-center">
-                        <a href="#" class="btn btn-success  float-end" data-toggle="tooltip"  title="Modifier">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="btn btn-danger  float-start"  data-toggle="tooltip"  title="Supprimer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="btn btn-info ">@if ($item['etat'] == "active")
-                            {{ "Désactiver" }}
-                            @else
-                            {{ "Activer" }}
-                        @endif </a>
+                <div class="card1 col-8">
+                  <div class="card-header">
+                      <img src="\uploads\{{ $item['images_path'] }}" alt="bein" />
+                  </div>
+                  <div class="card-body1">
+                    @if($item['bein_type'] == "immoblier")
+                    <span class="tag tag-teal"> {{ $bein_category["$i"] }} </span>
+                    @endif
+                    @if ($item['bein_type'] == "terrain")
+                    <span class="tag tag-purple"> {{ $bein_category["$i"] }} </span>
+                    @endif
+                    @if($item['bein_type'] == "service")
+                    <span class="tag tag-pink"> {{ $bein_category["$i"] }} </span>
+                    @endif
+                    <?php $i++ ?>
+                    <h4>
+                      {{ $item['titre'] }}
+                    </h4>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">{{ $item['transaction'] }}</li>
+                      <li class="list-group-item">Ville:  {{ $item['ville'] }}</li>
+                      <li class="list-group-item">Prix:   {{ $item['prix'] }} DH</li>
+                      <li class="list-group-item">Etat:   {{ $item['etat'] }}</li>
+                    </ul>
+                    <div class="user">
+                      <div class="card-body d-flex justify-content-center">
+                          <a href="{{route('second_page.edit')}}?annonce={{ $item['id'] }}" class="btn btn-success  float-end" data-toggle="tooltip"  title="Modifier">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                              </svg>
+                            </a>
+                          <button type="submit" name="supprimer" value="supp" class="btn btn-danger  float-start"  data-toggle="tooltip"  title="Supprimer">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                            </button>
+                          <a href="#" class="btn btn-info ">@if ($item['etat'] == "active")
+                              {{ "Désactiver" }}
+                              @else
+                              {{ "Activer" }}
+                          @endif </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               @endforeach
         </div>
         </div>

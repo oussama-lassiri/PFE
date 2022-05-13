@@ -35,6 +35,8 @@ Route::get('second_page/terrain_ferme', [second_page_controller::class, 'terrain
 Route::get('second_page/user', [second_page_controller::class, 'user'])->name('user_space');
 Route::get('second_page/store', [second_page_controller::class, 'store'])->name('second_page.store');
 Route::put('second_page/update_user', [second_page_controller::class, 'update_user'])->name('second_page.update_user');
+Route::put('second_page/update_annonce', [second_page_controller::class, 'update_annonce'])->name('second_page.update_annonce');
+Route::get('second_page/edit', [second_page_controller::class, 'edit'])->name('second_page.edit');
 
 Route::resource('last_page', last_page_controller::class) ; 
 

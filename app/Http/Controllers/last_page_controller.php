@@ -150,9 +150,9 @@ class last_page_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -162,9 +162,66 @@ class last_page_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'imageFile' => 'required',
+            'imageFile.*' => 'mimes:jpeg,jpg,png,pdf|max:4048'
+          ]);
+
+          if($request->hasfile('imageFile')) {
+              foreach($request->file('imageFile') as $file)
+              {
+                  $name = $file->getClientOriginalName();
+                  $file->move(public_path().'/uploads/', $name);
+                  $imgData[] = $name;
+              }
+
+              $fileModal = annonce::find($request->input('annonceID'));
+              $fileModal->images_name = json_encode($imgData);
+              $fileModal->images_path = json_encode($imgData);
+              $fileModal->ville = strip_tags( $request->input('ville') );
+              $fileModal->transaction = strip_tags( $request->get('transaction') );
+              $fileModal->titre = strip_tags( $request->input('titre') );
+              $fileModal->description = strip_tags( $request->input('description') );
+              $fileModal->prix = $request->input('prix');
+              $fileModal->etat = "inactive";
+
+              $fileModal->update();
+
+              $les_annonce = annonce::all();
+              $annonce = array();
+              $user = user::find($fileModal['user_ID']);
+
+                $i = 0;
+                $bein_category = array();
+                foreach($les_annonce as $an){
+                    if($an['user_ID'] == $user['id']){
+                        $bein_type = $an['bein_type'];
+                        if($bein_type == "immoblier")
+                            $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
+            
+                        if($bein_type == "terrain")
+                            $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
+                
+                        if($bein_type == "service")
+                            $bein_category[$i] = service::find($an['bein_ID'])['category'];
+                        $i++;
+                        $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
+                        $$an['images_path'] = Str::remove("\"", $an['images_path']);
+                        $an['images_path'] = Str::before($an['images_path'], ",") ;
+                        $an['images_path'] = Str::before($an['images_path'], "\"") ;
+                        array_push($annonce, $an);
+                    }
+                }
+                return view('user1')->with(['user'=> $user,
+                                            'annonce'=> $annonce,
+                                            'bein_category' => $bein_category,
+                                            'success', 'Modifie avec succès  !'
+                                            ]
+                                        );
+
+          }
     }
 
     /**

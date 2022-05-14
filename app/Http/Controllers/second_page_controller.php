@@ -128,7 +128,7 @@ class second_page_controller extends Controller
         $annonce = array();
         $user = user::find($request->input('id'));
 
-        if($request->get('modifie' == "modifie")){
+        if($request->get('modifie') == "modifie"){
             $user->name = $request->input('name');
             $user->ville = $request->input('ville');
             $user->cin = $request->input('cin');
@@ -243,7 +243,7 @@ class second_page_controller extends Controller
            // $service_table->supp = implode(',', $request->get('supp'));
 
             $service_table->update();
-            return view('last_page.edit')->with(['beinID'=>$service_table->id, 'type'=>$request->input('type'), "annonceID"=>$request->input('annonceID')]);
+            return view('last_page.edit')->with(['beinID'=>$service_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
         }
 
         if($request->input('type') == 'terrain'){
@@ -256,7 +256,7 @@ class second_page_controller extends Controller
            // $immob_table->supp = implode(',', $request->get('supp'));
 
             $immob_table->update();
-            return view('last_page.edit')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type'), "annonceID"=>$request->input('annonceID')]);
+            return view('last_page.edit')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
         }
     }
 

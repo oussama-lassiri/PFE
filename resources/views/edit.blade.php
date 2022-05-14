@@ -110,6 +110,7 @@
                     </div>
                 </fieldset>
                 <input type="text" name="type" value="service" hidden >
+                <input type="text" name="category" value="{{$bein['category']}}" hidden >
                 <div class="send">
                         <button type="submit" class="btn btn-primary float-right" >Suivant</button>
                 </div>
@@ -175,7 +176,7 @@
                     </div>
                 </fieldset>
                 <input type="text" value="immoblier" name="type" hidden>
-                <input type="text" value="mv" name="category" hidden>
+                <input type="text" value="{{$bein['category']}}" name="category" hidden>
                 <div class="send">
                     <button type="submit" class="btn btn-primary float-right" >Suivant</button>
                 </div>
@@ -212,6 +213,7 @@
                     </table>
                 </fieldset>
                 <input type="text" name="type" value="terrain" hidden>
+                <input type="text" value="{{$bein['category']}}" name="category" hidden>
                 <div class="send">
                     <button type="submit" class="btn btn-primary float-right" >Suivant</button>
                 </div>

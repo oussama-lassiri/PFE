@@ -40,6 +40,7 @@ Route::get('second_page/edit', [second_page_controller::class, 'edit'])->name('s
 Route::get('second_page/delete',[second_page_controller::class,'destroy_bien'])->name('second_page.destroy_bien');
 Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->name('last_page.delete_annonce');
 Route::resource('last_page', last_page_controller::class) ;
+Route::get('admin',[last_page_controller::class,'admin_area'])->name('admin');
 
 Auth::routes();
 Route::get('service',[\App\Http\Controllers\AnnonceController::class,'displayService'])->name('displayService');

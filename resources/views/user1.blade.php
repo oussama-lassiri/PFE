@@ -303,7 +303,7 @@
                       @if ($user['etat'] == "active")
                         <button class="btn btn-dark " onclick="toggleText(1)">Desactive</button>
                       @endif
-                      <button class="btn btn-danger " onclick="toggleText(2)">Supprimer</a>
+                      <button class="btn btn-danger " onclick="toggleText(2)">Supprimer</button>
                     </div>
                   </div>
                 </div>

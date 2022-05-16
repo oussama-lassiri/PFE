@@ -17,6 +17,10 @@ class last_page_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function admin_area()
+    {
+        return view('admin');
+    }
 
     public function index()
     {

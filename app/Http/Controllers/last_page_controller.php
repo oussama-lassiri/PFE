@@ -152,7 +152,7 @@ class last_page_controller extends Controller
      */
     public function edit(Request $request)
     {
-        
+
     }
 
     /**
@@ -200,10 +200,10 @@ class last_page_controller extends Controller
                         $bein_type = $an['bein_type'];
                         if($bein_type == "immoblier")
                             $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
-            
+
                         if($bein_type == "terrain")
                             $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
-                
+
                         if($bein_type == "service")
                             $bein_category[$i] = service::find($an['bein_ID'])['category'];
                         $i++;
@@ -222,6 +222,13 @@ class last_page_controller extends Controller
                                         );
 
           }
+    }
+
+    public function delete_annonce($id)
+    {
+        annonce::find($id)->delete();
+        return redirect()->route('users1')
+            ->with('success','Annonce supprimé avec succès  ');
     }
 
     /**

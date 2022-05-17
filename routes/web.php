@@ -37,8 +37,9 @@ Route::get('second_page/store', [second_page_controller::class, 'store'])->name(
 Route::put('second_page/update_user', [second_page_controller::class, 'update_user'])->name('second_page.update_user');
 Route::put('second_page/update_annonce', [second_page_controller::class, 'update_annonce'])->name('second_page.update_annonce');
 Route::get('second_page/edit', [second_page_controller::class, 'edit'])->name('second_page.edit');
-
-Route::resource('last_page', last_page_controller::class) ; 
+Route::get('second_page/delete',[second_page_controller::class,'destroy_bien'])->name('second_page.destroy_bien');
+Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->name('last_page.delete_annonce');
+Route::resource('last_page', last_page_controller::class) ;
 
 Auth::routes();
 Route::get('service',[\App\Http\Controllers\AnnonceController::class,'displayService'])->name('displayService');

@@ -30,7 +30,7 @@
 
             /* ============ desktop view ============ */
             @media all and (min-width: 992px) {
-            
+
                 .dropdown-menu li{
                     position: relative;
                 }
@@ -38,56 +38,56 @@
                     position: relative;
                     left: 30%;
                 }
-                .dropdown-menu .submenu{ 
+                .dropdown-menu .submenu{
                     display: none;
                     position: absolute;
                     left:100%; top:-7px;
                 }
-                .dropdown-menu .submenu-left{ 
+                .dropdown-menu .submenu-left{
                     right:100%; left:auto;
                 }
-            
+
                 .dropdown-menu > li:hover{ background-color: #f1f1f1 }
                 .dropdown-menu > li:hover > .submenu{
                     display: block;
                 }
-            }	
+            }
             /* ============ desktop view .end// ============ */
-            
+
             /* ============ small devices ============ */
             @media (max-width: 991px) {
-            
+
             .dropdown-menu .dropdown-menu{
                     margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
             }
-            
-            }	
+
+            }
             /* ============ small devices .end// ============ */
-            
+
             </style>
-            
-            
+
+
             <script type="text/javascript">
             //	window.addEventListener("resize", function() {
-            //		"use strict"; window.location.reload(); 
+            //		"use strict"; window.location.reload();
             //	});
-            
-            
+
+
                 document.addEventListener("DOMContentLoaded", function(){
-                    
-            
+
+
                     /////// Prevent closing from click inside dropdown
                     document.querySelectorAll('.dropdown-menu').forEach(function(element){
                         element.addEventListener('click', function (e) {
                           e.stopPropagation();
                         });
                     })
-            
-            
-            
+
+
+
                     // make it as accordion for smaller screens
                     if (window.innerWidth < 992) {
-            
+
                         // close all inner dropdowns when parent is closed
                         document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
                             everydropdown.addEventListener('hidden.bs.dropdown', function () {
@@ -98,12 +98,12 @@
                                   });
                             })
                         });
-                        
+
                         document.querySelectorAll('.dropdown-menu a').forEach(function(element){
                             element.addEventListener('click', function (e) {
-                    
+
                                   let nextEl = this.nextElementSibling;
-                                  if(nextEl && nextEl.classList.contains('submenu')) {	
+                                  if(nextEl && nextEl.classList.contains('submenu')) {
                                       // prevent opening link if link needs to open dropdown
                                       e.preventDefault();
                                       console.log(nextEl);
@@ -112,14 +112,14 @@
                                       } else {
                                           nextEl.style.display = 'block';
                                       }
-            
+
                                   }
                             });
                         })
                     }
                     // end if innerWidth
-            
-                }); 
+
+                });
                 // DOMContentLoaded  end
             </script>
 
@@ -131,7 +131,7 @@
 
 
         <nav class="navbar  navbar-expand-lg fixed-top navbar-light bg-light"> <!-- class= fixed-top // pour fixer la barre-->
- 
+
         <div class="container-fluid">
                         <!-- NavBar Brand-->
             <a class="navbar-brand" href="">
@@ -142,9 +142,9 @@
                         loading="lazy"
                         />
             </a>
-                    
-                
-        
+
+
+
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav  ">
                     <li class="nav-item">
@@ -155,7 +155,7 @@
                         <!-- Navbar dropdown -->
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Biens   </a>
                         <ul class="dropdown-menu">
-                          
+
                           <li><a class="dropdown-item" href="#"> Habitable &raquo; </a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
@@ -192,7 +192,7 @@
                     </svg>Créé Annonce</button></a>
                 </div>
             </div>
-            
+
 
             <div class="d-flex flex-row-reverse bd-highlight">
                 <div class="p-2 bd-highlight">
@@ -236,12 +236,18 @@
                         </li>
                     @endguest
                 </ul>
-                
+
             </div>
-           
+
         </div>
         </nav>
         @yield('content')
+<<<<<<< HEAD
         
+=======
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+>>>>>>> c23c9cccc803e733dd65155312a828f4954f58a9
     </body>
 </html>

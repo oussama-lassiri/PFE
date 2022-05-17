@@ -49,10 +49,10 @@ class second_page_controller extends Controller
                 $bein_type = $an['bein_type'];
                 if($bein_type == "immoblier")
                     $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
-    
+
                 if($bein_type == "terrain")
                     $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
-        
+
                 if($bein_type == "service")
                     $bein_category[$i] = service::find($an['bein_ID'])['category'];
                 $i++;
@@ -138,24 +138,24 @@ class second_page_controller extends Controller
         }
 
         if($request->get('etat') == "active")
-        { 
+        {
             $user->etat = $request->get('etat');
-            foreach($les_annonce as $an){ 
-                if($an['user_ID'] == $user['id']){ 
-                    $an->etat = $request->get('etat'); $an->update(); } 
-                } 
-            } 
-        if($request->get('etat') == "desactive"){ 
-            $user->etat = $request->get('etat'); 
-            foreach($les_annonce as $an){ 
-                if($an['user_ID'] == $user['id']){ 
+            foreach($les_annonce as $an){
+                if($an['user_ID'] == $user['id']){
+                    $an->etat = $request->get('etat'); $an->update(); }
+                }
+            }
+        if($request->get('etat') == "desactive"){
+            $user->etat = $request->get('etat');
+            foreach($les_annonce as $an){
+                if($an['user_ID'] == $user['id']){
                     $an->etat = $request->get('etat');
-                     $an->update(); } 
-                    } 
+                     $an->update(); }
+                    }
                 }
         $user->update();
 
-        
+
         $i = 0;
         $bein_category = array();
         foreach($les_annonce as $an){
@@ -163,10 +163,10 @@ class second_page_controller extends Controller
                 $bein_type = $an['bein_type'];
                 if($bein_type == "immoblier")
                     $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
-    
+
                 if($bein_type == "terrain")
                     $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
-        
+
                 if($bein_type == "service")
                     $bein_category[$i] = service::find($an['bein_ID'])['category'];
                 $i++;
@@ -195,7 +195,7 @@ class second_page_controller extends Controller
 
         if($bein_type == "service")
             $bein = service::find($annonce['bein_ID']);
-        
+
         return view('edit')->with([
                                     'bein' => $bein,
                                     'bein_type' => $bein_type,
@@ -260,4 +260,26 @@ class second_page_controller extends Controller
         }
     }
 
+    public function destroy_bien($id)
+    {
+        $annonce = annonce::find($id);
+        $bein_id = $annonce['bein_ID'];
+        $bein_type = $annonce['bein_type'];
+        $annonceID = $annonce['id'];
+        if($bein_type == "immoblier")
+        {
+            immobilier::find($bein_id)->delete();
+        }
+        if($bein_type == "terrain")
+        {
+            terrain::find($bein_id)->delete();
+        }
+        if($bein_type == "service")
+        {
+            service::find($bein_id)->delete();
+        }
+
+        return view('last_page.delete_annonce')->with(['annonceID'=>$annonceID]);
+
+    }
 }

@@ -95,7 +95,7 @@
 @endsection
 
 @section('content')
-    <div class="big">
+    <div class="big animate__animated animate__jackInTheBox">
         <div class="container mt-5">
             <form action="{{route('last_page.store')}}" method="post" enctype="multipart/form-data">
                 @csrf

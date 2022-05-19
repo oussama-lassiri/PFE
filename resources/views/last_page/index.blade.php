@@ -140,7 +140,28 @@
                     <label for="prix">Prix  </label><br>
                     <input type="number" id="prix" name="prix" placeholder="--Saisissez" class="form-control" required>
                     <label for="ville">Ville  </label><br>
-                    <input type="text" id="ville" name="ville" placeholder="--Saisissez" class="form-control" required >
+                    <select class="select-css" name="ville">
+                        <option value="Casablanca">Casablanca</option>
+                        <option value="Rabat">Rabat</option>
+                        <option value="Fes">Fes</option>
+                        <option value="Agadir">Agadir</option>
+                        <option value="Marrakesh">Marrakesh</option>
+                        <option value="Tanger">Tanger</option>
+                        <option value="Sale">Sale</option>
+                        <option value="Khenifra">Khenifra</option>
+                        <option value="Oujda">Oujda</option>
+                        <option value="Kenitra">Kenitra</option>
+                        <option value="Tetouan">Tetouan</option>
+                        <option value="Safi">Safi</option>
+                        <option value="Asfi">Asfi</option>
+                        <option value="Temara">Temara</option>
+                        <option value="Jedida">Jedida</option>
+                        <option value="Dakhla">Dakhla</option>
+                        <option value="Laayon">Laayon</option>
+                        <option value="Essaouira">Essaouira</option>
+                        <option value="Larache">Larache</option>
+                        <option value="Taoudant">Taoudant</option>
+                    </select>                    
                     <label for="Titre">Titre  </label><br>
                     <input type="text" id="Titre" name="titre" placeholder="--Saisissez" class="form-control" required>
                     <label for="Description">Description </label><br>

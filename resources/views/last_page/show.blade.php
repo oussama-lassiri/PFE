@@ -129,7 +129,7 @@
             <span class="titre_annonce">{{$annonce['titre']}}</span>
             <table>
                 <tr class="table-info">
-                    <td class="firstTD" colspan="2"><h3>À {{$trans}}</h3></td>
+                    <td class="firstTD" colspan="2"><h3>À {{ $trans }}</h3></td>
                     <td colspan="2"><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
                 </tr>
                 @if ($annonce['bein_type'] == "immoblier")
@@ -156,7 +156,7 @@
                         <tr>
                         <td class="firstTD">
                             <div class="p-2 flex-fill bd-highlight">
-                                <img src="\img\etage.png" width="8%"> Etage
+                                <img src="\img\etage.png" width="20%"> Etage
                             </div>
                         </td>
                         <td class="secondTD">Numéro {{$bein['etage']}} </td>
@@ -165,7 +165,7 @@
                         <tr>
                             <td class="firstTD">
                                 <div class="p-2 flex-fill bd-highlight">
-                                    <img src="\img\etage.png" width="8%"> Nombres d'étages
+                                    <img src="\img\etage.png" width="20%"> Nombres d'étages
                                 </div>
                             </td>
                             <td class="secondTD">{{$bein['nbr_etage']}} étage(s)</td>

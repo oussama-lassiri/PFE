@@ -81,10 +81,6 @@ p {
   margin: 0 0 15px 0;
 }
 
-img {
-  max-width: 100%;
-}
-
 input:focus,
 select:focus,
 button:focus,
@@ -807,6 +803,11 @@ ol {
 
 .property-item {
   margin-bottom: 40px;
+  background: #FFEFBA;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+  text-align: center;
+  border-radius: 10%;
 }
 .property-item .pi-pic {
   height: 240px;
@@ -1226,7 +1227,6 @@ ol {
 .ts-item .ts-text img {
   height: 190px;
   width: 190px;
-  border-radius: 50%;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
@@ -1368,7 +1368,7 @@ ol {
 .testimonial-slider .testimonial-item .ti-author .ta-pic img {
   height: 100px;
   width: 100px;
-  border-radius: 50%;
+  
 }
 .testimonial-slider .testimonial-item .ti-author .ta-text {
   padding-top: 15px;
@@ -1839,11 +1839,6 @@ ol {
   float: left;
   margin-right: 30px;
 }
-.pd-text .pd-widget .pd-agent .agent-pic img {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-}
 .pd-text .pd-widget .pd-agent .agent-text {
   overflow: hidden;
   padding-top: 10px;
@@ -1911,11 +1906,7 @@ ol {
   float: left;
   margin-right: 20px;
 }
-.pd-text .pd-widget .pd-review .pr-item .pr-avatar .pr-pic img {
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
-}
+
 .pd-text .pd-widget .pd-review .pr-item .pr-avatar .pr-text {
   overflow: hidden;
 }
@@ -2604,9 +2595,6 @@ li .richText-btn[data-command=toggleCode] {
   margin: 0 auto;
   margin-bottom: 25px;
 }
-.as-item .as-pic img {
-  border-radius: 50%;
-}
 .as-item .as-pic .rating-point {
   font-size: 16px;
   font-weight: 600;
@@ -2699,9 +2687,6 @@ li .richText-btn[data-command=toggleCode] {
   position: relative;
   float: left;
   margin-right: 30px;
-}
-.profile-agent-content .profile-agent-info .pi-pic img {
-  border-radius: 50%;
 }
 .profile-agent-content .profile-agent-info .pi-pic .rating-point {
   font-size: 14px;
@@ -2878,9 +2863,7 @@ li .richText-btn[data-command=toggleCode] {
   margin-bottom: 25px;
   margin-right: 0;
 }
-.blog-item.large-blog .bi-pic img {
-  min-width: 100%;
-}
+
 .blog-item.large-blog .bi-pic .bi-text {
   overflow: visible;
 }
@@ -3161,9 +3144,7 @@ li .richText-btn[data-command=toggleCode] {
 .blog-details-content .bc-widget .related-post .related-item .ri-pic {
   margin-bottom: 15px;
 }
-.blog-details-content .bc-widget .related-post .related-item .ri-pic img {
-  min-width: 100%;
-}
+
 .blog-details-content .bc-widget .related-post .related-item .ri-text h6 {
   color: #111111;
   font-size: 15px;
@@ -3202,11 +3183,7 @@ li .richText-btn[data-command=toggleCode] {
   float: left;
   margin-right: 25px;
 }
-.blog-details-content .bc-widget .comment-option .co-item .ci-pic img {
-  height: 90px;
-  width: 90px;
-  border-radius: 50%;
-}
+
 .blog-details-content .bc-widget .comment-option .co-item .ci-text {
   overflow: hidden;
   position: relative;
@@ -3418,11 +3395,6 @@ li .richText-btn[data-command=toggleCode] {
 
   .team-section .team-btn a {
     padding: 12px 26px;
-  }
-
-  .ts-item .ts-text img {
-    height: 160px;
-    width: 160px;
   }
 
   .ts-item {
@@ -3969,9 +3941,6 @@ li .richText-btn[data-command=toggleCode] {
     float: none;
     margin-right: 0;
     margin-bottom: 20px;
-  }
-  .blog-details-content .bc-details .bc-pic img {
-    min-width: 100%;
   }
 
   .blog-details-content .bc-widget .comment-option .co-item .ci-text ul {

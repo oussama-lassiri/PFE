@@ -41,6 +41,17 @@
     <!-- Background image settings -->
     <style>
         /* Default height for small devices */
+        .type{
+            width: 20%;
+            border-radius: 10%;
+            align-content: center;
+            text-align: center;
+            background: #4b384c;
+            background: -moz-linear-gradient(-45deg, #4b384c 15%, #da5de2 100%);
+            background: -webkit-linear-gradient(-45deg, #4b384c 15%,#da5de2 100%);
+            background: linear-gradient(135deg, #4b384c 15%,#da5de2 100%);
+        }
+
         #Background_image {
             background-image: url("welcome.jpg");
             height: 400px;
@@ -160,19 +171,53 @@
     <!-- Background image -->
 
 <!--search bar -->
-<form action="" method="get">
+<form action="{{ route('search') }}" method="get">
     <div class="product-search">
         <div class="search-element">
-            <label class="search-label">Type de bien que vous cherchez ?</label>
-            <input class="search-input" type="text" autocomplete="on" placeholder="Habitable | Service | Immobilier " name="query">
+            <label class="search-label">le bien que vous cherchez ?</label>
+            <select name="bein">
+                <option value="Appartement">Appartement</option>
+                <option value="Maisson">Maisson</option>
+                <option value="Villa">Villa</option>
+                <option value="Magasin">Magasin</option>
+                <option value="Terrain">Terrain</option>
+                <option value="Ferme">Ferme</option>
+                <option value="Plateaux">Plateaux</option>
+                <option value="Bureaux">Bureaux</option>
+            </select>
         </div>
         <div class="search-element">
             <label class="search-label">Où cherchez-vous ?</label>
-            <input class="search-input" type="text" placeholder="ville" class="" autocomplete="on" name="location">
+            <select name="ville">
+                <option value="Casablanca">Casablanca</option>
+                <option value="Rabat">Rabat</option>
+                <option value="Fes">Fes</option>
+                <option value="Agadir">Agadir</option>
+                <option value="Marrakesh">Marrakesh</option>
+                <option value="Tanger">Tanger</option>
+                <option value="Sale">Sale</option>
+                <option value="Khenifra">Khenifra</option>
+                <option value="Oujda">Oujda</option>
+                <option value="Kenitra">Kenitra</option>
+                <option value="Tetouan">Tetouan</option>
+                <option value="Safi">Safi</option>
+                <option value="Asfi">Asfi</option>
+                <option value="Temara">Temara</option>
+                <option value="Jedida">Jedida</option>
+                <option value="Dakhla">Dakhla</option>
+                <option value="Laayon">Laayon</option>
+                <option value="Essaouira">Essaouira</option>
+                <option value="Larache">Larache</option>
+                <option value="Taoudant">Taoudant</option>
+            </select>
         </div>
         <div class="search-element">
             <label class="search-label">quelle type de transaction ?</label>
-            <input class="search-input" type="text" placeholder="vendre | louer" class="" autocomplete="on" name="location">
+            <select name="transaction">
+                <option value="vente">Vente</option>
+                <option value="location mois">Location(mois)</option>
+                <option value="location Jour">Location(jour)</option>
+            </select>        
         </div>
         <div id="search-button">
             <button class="btn btn-info btn-lg" type="submit" >Chercher</button>
@@ -181,13 +226,6 @@
 </form>
 <!--search bar -->
 
-   <div>
-       <br>
-       <br>
-      
-       <br>
-       <br>
-   </div>
 
    <hr>
 
@@ -198,79 +236,109 @@
             <div class="col-lg-5">
                 <div class="section-title">
                     <h4>Latest PROPERTY</h4>
+                    
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="property-controls">
                     <ul>
-                        <li data-filter="all">All</li>
-                        <li data-filter=".apart">Apartment</li>
-                        <li data-filter=".house">House</li>
-                        <li data-filter=".office">Office</li>
-                        <li data-filter=".hotel">Hotel</li>
-                        <li data-filter=".restaurent">Restaurent</li>
+                        <li data-filter="all">Tous</li>
+                        <li data-filter=".apart">Immobilier</li>
+                        <li data-filter=".house">Service</li>
+                        <li data-filter=".office">Terrain</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row property-filter">
-            <div class="col-lg-4 col-md-6 mix all house">
-                <div class="property-item">
-                    <div class="pi-pic set-bg" data-setbg="img/property/property-1.jpg">
-                        <img src="img/property/property-1.jpg" alt="">
-                        <div class="label">For rent</div>
-                    </div>
-                    <div class="pi-text">
-                        <div class="pt-price">$ 289.0<span>/month</span></div>
-                        <h5><a href="#">Home in Merrick Way</a></h5>
-                        <p><img src="https://img.icons8.com/ios-filled/50/26e07f/marker.png" width="20x20"/> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                        <ul>
-                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/> 2, 283</li>
-                            <li><i class="fa fa-bathtub"></i> 03</li>
-                            <li><i class="fa fa-bed"></i> 05</li>
-                            <li><i class="fa fa-automobile"></i> 01</li>
-                        </ul>
+            @php
+                $i = 0; $cont = 8;
+                $pt = $mg = $br = 0 ;
+                $tr = $fm = 0 ;
+                $ap = $ms = $vl = 0 ;
+            @endphp
+            @foreach ($annonces as $annonce)
+                @if ($annonce['bein_type'] == "service")
+                    <div class="col-lg-4 col-md-6 mix all house">
+                 @endif
+                @if ($annonce['bein_type'] == "immobilier") 
+                    <div class="col-lg-4 col-md-6 mix all apart">
+                @endif
+                @if ($annonce['bein_type'] == "terrain") 
+                    <div class="col-lg-4 col-md-6 mix all office">
+                @endif
+                    <div class="property-item">
+                        <div class="pi-pic set-bg" data-setbg="/uploads/{{ $imgs[$i] }}">
+                            @php
+                                $i++;
+                            @endphp
+                            <div class="label">{{ $annonce['transaction'] }}</div>
+                            <div class="btn-secondary type float-end">{{ $annonce['bein_type'] }}</div>
+                        </div>
+                        <div class="pi-text">
+                            <div class="pt-price">{{ $annonce['prix'] }} DH<span>
+                                @if ($annonce['transaction'] == "vente")@endif
+                                @if ($annonce['transaction'] == "location mois") \mois @endif
+                                @if ($annonce['transaction'] == "location jour") \jour @endif
+                            </span></div>
+                            <h5><a href="{{ route('last_page.show',$annonce['id']) }}">{{ $annonce['titre'] }}</a></h5>
+                            <p><img src="https://img.icons8.com/ios-filled/50/26e07f/marker.png" width="20x20"/> {{ $annonce['ville'] }}</p>
+                            <hr>
+                            <ul>
+                                @if($annonce['bein_type'] == "immobilier")
+                                    @foreach ($immobilier as $item)
+                                        @if ($item['id'] == $annonce['bein_ID'])
+                                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
+                                            <li><i class="fa fa-bathtub"></i> {{ $item['salle_de_bain'] }} </li>
+                                            <li><i class="fa fa-bed"></i> {{ $item['chambre'] }}</li>
+                                            <li><i class='Medium material-icons' >weekend </i> {{ $item['salon'] }}</li>
+                                            @php
+                                                if($item['category'] == "Appartement") $ap++;
+                                                if($item['category'] == "maisson") $ms++;
+                                                if($item['category'] == "villa") $vl++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endif
+                                
+                                @if($annonce['bein_type'] == "service")
+                                    @foreach ($service as $item)
+                                        @if ($item['id'] == $annonce['bein_ID'])
+                                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
+                                            <li><img src="https://img.icons8.com/ios-filled/50/000000/door-opened.png" width="20x20"/>{{ $item['nbr_piece'] }} </li>
+                                            <li><img src="https://img.icons8.com/ios-glyphs/30/000000/stairs-up.png" width="20x20"/> {{ $item['etage'] }}</li>
+                                            @php
+                                                if($item['category'] == "plateaux") $pt++;
+                                                if($item['category'] == "magasin") $mg++;
+                                                if($item['category'] == "bereau") $br++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endif
+                                    
+                                @if($annonce['bein_type'] == "terrain")
+                                    @foreach ($terrain as $item)
+                                        @if ($item['id'] == $annonce['bein_ID'])
+                                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
+                                            <li><img src="\img\zoning.png" alt="zone" width="10%">{{ $item['zonning'] }} </li>
+                                            @php
+                                                if($item['category'] == "terrain") $tr++;
+                                                if($item['category'] == "ferme") $fm++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mix all house">
-                <div class="property-item">
-                    <div class="pi-pic set-bg" data-setbg="img/property/property-1.jpg">
-                        <img src="img/property/property-1.jpg" alt="">
-                        <div class="label">For rent</div>
-                    </div>
-                    <div class="pi-text">
-                        <div class="pt-price">$ 289.0<span>/month</span></div>
-                        <h5><a href="#">Home in Merrick Way</a></h5>
-                        <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                        <ul>
-                            <li> 2, 283</li>
-                            <li><i class="fa fa-bathtub"></i> 03</li>
-                            <li><i class="fa fa-bed"></i> 05</li>
-                            <li><i class="fa fa-automobile"></i> 01</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mix all house">
-                <div class="property-item ">
-                    <div class="pi-pic set-bg" data-setbg="img/property/property-1.jpg">
-                        <img src="img/property/property-1.jpg" alt="">
-                        <div class="label">For rent</div>
-                    </div>
-                    <div class="pi-text">
-                        <div class="pt-price">$ 289.0<span>/month</span></div>
-                        <h5><a href="#">Home in Merrick Way</a></h5>
-                        <p><img src="https://img.icons8.com/ios-filled/50/26e07f/marker.png" width="20x20"/> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                        <ul>
-                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/> 2, 283</li>
-                            <li><i class="fa fa-bathtub"></i> 03</li>
-                            <li><i class="fa fa-bed"></i> 05</li>
-                            <li><i class="fa fa-automobile"></i> 01</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                @php
+                if ($cont == 0) {
+                   break;
+                }else
+                    $cont--;
+                @endphp
+            @endforeach
             
         </div>
     </div>
@@ -290,34 +358,47 @@
             <div class="col-md-4">
                 <div class="ts-item">
                     <div class="ts-text">
-                        <img src="https://img.icons8.com/stickers/100/000000/real-estate.png"/>
+                        <img src="/img/real-estate.png"/>
                         <h5>Immobilier</h5>
-                        <span>123</span>
-                        <p>Maisson: 67 Appartement: 190 Villa: 10</p>
+                        <span>{{ $nbr_immo }}</span>
+                        <p>Maisson: {{$ms}} Appartement: {{$ap}} Villa: {{$vl}}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="ts-item">
                     <div class="ts-text">
-                        <img src="https://img.icons8.com/color/48/000000/garage-closed.png"/>
+                        <img src="/img/building.png"/>
                         <h5>Service</h5>
-                        <span>123</span>
-                        <p>Magasin: 20 Plateau: 90 Bureaux : 10</p>
+                        <span>{{ $nbr_serv }}</span>
+                        <p>Magasin: {{$mg}} Plateau: {{$pt}} Bureaux : {{$br}}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="ts-item">
                     <div class="ts-text">
-                        <img src="https://img.icons8.com/fluency/48/000000/ground.png"/>
+                        <img src="/img/land.png">
                         <h5>Terrain</h5>
-                        <span>123</span>
-                        <p>Terrain: 30 Ferme: 20</p>
+                        <span>{{ $nbr_terr }}</span>
+                        <p>Terrain: {{$tr}} Ferme: {{$fm}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+<script src="js/welcome/jquery-3.3.1.min.js"></script>
+<script src="js/welcome/bootstrap.min.js"></script>
+<script src="js/welcome/jquery.magnific-popup.min.js"></script>
+<script src="js/welcome/mixitup.min.js"></script>
+<script src="js/welcome/jquery-ui.min.js"></script>
+<script src="js/welcome/jquery.nice-select.min.js"></script>
+<script src="js/welcome/jquery.slicknav.js"></script>
+<script src="js/welcome/owl.carousel.min.js"></script>
+<script src="js/welcome/jquery.richtext.min.js"></script>
+<script src="js/welcome/image-uploader.min.js"></script>
+<script src="js/welcome/main.js"></script>
 @endsection

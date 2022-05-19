@@ -44,7 +44,7 @@ class last_page_controller extends Controller
     {
         $request->validate([
             'imageFile' => 'required',
-            'imageFile.*' => 'mimes:jpeg,jpg,png,pdf|max:4048'
+            'imageFile.*' => 'mimes:jpeg,jpg,png,pdf|max:40048'
           ]);
 
           if($request->hasfile('imageFile')) {
@@ -61,7 +61,7 @@ class last_page_controller extends Controller
               $fileModal->bein_ID = $request->input('bein_ID');
               $fileModal->images_name = json_encode($imgData);
               $fileModal->images_path = json_encode($imgData);
-              $fileModal->ville = strip_tags( $request->input('ville') );
+              $fileModal->ville = strip_tags( $request->get('ville') );
               $fileModal->transaction = strip_tags( $request->get('transaction') );
               $fileModal->titre = strip_tags( $request->input('titre') );
               $fileModal->description = strip_tags( $request->input('description') );
@@ -82,12 +82,12 @@ class last_page_controller extends Controller
      */
     public function show($id)
     {
-        $annonce = annonce::find(6);
+        $annonce = annonce::find($id);
         $bein_type = $annonce['bein_type'];
         $user = user::find($annonce['user_ID']);
         $transaction = $annonce['transaction'];
 
-        if($bein_type == "immoblier")
+        if($bein_type == "immobilier")
             $bein = immobilier::find($annonce['bein_ID']);
 
         if($bein_type == "terrain")
@@ -140,7 +140,7 @@ class last_page_controller extends Controller
             'bein' => $bein,
             'supp' => $supp,
             'user' => $user,
-            'trans'=> $trans
+            'trans' => $trans
         ]);
     }
 
@@ -222,13 +222,6 @@ class last_page_controller extends Controller
                                         );
 
           }
-    }
-
-    public function delete_annonce($id)
-    {
-        annonce::find($id)->delete();
-        return redirect()->route('users1')
-            ->with('success','Annonce supprimé avec succès  ');
     }
 
     /**

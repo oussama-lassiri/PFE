@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {return view('welcome');});
-
 Route::get('/first_page', function(){
     return view('first_page.index');
 })->name('first_page.index');
@@ -27,7 +25,8 @@ Route::get('nav', function () {
     return view('nav');
 })->name('nav');
 
-
+Route::get('/', [second_page_controller::class, 'welcome']);
+Route::get('/search', [second_page_controller::class, 'search'])->name('search');
 Route::get('second_page/appartement', [second_page_controller::class, 'appartement']);
 Route::get('second_page/maisson_villa', [second_page_controller::class, 'maisson_villa']);
 Route::get('second_page/magasin', [second_page_controller::class, 'magasin'])->name('second_page.magasin');
@@ -42,6 +41,3 @@ Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->n
 Route::resource('last_page', last_page_controller::class) ;
 
 Auth::routes();
-Route::get('service',[\App\Http\Controllers\AnnonceController::class,'displayService'])->name('displayService');
-Route::get('terrain',[\App\Http\Controllers\AnnonceController::class,'displayTerrain'])->name('displayTerrain');
-Route::get('immobilier',[\App\Http\Controllers\AnnonceController::class,'displayImmobilier'])->name('displayImmobilier');

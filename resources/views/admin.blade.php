@@ -40,80 +40,23 @@
             </a>
         </div>
 
+        <ul class="list-inline menu-left mb-0">
+
+            <li class="float-left">
+                <button class="button-menu-mobile open-left waves-effect">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </li>
+        </ul>
+
         <nav class="navbar-custom">
             <ul class="navbar-right list-inline float-right mb-0">
-
-                <!-- language-->
-                <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="assets/images/us_flag.jpg" class="mr-2" height="12" alt="" />
-                        English
-                        <span class="mdi mdi-chevron-down"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated language-switch">
-                        <a class="dropdown-item" href="#"><img src="assets/images/french_flag.jpg" alt="" height="16" /><span> French </span></a>
-                        <a class="dropdown-item" href="#"><img src="assets/images/spain_flag.jpg" alt="" height="16" /><span> Spanish </span></a>
-                        <a class="dropdown-item" href="#"><img src="assets/images/russia_flag.jpg" alt="" height="16" /><span> Russian </span></a>
-                        <a class="dropdown-item" href="#"><img src="assets/images/germany_flag.jpg" alt="" height="16" /><span> German </span></a>
-                        <a class="dropdown-item" href="#"><img src="assets/images/italy_flag.jpg" alt="" height="16" /><span> Italian </span></a>
-                    </div>
-                </li>
 
                 <!-- full screen -->
                 <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
                     <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
                         <i class="mdi mdi-arrow-expand-all noti-icon"></i>
                     </a>
-                </li>
-
-                <!-- notification -->
-                <li class="dropdown notification-list list-inline-item">
-                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <i class="mdi mdi-bell-outline noti-icon"></i>
-                        <span class="badge badge-pill badge-danger noti-icon-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg px-1">
-                        <!-- item-->
-                        <h6 class="dropdown-item-text">
-                            Notifications
-                        </h6>
-                        <div class="slimscroll notification-item-list">
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                                <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                                <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-danger"><i class="mdi mdi-message-text-outline"></i></div>
-                                <p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-info"><i class="mdi mdi-filter-outline"></i></div>
-                                <p class="notify-details"><b>Your item is shipped</b><span class="text-muted">It is a long established fact that a reader will</span></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-success"><i class="mdi mdi-message-text-outline"></i></div>
-                                <p class="notify-details"><b>New Message received</b><span class="text-muted">You have 87 unread messages</span></p>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-warning"><i class="mdi mdi-cart-outline"></i></div>
-                                <p class="notify-details"><b>Your order is placed</b><span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                            </a>
-
-                        </div>
-                        <!-- All-->
-                        <a href="javascript:void(0);" class="dropdown-item text-center notify-all text-primary">
-                            View all <i class="fi-arrow-right"></i>
-                        </a>
-                    </div>
                 </li>
 
                 <li class="dropdown notification-list list-inline-item">
@@ -133,21 +76,7 @@
 
             </ul>
 
-            <ul class="list-inline menu-left mb-0">
-                <li class="float-left">
-                    <button class="button-menu-mobile open-left waves-effect">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                </li>
-                <li class="d-none d-md-inline-block">
-                    <form role="search" class="app-search">
-                        <div class="form-group mb-0">
-                            <input type="text" class="form-control" placeholder="Search..">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                    </form>
-                </li>
-            </ul>
+
 
         </nav>
 
@@ -165,111 +94,77 @@
                     <li class="menu-title">Menu</li>
                     <li>
                         <a href="#" class="waves-effect">
-                            <i class="icon-accelerator"></i><span class="badge badge-success badge-pill float-right">9+</span> <span> Dashboard </span>
+                            <i class="icon-accelerator"></i>
+                            <span class="badge badge-success badge-pill float-right">9+</span>
+                            <span> Dashboard </span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-mail-open"></i><span> Email <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-mail-open"></i>
+                            <span> Utilisateurs
+                                <span class="float-right menu-arrow">
+                                    <i class="mdi mdi-chevron-right"></i>
+                                </span>
+                            </span>
+                        </a>
                         <ul class="submenu">
-                            <li><a href="#">Inbox</a></li>
-                            <li><a href="#">Email Read</a></li>
-                            <li><a href="#">Email Compose</a></li>
+                            <li><a href="#">Liste des utilisateurs</a></li>
+                            <ul class="submenu">
+                                <li><a href="#"> Ajout d'utilisateur</a></li>
+                                <li>
+                                    <a href="#">Gestion des comptes <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                                    <ul class="submenu">
+                                        <li><a href="#">Activer</a></li>
+                                        <li><a href="#">Désactiver</a></li>
+                                        <li><a href="#">Supprimer</a></li>
+                                        <li><a href="#">Bloquer</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="calendar.html" class="waves-effect"><i class="icon-calendar"></i><span> Calendar </span></a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Pages <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-paper-sheet"></i>
+                            <span> Annonces  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Invoice</a></li>
-                            <li><a href="#">Timeline</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">Maintenance</a></li>
-                            <li><a href="#">Coming Soon</a></li>
-                            <li><a href="#">Starter Page</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
-                            <li><a href="#">Recover Password</a></li>
-                            <li><a href="#">Lock Screen</a></li>
-                            <li><a href="#">Error 404</a></li>
-                            <li><a href="#">Error 500</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-title">Components</li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-pencil-ruler"></i> <span> UI Elements <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
-                        <ul class="submenu">
-                            <li><a href="#">Alerts</a></li>
-                            <li><a href="#">Badge</a></li>
-
+                            <li><a href="#">Nouveaux annonces</a></li>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="#">Gestion d'annonces
+                                        <span class="float-right menu-arrow">
+                                            <i class="mdi mdi-chevron-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="#">Activer</a></li>
+                                        <li><a href="#">Désactiver</a></li>
+                                        <li><a href="#">Supprimer</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-diamond"></i> <span> Advanced UI <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-graph"></i>
+                            <span> Statistiques <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="#">Alertify</a></li>
-                            <li><a href="#">Rating</a></li>
-
+                            <li><a href="#">Annonces</a></li>
+                            <li><a href="#">Utilisateurs</a></li>
                         </ul>
                     </li>
 
+                    <li><a href="#">FAQs</a></li>
+<!--
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-todolist-check"></i><span> Forms <span class="badge badge-pill badge-danger float-right">8</span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#">Form Elements</a></li>
-                            <li><a href="#">Form Validation</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-graph"></i><span> Charts <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#">Morris Chart</a></li>
-                            <li><a href="#">Chartist Chart</a></li>
-                            <li><a href="#">Chartjs Chart</a></li>
-                            <li><a href="#">Flot Chart</a></li>
-                            <li><a href="#">C3 Chart</a></li>
-                            <li><a href="#">Jquery Knob Chart</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-spread"></i><span> Tables <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#">Basic Tables</a></li>
-                            <li><a href="#">Data Table</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-coffee"></i> <span> Icons  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span> </a>
-                        <ul class="submenu">
-                            <li><a href="#">Material Design</a></li>
-                            <li><a href="#">Font Awesome</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-map"></i><span> Maps <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#"> Google Map</a></li>
-                            <li><a href="#"> Vector Map</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-share"></i><span> Multi Level <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-share"></i>
+                            <span> Multi Level <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
                             <li><a href="#"> Menu 1</a></li>
                             <li>
@@ -281,7 +176,7 @@
                             </li>
                         </ul>
                     </li>
-
+-->
                 </ul>
 
             </div>
@@ -433,8 +328,10 @@
                                                 <img src="assets/images/user-2.jpg" alt="" class="rounded-circle thumb-md">
                                             </div>
                                             <div class="suggestion-icon float-right mt-2 pt-1">
-                                                <i class="mdi mdi-plus"></i>
+                                                <i class="mdi mdi-eye"></i>
+                                                <i class="mdi mdi-check"></i>
                                             </div>
+
 
                                             <div class="desc">
                                                 <h5 class="font-14 mb-1 pt-2">Ralph Ramirez</h5>
@@ -449,7 +346,8 @@
                                                 <img src="assets/images/user-3.jpg" alt="" class="rounded-circle thumb-md">
                                             </div>
                                             <div class="suggestion-icon float-right mt-2 pt-1">
-                                                <i class="mdi mdi-plus"></i>
+                                                <i class="mdi mdi-eye"></i>
+                                                <i class="mdi mdi-check"></i>
                                             </div>
 
                                             <div class="desc">
@@ -465,7 +363,8 @@
                                                 <img src="assets/images/user-4.jpg" alt="" class="rounded-circle thumb-md">
                                             </div>
                                             <div class="suggestion-icon float-right mt-2 pt-1">
-                                                <i class="mdi mdi-plus"></i>
+                                                <i class="mdi mdi-eye"></i>
+                                                <i class="mdi mdi-check"></i>
                                             </div>
 
                                             <div class="desc">
@@ -481,7 +380,8 @@
                                                 <img src="assets/images/user-5.jpg" alt="" class="rounded-circle thumb-md">
                                             </div>
                                             <div class="suggestion-icon float-right mt-2 pt-1">
-                                                <i class="mdi mdi-plus"></i>
+                                                <i class="mdi mdi-eye"></i>
+                                                <i class="mdi mdi-check"></i>
                                             </div>
 
                                             <div class="desc">
@@ -497,7 +397,8 @@
                                                 <img src="assets/images/user-6.jpg" alt="" class="rounded-circle thumb-md">
                                             </div>
                                             <div class="suggestion-icon float-right mt-2 pt-1">
-                                                <i class="mdi mdi-plus"></i>
+                                                <i class="mdi mdi-eye"></i>
+                                                <i class="mdi mdi-check"></i>
                                             </div>
 
                                             <div class="desc">
@@ -591,7 +492,31 @@
 
                                             <td>
                                                 <div>
-                                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                                        </svg>
+                                                    </a>
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                        </svg>
+                                                    </a>
+
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                        </svg>
+                                                    </a>
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                                        </svg>
+                                                    </a>
+
                                                 </div>
                                             </td>
                                         </tr>
@@ -609,7 +534,30 @@
 
                                             <td>
                                                 <div>
-                                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                                        </svg>
+                                                    </a>
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                        </svg>
+                                                    </a>
+
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                        </svg>
+                                                    </a>
+                                                    <a href="#" class="btn btn-primary btn-sm" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                                        </svg>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

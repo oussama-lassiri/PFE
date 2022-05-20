@@ -259,6 +259,50 @@ class second_page_controller extends Controller
             return view('last_page.edit')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
         }
     }
+    public function admin_area()
+    {
+        $les_annonce = annonce::all();
+        $annonce = array();
+        $admin = User::find(Request('adminID'));
+        $les_users = user::all();
+        $user = array();
+        $i = 0;
+        $bein_category = array();
+        $nb_annonce = array();
+        foreach ($les_users as $u)
+        {   $cmpt=0;
+            $id_u = $u['id'];
+            foreach($les_annonce as $an){
+                if($an['user_ID'] == $u['id']){
+                    $cmpt++;
+                    $bein_type = $an['bein_type'];
+                    if($bein_type == "immoblier")
+                        $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
+
+                    if($bein_type == "terrain")
+                        $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
+
+                    if($bein_type == "service")
+                        $bein_category[$i] = service::find($an['bein_ID'])['category'];
+                    $i++;
+                    $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
+                    $$an['images_path'] = Str::remove("\"", $an['images_path']);
+                    $an['images_path'] = Str::before($an['images_path'], ",") ;
+                    $an['images_path'] = Str::before($an['images_path'], "\"") ;
+                    array_push($annonce, $an);
+                }
+            }
+            $nb_annonce[$id_u] = $cmpt;
+
+        }
+        return view('admin')->with(['admin'=> User::find(Request('adminID')),
+                'annonce'=> $annonce,
+                'user'=> $user,
+                'bein_category' => $bein_category,
+                'nb_annonce' => $nb_annonce
+            ]
+        );
+    }
 
     public function destroy_bien($id)
     {

@@ -54,6 +54,3 @@ Route::get('admin/utilisateur',[second_page_controller::class,'admin_user'])->na
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
 Auth::routes();
-Route::get('service',[\App\Http\Controllers\AnnonceController::class,'displayService'])->name('displayService');
-Route::get('terrain',[\App\Http\Controllers\AnnonceController::class,'displayTerrain'])->name('displayTerrain');
-Route::get('immobilier',[\App\Http\Controllers\AnnonceController::class,'displayImmobilier'])->name('displayImmobilier');

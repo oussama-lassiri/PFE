@@ -18,6 +18,7 @@ class last_page_controller extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
     public function index()
     {
         $this->middleware('auth', ['except' => ['second_page']]);

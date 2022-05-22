@@ -34,18 +34,18 @@
         </div>
     </div>
     <div id="Agricole_btn" style="display: none;">
-        <a href="second_page/terrain_ferme?category=terrain"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="terrains" value="Terrains"></a>
-        <a href="second_page/terrain_ferme?category=ferme"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="fermes" value="Fermes"></a>
+        <a href="second_page/terrain_ferme?category=Terrain"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="terrains" value="Terrains"></a>
+        <a href="second_page/terrain_ferme?category=Ferme"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="fermes" value="Fermes"></a>
       </div>
     <div id="Immeuble_btn" style="display: none;">
-        <a href="second_page/maisson_villa?category=maisson"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="maisson" value="Maisson"></a>
-        <a href="second_page/appartement?category=appartement"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="appartement" value="Appartement"></a>
-        <a href="second_page/maisson_villa?category=villa"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="villa" value="Villa">
+        <a href="second_page/maisson_villa?category=Maisson"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="maisson" value="Maisson"></a>
+        <a href="second_page/appartement?category=Appartement"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="appartement" value="Appartement"></a>
+        <a href="second_page/maisson_villa?category=Villa"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="villa" value="Villa">
    </a> </div>
     <div id="Industrie_btn" style="display: none;">
-        <a href="second_page/magasin?category=bureaux"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="bureaux" value="Bureaux"></a>
-        <a href="second_page/magasin?category=plateaux"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="plateaux" value="Plateaux"></a>
-        <a href="second_page/magasin?category=magasin"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="magasins" value="Magasins"></a>
+        <a href="second_page/magasin?category=Bureaux"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="bureaux" value="Bureaux"></a>
+        <a href="second_page/magasin?category=Plateaux"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="plateaux" value="Plateaux"></a>
+        <a href="second_page/magasin?category=Magasin"><input type="submit" class="btn-grad animate__animated animate__backInUp" name="magasins" value="Magasins"></a>
     </div>
 </div>
   <script>

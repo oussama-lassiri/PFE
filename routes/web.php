@@ -27,6 +27,15 @@ Route::get('nav', function () {
     return view('nav');
 })->name('nav');
 
+Route::get('admin_', function () {
+    return view('admin_dir.theme');
+})->name('theme');
+
+Route::get('admin/statistiques', [second_page_controller::class,'admin_statistique'])->name('admin_statistique');
+
+Route::get('admin/utilisateur/ajout', function () {
+    return view('admin_dir.ajoutUser');
+})->name('admin_ajout_user');
 
 Route::get('second_page/appartement', [second_page_controller::class, 'appartement']);
 Route::get('second_page/maisson_villa', [second_page_controller::class, 'maisson_villa']);
@@ -41,6 +50,8 @@ Route::get('second_page/delete',[second_page_controller::class,'destroy_bien'])-
 Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->name('last_page.delete_annonce');
 Route::resource('last_page', last_page_controller::class) ;
 Route::get('admin',[second_page_controller::class,'admin_area'])->name('admin');
+Route::get('admin/utilisateur',[second_page_controller::class,'admin_user'])->name('admin_user');
+Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
 Auth::routes();
 Route::get('service',[\App\Http\Controllers\AnnonceController::class,'displayService'])->name('displayService');

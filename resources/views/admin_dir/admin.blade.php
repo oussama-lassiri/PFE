@@ -1,216 +1,8 @@
-<!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/morris.css">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-<!-- jQuery  -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/metismenu.min.js"></script>
-<script src="assets/js/jquery.slimscroll.js"></script>
-<script src="assets/js/waves.min.js"></script>
-<!--Morris Chart-->
-<script src="assets/js/morris.min.js"></script>
-<script src="assets/js/raphael.min.js"></script>
-<script src="assets/js/dashboard.init.js"></script>
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-<body>
+@extends('admin_dir.theme')
 
-<!-- Begin page -->
-<div id="wrapper">
+@section('page','Dashboard ')
 
-    <!-- Top Bar Start -->
-    <div class="topbar">
-
-        <!-- LOGO -->
-        <div class="topbar-left">
-            <a href="#" class="logo">
-                    <span class="logo-light ">
-                            <img
-                                src="\img\logo.png"
-                                height="45"
-                                alt="Particulier Logo"
-                                loading="lazy"
-                            /> Particulier
-                        </span>
-            </a>
-        </div>
-
-        <ul class="list-inline menu-left mb-0">
-
-            <li class="float-left">
-                <button class="button-menu-mobile open-left waves-effect">
-                    <i class="mdi mdi-menu"></i>
-                </button>
-            </li>
-        </ul>
-
-        <nav class="navbar-custom">
-            <ul class="navbar-right list-inline float-right mb-0">
-
-                <!-- full screen -->
-                <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
-                    <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
-                        <i class="mdi mdi-arrow-expand-all noti-icon"></i>
-                    </a>
-                </li>
-
-                <li class="dropdown notification-list list-inline-item">
-                    <div class="dropdown notification-list nav-pro-img">
-                        <a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/user-4.jpg" alt="user" class="rounded-circle">
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                            <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle"></i> Profile</a>
-                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings"></i> Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-
-
-
-        </nav>
-
-    </div>
-    <!-- Top Bar End -->
-
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="left side-menu">
-        <div class="slimscroll-menu" id="remove-scroll">
-
-            <!--- Sidemenu -->
-            <div id="sidebar-menu">
-                <!-- Left Menu Start -->
-                <ul class="metismenu" id="side-menu">
-                    <li class="menu-title">Menu</li>
-                    <li>
-                        <a href="#" class="waves-effect">
-                            <i class="icon-accelerator"></i>
-                            <span class="badge badge-success badge-pill float-right">9+</span>
-                            <span> Dashboard </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect">
-                            <i class="icon-mail-open"></i>
-                            <span> Utilisateurs
-                                <span class="float-right menu-arrow">
-                                    <i class="mdi mdi-chevron-right"></i>
-                                </span>
-                            </span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="#">Liste des utilisateurs</a></li>
-                            <ul class="submenu">
-                                <li><a href="#"> Ajout d'utilisateur</a></li>
-                                <li>
-                                    <a href="#">Gestion des comptes <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                                    <ul class="submenu">
-                                        <li><a href="#">Activer</a></li>
-                                        <li><a href="#">Désactiver</a></li>
-                                        <li><a href="#">Supprimer</a></li>
-                                        <li><a href="#">Bloquer</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect">
-                            <i class="icon-paper-sheet"></i>
-                            <span> Annonces  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#">Nouveaux annonces</a></li>
-                            <ul class="submenu">
-                                <li>
-                                    <a href="#">Gestion d'annonces
-                                        <span class="float-right menu-arrow">
-                                            <i class="mdi mdi-chevron-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="submenu">
-                                        <li><a href="#">Activer</a></li>
-                                        <li><a href="#">Désactiver</a></li>
-                                        <li><a href="#">Supprimer</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect">
-                            <i class="icon-graph"></i>
-                            <span> Statistiques <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#">Annonces</a></li>
-                            <li><a href="#">Utilisateurs</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#">FAQs</a></li>
-<!--
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect">
-                            <i class="icon-share"></i>
-                            <span> Multi Level <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="#"> Menu 1</a></li>
-                            <li>
-                                <a href="#">Menu 2  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                                <ul class="submenu">
-                                    <li><a href="#">Menu 2.1</a></li>
-                                    <li><a href="#">Menu 2.1</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
--->
-                </ul>
-
-            </div>
-            <!-- Sidebar -->
-            <div class="clearfix"></div>
-
-        </div>
-
-        <!-- Sidebar -left -->
-    </div>
-    <!-- Left Sidebar End -->
-
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
-    <div class="content-page">
-        <!-- Start content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="page-title-box">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6">
-                            <h4 class="page-title">Dashboard</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-right">
-                                <li class="breadcrumb-item"><a href="#">nomAdmin</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end page-title -->
+@section('right content')
 
                 <div class="row">
 
@@ -223,11 +15,11 @@
                                 <div>
                                     <h5 class="font-16">Sessions actives</h5>
                                 </div>
-                                <h3 class="mt-4">43,225</h3>
+                                <h4 class="mt-4">3 sessions</h4>
                                 <div class="progress mt-4" style="height: 4px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">75%</span></p>
+                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">50%</span></p>
                             </div>
                         </div>
                     </div>
@@ -241,11 +33,11 @@
                                 <div>
                                     <h5 class="font-16">Total d'utilisateurs</h5>
                                 </div>
-                                <h3 class="mt-4">73,265</h3>
+                                <h4 class="mt-4">7 utilisateurs</h4>
                                 <div class="progress mt-4" style="height: 4px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 88%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">88%</span></p>
+                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">48%</span></p>
                             </div>
                         </div>
                     </div>
@@ -259,11 +51,11 @@
                                 <div>
                                     <h5 class="font-16">Total d'annonces</h5>
                                 </div>
-                                <h3 class="mt-4">447</h3>
+                                <h4 class="mt-4">10</h4>
                                 <div class="progress mt-4" style="height: 4px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">68%</span></p>
+                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">58%</span></p>
                             </div>
                         </div>
                     </div>
@@ -277,7 +69,7 @@
                                 <div>
                                     <h5 class="font-16">Annonce ajouté</h5>
                                 </div>
-                                <h3 class="mt-4">86%</h3>
+                                <h4 class="mt-4">86%</h4>
                                 <div class="progress mt-4" style="height: 4px;">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -478,21 +270,22 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $i= 0; ?>
                                         @foreach ($user as $u)
-                                            <?php //$id_u = $u['id'];?>
-                                        <tr>
-                                            <td>
-                                                <div>
-                                                    <img src="assets/images/user-2.jpg" alt="" class="thumb-md rounded-circle mr-2">{{ $u['name'] }}
-                                                </div>
-                                            </td>
-                                            <td><span class="badge badge-success">{{ $u['etat'] }}</span></td>
-                                            <td>{{ $nb_annonce["$id_u"] }}</td>
-                                            <td>{{ $u['email'] }}</td>
-                                            <td>{{ $u['ville'] }}</td>
-                                            <td>{{ $u['created_at'] }}</td>
-
-                                            <td>
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <img src="assets/images/user-2.jpg" alt="" class="thumb-md rounded-circle mr-2">{{ $u['name'] }}
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge badge-success">{{ $u['etat'] }}</span></td>
+                                                <!-- $nb_annonce['id_u'] = $u['id']-->
+                                                <td align="center"> {{ $nb_annonce["$i"] }} </td>
+                                                <td>{{ $u['phone'] }}</td>
+                                                <td>{{ $u['ville'] }}</td>
+                                                <td>{{ $u['created_at'] }}</td>
+                                        <?php $i++ ?>
+                                                <td>
                                                 <div>
                                                     <a href="#" class="btn btn-primary btn-sm" >
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -541,23 +334,7 @@
         </div>
         <!-- content -->
 
-        <footer class="footer">
-            ©2022 Particulier A Particulier
-            <span class="d-none d-sm-inline-block"> - <img
-                    src="\img\logo.png"
-                    height="45"
-                    alt="Particulier Logo"
-                    loading="lazy"
-                />  </span>
-        </footer>
 
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Right content here -->
-    <!-- ============================================================== -->
 
-</div>
-<!-- END wrapper -->
+@endsection
 
-</body>
-</html>

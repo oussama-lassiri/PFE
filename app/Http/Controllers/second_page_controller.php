@@ -14,6 +14,7 @@ class second_page_controller extends Controller
 {
     public function __construct()
     {
+<<<<<<< HEAD
         $this->middleware('auth', ['except' => ['first_page', 'welcome']]);
     }
 
@@ -87,6 +88,9 @@ class second_page_controller extends Controller
             "trans" => $trans,
             "ville" =>  $ville 
         ]);
+=======
+        $this->middleware('auth', ['except' => ['first_page']]);
+>>>>>>> 953d9ad563077c72a8aa76bb52678a4007e9a495
     }
 
     public function appartement()
@@ -119,7 +123,7 @@ class second_page_controller extends Controller
         foreach($les_annonce as $an){
             if($an['user_ID'] == $user['id']){
                 $bein_type = $an['bein_type'];
-                if($bein_type == "immobilier")
+                if($bein_type == "immoblier")
                     $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
 
                 if($bein_type == "terrain")
@@ -143,7 +147,7 @@ class second_page_controller extends Controller
     }
 
     public function store(Request $request){
-        if($request->input('type') == "immobilier"){
+        if($request->input('type') == "immoblier"){
             $habit_table = new immobilier();
             $habit_table->chambre = $request->input('chambre');
             $habit_table->surface_totale = $request->input('surface_totale');
@@ -156,7 +160,7 @@ class second_page_controller extends Controller
                 $habit_table->surface_habitable = null;
                 $habit_table->nbr_etage = null;
             }
-            if($request->input('category') == 'Maisson' || $request->input('category') == 'Villa'){
+            if($request->input('category') == 'maisson' || $request->input('category') == 'villa'){
                 $habit_table->etage = null;
                 $habit_table->surface_habitable = $request->input('surface_habitable');
                 $habit_table->category = $request->input('category');
@@ -257,7 +261,7 @@ class second_page_controller extends Controller
     }
 
     public function edit(Request $request){
-        $annonce = annonce::find($request->get('annonce')) ;
+        $annonce = annonce::find($request->get('annonce'));
         $bein_type = $annonce['bein_type'];
         if($bein_type == "immoblier")
             $bein = immobilier::find($annonce['bein_ID']);
@@ -332,12 +336,96 @@ class second_page_controller extends Controller
         }
     }
 
-    public function destroy_bien(Request $request)
+    public function admin_area()
     {
-        $annonce = annonce::find($request->get('annonce'));
+        $les_annonce = annonce::all();
+        $annonce = array();
+        $admin = User::find(Request('adminID'));
+        $les_users = user::all();
+        $user = array();
+        $i = 0;
+        $nb_annonce = array();
+        foreach ($les_users as $u)
+        {   $cmpt=0;
+            $id_u = $u['id'];
+            foreach($les_annonce as $an){
+                if($an['user_ID'] == $u['id']){
+                    $cmpt++;
+                }
+            }
+            array_push($nb_annonce,$cmpt);
+            array_push($user,$u);
+
+        }
+        return view('admin_dir.admin')->with(['admin'=> User::find(Request('adminID')),
+                'user'=> $user,
+                'nb_annonce' => $nb_annonce
+            ]
+        );
+    }
+
+    public function admin_user()
+    {
+        $les_users = user::all();
+        $user = array();
+        foreach ($les_users as $u)
+        {
+            array_push($user,$u);
+        }
+        return view('admin_dir.user')->with([
+                'admin'=> User::find(Request('adminID')),
+                'user'=> $user
+            ]
+        );
+    }
+
+    public function admin_annonce()
+    {
+        $les_annonce = annonce::all();
+        $annonce = array();
+        $user = array();
+        $bein_category = array();
+        $i = 0;
+
+        foreach($les_annonce as $an){
+            $nm_user = user::find($an['user_ID'])['name'];
+            $bein_type = $an['bein_type'];
+            if($bein_type == "immoblier")
+                $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
+
+            if($bein_type == "terrain")
+                $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
+
+            if($bein_type == "service")
+                $bein_category[$i] = service::find($an['bein_ID'])['category'];
+            $i++;
+            $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
+            $$an['images_path'] = Str::remove("\"", $an['images_path']);
+            $an['images_path'] = Str::before($an['images_path'], ",") ;
+            $an['images_path'] = Str::before($an['images_path'], "\"") ;
+            array_push($annonce, $an);
+            array_push($user,$nm_user);
+        }
+        return view('admin_dir.annonce')->with(['user'=> $user,
+                'annonce'=> $annonce,
+                'bein_category' => $bein_category,
+                'user' => $user
+            ]
+        );
+    }
+
+    public function admin_statistique()
+    {
+        return view('admin_dir.statistique');
+    }
+
+
+    public function destroy_bien($id)
+    {
+        $annonce = annonce::find($id);
         $bein_id = $annonce['bein_ID'];
         $bein_type = $annonce['bein_type'];
-        $user = user::find($annonce['user_ID']);
+        $annonceID = $annonce['id'];
         if($bein_type == "immoblier")
         {
             immobilier::find($bein_id)->delete();
@@ -351,37 +439,7 @@ class second_page_controller extends Controller
             service::find($bein_id)->delete();
         }
 
-        $annonce->delete();
-        
-        $les_annonce = annonce::all();
-        $annonce = array();
-        
-        $i = 0;
-        $bein_category = array();
-        foreach($les_annonce as $an){
-            if($an['user_ID'] == $user['id']){
-                $bein_type = $an['bein_type'];
-                if($bein_type == "immoblier")
-                    $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
+        return view('last_page.delete_annonce')->with(['annonceID'=>$annonceID]);
 
-                if($bein_type == "terrain")
-                    $bein_category[$i] = terrain::find($an['bein_ID'])['category'];
-
-                if($bein_type == "service")
-                    $bein_category[$i] = service::find($an['bein_ID'])['category'];
-                $i++;
-                $an['images_path'] = Str::beforeLast(Str::after($an['images_path'], "[\""), "\"]");
-                $$an['images_path'] = Str::remove("\"", $an['images_path']);
-                $an['images_path'] = Str::before($an['images_path'], ",") ;
-                $an['images_path'] = Str::before($an['images_path'], "\"") ;
-                array_push($annonce, $an);
-            }
-        }
-        return view('user1')->with(['user'=> $user,
-                                    'annonce'=> $annonce,
-                                    'bein_category' => $bein_category,
-                                    'success' => "Annonce supprimé avec succès "
-                                    ]
-                                );
     }
 }

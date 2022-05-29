@@ -154,7 +154,7 @@
 
 @section('content')
 <div class="search-title">
-    <h1>List des Appartement a loue dans Agadir</h1>
+    <h1>List des {{$bein}} a {{$trans}} dans {{ $ville }}</h1>
 </div>
 
 <form action="" method="get">

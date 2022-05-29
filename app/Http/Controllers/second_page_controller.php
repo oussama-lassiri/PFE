@@ -26,14 +26,14 @@ class second_page_controller extends Controller
         $nbr_terr = 0;
         $an = array();
         foreach($annonces as $annonce){
-            array_push($an, $annonce);
+            array_unshift($an, $annonce);
             if($annonce['bein_type'] == "immobilier") $nbr_immo++;
             if($annonce['bein_type'] == "service") $nbr_serv++;
             if($annonce['bein_type'] == "terrain") $nbr_terr++;
             $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
             $data = Str::remove("\"", $data);
             $data = Str::before($data, ",");
-            array_push($imgs, $data);
+            array_unshift($imgs, $data);
         }
 
         return view('welcome')->with([
@@ -63,26 +63,29 @@ class second_page_controller extends Controller
         $imgs = array();
         foreach($annonces as $annonce){
             if($annonce['transaction'] == $trans && $annonce['ville'] == $ville && $annonce['bein_type'] == $type){
-                array_push($an, $annonce);
+                array_unshift($an, $annonce);
                 $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
                 $data = Str::remove("\"", $data);
                 $data = Str::before($data, ",");
-                array_push($imgs, $data);}
+                array_unshift($imgs, $data);}
             
             if($annonce['bein_type'] == "immobilier") 
-                array_push($beins, immobilier::find($annonce['bein_ID']));
+                array_unshift($beins, immobilier::find($annonce['bein_ID']));
 
             if($annonce['bein_type'] == "service") 
-                array_push($beins, service::find($annonce['bein_ID']));    
+                array_unshift($beins, service::find($annonce['bein_ID']));    
 
             if($annonce['bein_type'] == "terrain") 
-                array_push($beins, terrain::find($annonce['bein_ID']));
+                array_unshift($beins, terrain::find($annonce['bein_ID']));
             
         } 
         return view('search')->with([
             "annonces" => $an,
             "beins" => $beins,
-            "imgs" => $imgs
+            "imgs" => $imgs,
+            "bein" => $bein,
+            "trans" => $trans,
+            "ville" =>  $ville 
         ]);
     }
 

@@ -51,6 +51,8 @@ Route::get('second_page/delete',[second_page_controller::class,'destroy_bien'])-
 Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->name('last_page.delete_annonce');
 Route::get('admin',[second_page_controller::class,'admin_area'])->name('admin');
 Route::get('admin/utilisateur',[second_page_controller::class,'admin_user'])->name('admin_user');
+Route::get('admin/utilisateur/details',[second_page_controller::class,'display_user'])->name('admin_user.display');
+Route::get('admin/utilisateur/tools',[second_page_controller::class,'admin_gestion_user'])->name('admin_user.gestion');
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
 Route::resource('last_page', last_page_controller::class);

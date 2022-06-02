@@ -38,6 +38,7 @@
     />
 
     <title>welcome</title>
+
     <!-- Background image settings -->
     <style>
         /* Default height for small devices */
@@ -64,9 +65,9 @@
             height: 600px;
         }
         }
-        </style>
+    </style>
         <!--search bar settings -->
-        <style>
+    <style>
         *, *::before, *::after { box-sizing: border-box; }
 
         body {
@@ -129,7 +130,7 @@
 
         transition: background-color 1s ease;
         }
-        <!--  0.8s  -->
+        <!--  /*0.8s*/  -->
         #search-button:hover {
         background-color: darkturquoise ;
         }
@@ -171,7 +172,7 @@
     <!-- Background image -->
 
 <!--search bar -->
-<form action="{{ route('search') }}" method="get">
+<form action="#" method="get">
     <div class="product-search">
         <div class="search-element">
             <label class="search-label">le bien que vous cherchez ?</label>
@@ -217,11 +218,11 @@
                 <option value="vente">Vente</option>
                 <option value="location mois">Location(mois)</option>
                 <option value="location Jour">Location(jour)</option>
-            </select>        
+            </select>
         </div>
         <div id="search-button">
             <button class="btn btn-info btn-lg" type="submit" >Chercher</button>
-        </div > 
+        </div >
     </div>
 </form>
 <!--search bar -->
@@ -236,7 +237,7 @@
             <div class="col-lg-5">
                 <div class="section-title">
                     <h4>Latest PROPERTY</h4>
-                    
+
                 </div>
             </div>
             <div class="col-lg-7">
@@ -261,10 +262,10 @@
                 @if ($annonce['bein_type'] == "service")
                     <div class="col-lg-4 col-md-6 mix all house">
                  @endif
-                @if ($annonce['bein_type'] == "immobilier") 
+                @if ($annonce['bein_type'] == "immobilier")
                     <div class="col-lg-4 col-md-6 mix all apart">
                 @endif
-                @if ($annonce['bein_type'] == "terrain") 
+                @if ($annonce['bein_type'] == "terrain")
                     <div class="col-lg-4 col-md-6 mix all office">
                 @endif
                     <div class="property-item">
@@ -292,30 +293,30 @@
                                             <li><i class="fa fa-bathtub"></i> {{ $item['salle_de_bain'] }} </li>
                                             <li><i class="fa fa-bed"></i> {{ $item['chambre'] }}</li>
                                             <li><i class='Medium material-icons' >weekend </i> {{ $item['salon'] }}</li>
-                                            @php
-                                                if($item['category'] == "Appartement") $ap++;
-                                                if($item['category'] == "maisson") $ms++;
-                                                if($item['category'] == "villa") $vl++;
-                                            @endphp
+
+                                                @if($item['category'] == "Appartement") $ap++;@endif
+                                                @if($item['category'] == "maisson") $ms++;@endif
+                                                @if($item['category'] == "villa") $vl++;@endif
+
                                         @endif
                                     @endforeach
                                 @endif
-                                
+
                                 @if($annonce['bein_type'] == "service")
                                     @foreach ($service as $item)
                                         @if ($item['id'] == $annonce['bein_ID'])
                                             <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
                                             <li><img src="https://img.icons8.com/ios-filled/50/000000/door-opened.png" width="20x20"/>{{ $item['nbr_piece'] }} </li>
                                             <li><img src="https://img.icons8.com/ios-glyphs/30/000000/stairs-up.png" width="20x20"/> {{ $item['etage'] }}</li>
-                                            @php
-                                                if($item['category'] == "plateaux") $pt++;
-                                                if($item['category'] == "magasin") $mg++;
-                                                if($item['category'] == "bereau") $br++;
-                                            @endphp
+
+                                                @if($item['category'] == "plateaux") $pt++;@endif
+                                                @if($item['category'] == "magasin") $mg++;@endif
+                                                @if($item['category'] == "bereau") $br++;@endif
+
                                         @endif
                                     @endforeach
                                 @endif
-                                    
+
                                 @if($annonce['bein_type'] == "terrain")
                                     @foreach ($terrain as $item)
                                         @if ($item['id'] == $annonce['bein_ID'])
@@ -339,7 +340,7 @@
                     $cont--;
                 @endphp
             @endforeach
-            
+
         </div>
     </div>
 </section>

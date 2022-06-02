@@ -33,7 +33,7 @@
                                 <div>
                                     <h5 class="font-16">Total d'utilisateurs</h5>
                                 </div>
-                                <h4 class="mt-4">7 utilisateurs</h4>
+                                <h4 class="mt-4">{{ $users }} utilisateurs</h4>
                                 <div class="progress mt-4" style="height: 4px;">
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 88%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -51,7 +51,7 @@
                                 <div>
                                     <h5 class="font-16">Total d'annonces</h5>
                                 </div>
-                                <h4 class="mt-4">10</h4>
+                                <h4 class="mt-4">{{ $an_totale }}</h4>
                                 <div class="progress mt-4" style="height: 4px;">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -278,7 +278,14 @@
                                                         <img src="assets/images/user-2.jpg" alt="" class="thumb-md rounded-circle mr-2">{{ $u['name'] }}
                                                     </div>
                                                 </td>
-                                                <td><span class="badge badge-success">{{ $u['etat'] }}</span></td>
+                                                <td>
+                                                @if ($u['etat'] == "desactive")
+                                                    <span class="badge badge-danger">{{ $u['etat'] }}</span>
+                                                @endif
+                                                @if ($u['etat'] == "active")
+                                                    <span class="badge badge-success">{{ $u['etat'] }}</span>
+                                                @endif
+                                                </td>
                                                 <!-- $nb_annonce['id_u'] = $u['id']-->
                                                 <td align="center"> {{ $nb_annonce["$i"] }} </td>
                                                 <td>{{ $u['phone'] }}</td>

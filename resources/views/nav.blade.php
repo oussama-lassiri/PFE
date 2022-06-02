@@ -148,7 +148,7 @@
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav  ">
                     <li class="nav-item">
-                        <a class="nav-link"  href="">Home</a>
+                        <a class="nav-link"  href=" {{ route('welcome') }} ">Accueil</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -159,24 +159,24 @@
                           <li><a class="dropdown-item" href="#"> Habitable &raquo; </a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
-                                <li><a class="dropdown-item" href="#">appartement</a></li>
-                                <li><a class="dropdown-item" href="#">Maison</a></li>
-                                <li><a class="dropdown-item" href="#"> Villa</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search')}}?bein=Appartement  ">appartement</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search')}}?bein=Maisson ">Maison</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search')}}?bein=Villa  "> Villa</a></li>
                              </ul>
                           </li>
-                          <li><a class="dropdown-item" href="#"> Entreprise &raquo; </a>
+                          <li><a class="dropdown-item" href=""> Entreprise &raquo; </a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Bureau</a></li>
-                                <li><a class="dropdown-item" href="#">Plateau</a></li>
-                                <li><a class="dropdown-item" href="#">Magasin</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Bureaux ">Bureau</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Plateaux  ">Plateau</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Magasin ">Magasin</a></li>
                              </ul>
                           </li>
-                          <li><a class="dropdown-item" href="#"> Immobilier &raquo;</a>
+                          <li><a class="dropdown-item" href=""> Immobilier &raquo;</a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Terrain</a></li>
-                                <li><a class="dropdown-item" href="#">Ferme</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Terrain ">Terrain</a></li>
+                                <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Ferme ">Ferme</a></li>
                              </ul>
                           </li>
                         </ul>
@@ -187,9 +187,10 @@
                 </ul>
 
                 <div class="p-2 annonce bd-highlight animate__animated animate__swing" >   <!-- class="d-grid gap-2  d-md-flex justify-content-md-end " -->
-                    <a href="{{route('first_page.index')}}"><button class="btn btn-info me-md-2 " type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 20 20">
+                    <a href="@if(isset(Auth::user()->etat)) @if(Auth::user()->etat == "inactive"){{route('resultat')}}?res=fail @else {{route('first_page.index')}} @endif @endif">
+                    <button class="btn btn-info me-md-2 " type="button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 20 20">
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>Créé Annonce</button></a>
+                    </svg>Créé Annonce </button></a>
                 </div>
             </div>
 
@@ -223,7 +224,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/second_page/user?userID={{ Auth::user()->id }}"> Espace Personnelle</a>
+                                <a class="dropdown-item" href="{{ route('user_space', ['id' => Auth::user()->id]) }}"> Espace Personnelle</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -244,6 +245,6 @@
         @yield('content')
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+        
     </body>
 </html>

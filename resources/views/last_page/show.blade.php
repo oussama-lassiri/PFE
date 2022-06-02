@@ -85,6 +85,17 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
     />
+    <style>
+        .prix_trans{
+            background: #632c65;
+            background: -moz-linear-gradient(-45deg, #fca6ff 15%, #56a5e2 100%);
+            background: -webkit-linear-gradient(-45deg, #fca3ff 15%,#56a5e2 100%);
+            background: linear-gradient(135deg, #fdb8ff 15%,#56a5e2 100%);
+        }
+        .container{
+            margin-top: 6%;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -117,7 +128,7 @@
                     </div>
                     <span> <h5> Concessionnaire immobilier </h5></span>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="pe-7s-map-marker strong"> </i> //put address here </li>
+                        <li class="list-group-item"><i class="pe-7s-map-marker strong"> </i> {{ $user['ville'] }} </li>
                         <li class="list-group-item"><i class="fas fa-envelope"> </i> {{$user['email']}}</li>
                         <li class="list-group-item"><i class="fas fa-phone"> </i>{{$user['phone']}}</li>
                     </ul>
@@ -128,11 +139,11 @@
         <div class="col-8">
             <span class="titre_annonce">{{$annonce['titre']}}</span>
             <table>
-                <tr class="table-info">
+                <tr class="table-info prix_trans">
                     <td class="firstTD" colspan="2"><h3>À {{ $trans }}</h3></td>
                     <td colspan="2"><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
                 </tr>
-                @if ($annonce['bein_type'] == "immoblier")
+                @if ($annonce['bein_type'] == "immobilier")
                     <tr>
                         <td class="firstTD" width="25%"><i class='Medium material-icons' >hotel </i> Chambre</td>
                         <td class="secondTD" >{{$bein['chambre']}}</td>

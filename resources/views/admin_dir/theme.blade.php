@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/morris.css">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-@yield('style')
+<link rel="stylesheet" href="{{asset('assets/css/morris.css')}}">
+<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+@yield('style admin')
 <!-- jQuery  -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/metismenu.min.js"></script>
-<script src="assets/js/jquery.slimscroll.js"></script>
-<script src="assets/js/waves.min.js"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/metismenu.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('assets/js/waves.min.js') }}"></script>
 <!--Morris Chart-->
-<script src="assets/js/morris.min.js"></script>
-<script src="assets/js/raphael.min.js"></script>
-<script src="assets/js/dashboard.init.js"></script>
+<script src="{{ asset('assets/js/morris.min.js') }}"></script>
+<script src="{{ asset('assets/js/raphael.min.js') }}"></script>
+<script src="{{ asset('assets/js/dashboard.init.js') }}"></script>
 <!-- App js -->
-<script src="assets/js/app.js"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
 
 
 <body>
@@ -115,8 +115,8 @@
                         <ul class="submenu">
                             <li><a href="{{ route('admin_user') }}">Liste des utilisateurs</a></li>
                             <ul class="submenu">
-                                <li><a href="{{ route('admin_ajout_user') }}"> Ajout d'utilisateur</a></li>
-                                <li><a href="#">Gestion des comptes </a></li>
+                                <li><a href="{{ route('register') }}"> Ajout d'utilisateur</a></li><!--route('admin_ajout_user')-->
+                                <li><a href="{{ route('admin_user.gestion') }}">Gestion des comptes </a></li>
                             </ul>
                         </ul>
                     </li>
@@ -204,8 +204,10 @@
                 @yield('right content')
 
             </div>
-        </div>
+            <!-- container-fluid -->
 
+        </div>
+        <!-- content -->
 
         <footer class="footer">
             ©2022 Particulier A Particulier

@@ -40,7 +40,7 @@
       align-items: center;
       width: 100%;
       min-height: 100%;
-      background: url("/uploads/media/default/0001/01/49bff73f282c2c21f3341f1fe457fe35337b1792.jpeg") no-repeat center;
+      background: url("./uploads/media/default/0001/01/49bff73f282c2c21f3341f1fe457fe35337b1792.jpeg") no-repeat center;
       background-size: cover;
       }
       form {
@@ -275,7 +275,7 @@ mark{
 .checkbox:checked ~ .section .container .row .col-12 .checkbox-tools:not(:checked) + label{
 	background-color: var(--light);
 	color: var(--dark-blue);
-	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 .checkbox-budget:checked + label,
@@ -363,7 +363,7 @@ mark{
 	background-color: var(--light);
 	-webkit-text-stroke: 1px var(--dark-blue);
     text-stroke: 1px var(--dark-blue);
-	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 .checkbox-booking:checked + label,
@@ -534,20 +534,20 @@ mark{
         </div>
 
         <div  class="info-item">
-            <label class="icon" for="ville"><i class="fas fa-city"></i></i></label>
+            <label class="icon" for="ville"><i class="fas fa-city"></i></label>
             <input type="text" name="ville" id="ville" placeholder="Ville" value="{{ old('ville') }}" required autocomplete="ville"/>
         </div>
 
-            <div class="section z-bigger justify-content-between">
+        <div class="section z-bigger justify-content-between">
                 <div class="container ">
                     <div class="row ">
                         <div class="col-7">
-                            <input class="checkbox-tools" type="radio" name="genre" id="tool-1" value="Homme" checked>
+                            <input class="checkbox-tools" type="radio" name="genre" id="tool-1" value="Homme" >
                             <label class="for-checkbox-tools" for="tool-1">
                                 <i class='uil uil-line-alt'></i>
                                 Homme
-                            </label><!--
-                            --><input class="checkbox-tools" type="radio" name="genre" id="tool-2" value="Femme">
+                            </label>
+                            <input class="checkbox-tools" type="radio" name="genre" id="tool-2" value="Femme" checked>
                             <label class="for-checkbox-tools" for="tool-2">
                                 <i class='uil uil-vector-square'></i>
                                 Femme

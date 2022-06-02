@@ -14,12 +14,11 @@ class second_page_controller extends Controller
 {
     public function __construct()
     {
-<<<<<<< HEAD
-        $this->middleware('auth', ['except' => ['first_page', 'welcome']]);
+         $this->middleware('auth', ['except' => ['first_page', 'welcome']]);
     }
 
-    public function welcome() 
-    {  
+    public function welcome()
+    {
         $annonces = annonce::all();
         $imgs = array();
         $nbr_immo = 0;
@@ -28,9 +27,9 @@ class second_page_controller extends Controller
         $an = array();
         foreach($annonces as $annonce){
             array_unshift($an, $annonce);
-            if($annonce['bein_type'] == "immobilier") $nbr_immo++;
-            if($annonce['bein_type'] == "service") $nbr_serv++;
-            if($annonce['bein_type'] == "terrain") $nbr_terr++;
+            if($annonce['bein_type'] == "immobilier") {$nbr_immo++;}
+            if($annonce['bein_type'] == "service") {$nbr_serv++;}
+            if($annonce['bein_type'] == "terrain") {$nbr_terr++;}
             $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
             $data = Str::remove("\"", $data);
             $data = Str::before($data, ",");
@@ -45,7 +44,7 @@ class second_page_controller extends Controller
             "imgs" => $imgs,
             "nbr_terr" => $nbr_terr,
             "nbr_serv" => $nbr_serv,
-            "nbr_immo" => $nbr_immo,
+            "nbr_immo" => $nbr_immo
         ]);
     }
 
@@ -69,28 +68,28 @@ class second_page_controller extends Controller
                 $data = Str::remove("\"", $data);
                 $data = Str::before($data, ",");
                 array_unshift($imgs, $data);}
-            
-            if($annonce['bein_type'] == "immobilier") 
+
+            if($annonce['bein_type'] == "immobilier")
                 array_unshift($beins, immobilier::find($annonce['bein_ID']));
 
-            if($annonce['bein_type'] == "service") 
-                array_unshift($beins, service::find($annonce['bein_ID']));    
+            if($annonce['bein_type'] == "service")
+                array_unshift($beins, service::find($annonce['bein_ID']));
 
-            if($annonce['bein_type'] == "terrain") 
+            if($annonce['bein_type'] == "terrain")
                 array_unshift($beins, terrain::find($annonce['bein_ID']));
-            
-        } 
+
+        }
         return view('search')->with([
             "annonces" => $an,
             "beins" => $beins,
             "imgs" => $imgs,
             "bein" => $bein,
             "trans" => $trans,
-            "ville" =>  $ville 
+            "ville" =>  $ville
         ]);
-=======
-        $this->middleware('auth', ['except' => ['first_page']]);
->>>>>>> 953d9ad563077c72a8aa76bb52678a4007e9a495
+
+        //$this->middleware('auth', ['except' => ['first_page']]);
+
     }
 
     public function appartement()
@@ -339,24 +338,22 @@ class second_page_controller extends Controller
     public function admin_area()
     {
         $les_annonce = annonce::all();
-        $annonce = array();
-        $admin = User::find(Request('adminID'));
+        //$admin = User::find(Request('adminID'));
         $les_users = user::all();
         $user = array();
-        $i = 0;
         $nb_annonce = array();
         foreach ($les_users as $u)
         {   $cmpt=0;
-            $id_u = $u['id'];
             foreach($les_annonce as $an){
                 if($an['user_ID'] == $u['id']){
                     $cmpt++;
                 }
+
             }
             array_push($nb_annonce,$cmpt);
             array_push($user,$u);
-
         }
+
         return view('admin_dir.admin')->with(['admin'=> User::find(Request('adminID')),
                 'user'=> $user,
                 'nb_annonce' => $nb_annonce
@@ -367,14 +364,43 @@ class second_page_controller extends Controller
     public function admin_user()
     {
         $les_users = user::all();
+
+        return view('admin_dir.user')->with([
+                //'admin'=> User::find(Request('adminID')),
+                'user'=> $les_users
+            ]
+        );
+    }
+
+    public function display_user(Request $request)
+    {
+        $user = User::find($request->input('u'));
+        return view('admin_dir.displayUser')->with([
+            'user'=>$user
+        ]);
+    }
+
+    public function admin_gestion_user()
+    {
+        $les_annonces = annonce::all();
+        $les_users = user::all();
         $user = array();
+        $nb_annonce = array();
         foreach ($les_users as $u)
-        {
+        {   $cmpt=0;
+            foreach($les_annonces as $an){
+                if($an['user_ID'] == $u['id']){
+                    $cmpt++;
+                }
+
+            }
+            array_push($nb_annonce,$cmpt);
             array_push($user,$u);
         }
-        return view('admin_dir.user')->with([
-                'admin'=> User::find(Request('adminID')),
-                'user'=> $user
+
+        return view('admin_dir.gestionUser')->with([
+                'user'=> $user,
+                'nb_annonce' => $nb_annonce
             ]
         );
     }
@@ -406,7 +432,7 @@ class second_page_controller extends Controller
             array_push($annonce, $an);
             array_push($user,$nm_user);
         }
-        return view('admin_dir.annonce')->with(['user'=> $user,
+        return view('admin_dir.annonce')->with([
                 'annonce'=> $annonce,
                 'bein_category' => $bein_category,
                 'user' => $user
@@ -418,7 +444,6 @@ class second_page_controller extends Controller
     {
         return view('admin_dir.statistique');
     }
-
 
     public function destroy_bien($id)
     {
@@ -442,4 +467,6 @@ class second_page_controller extends Controller
         return view('last_page.delete_annonce')->with(['annonceID'=>$annonceID]);
 
     }
+
+
 }

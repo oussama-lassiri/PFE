@@ -210,6 +210,18 @@
           </nav>
           <!-- /Breadcrumb -->
 
+          @if (isset($res))
+            
+            @if ($res == "fail")
+              <div class="row alert alert-danger" role="alert">
+            @endif
+            @if ($res == "success")
+              <div class="row alert alert-info" role="alert">
+            @endif
+                <h5>$msg</h5>
+              </div>
+          @endif
+
           <div class="row gutters-sm col-md-12">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -277,6 +289,9 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{ $user['etat'] }}
+                      @if ($user['etat'] == "inactive")
+                          (en attente de l'activation de ce compte par un administrateur)
+                      @endif
                     </div>
                   </div>
                   <hr>
@@ -297,9 +312,8 @@
           </div>
           <div class="col-md-8 card" id="activation" style="display: none;">
             <div class="row alert alert-info" role="alert">
-              <form method="POST" action="{{ route('second_page.update_user') }}">
+              <form method="GET" action="{{ route('second_page.update_user') }}">
                 @csrf
-                @method('put')
                 <input type="text" name="id" value="{{ $user['id']}}" hidden/>
                     <h3 class="alert-heading">Attention!</h3>
                     <hr>
@@ -337,9 +351,8 @@
 
           <div class="tab-pane text-center gallery col-md-8 m-0" id="modification" style="display: none;">
                     <div class="container modifie">
-                    <form method="POST" action="{{ route('second_page.update_user') }}">
+                    <form method="GET" action="{{ route('second_page.update_user') }}">
                         @csrf
-                        @method('PUT')
                         <input type="text" name="id" value="{{ $user['id']}}" hidden/>
                         <div class="info-item">
                             <label class="icon" for="name"><i class="fas fa-user"></i></label>
@@ -383,7 +396,7 @@
                       <img src="\uploads\{{ $item['images_path'] }}" alt="bein" />
                   </div>
                   <div class="card-body1">
-                    @if($item['bein_type'] == "immoblier")
+                    @if($item['bein_type'] == "immobilier")
                     <span class="tag tag-teal"> {{ $bein_category["$i"] }} </span>
                     @endif
                     @if ($item['bein_type'] == "terrain")
@@ -417,10 +430,10 @@
                               </svg>
                           </a>
                             @if ($item['etat'] == "desactive")
-                              <button class="btn btn-info " onclick="toggleText(1)">Activer</button>
+                              <a href="{{route('second_page.edit')}}?annonce={{ $item['id'] }}&etat=active" class="btn btn-info ">Activer</a>
                             @endif
                             @if ($item['etat'] == "active")
-                              <button class="btn btn-dark " onclick="toggleText(1)">Desactive</button>
+                              <a href="{{route('second_page.edit')}}?annonce={{ $item['id'] }}&etat=desactive" class="btn btn-dark ">Desactive</a>
                             @endif
                       </div>
                     </div>

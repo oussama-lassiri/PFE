@@ -1,13 +1,16 @@
 @extends('nav')
 
 @section('style')
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="\css\welcome\dist\style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <!-- Google Font -->
-     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
-     rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
     <!-- Css Styles -->
     <link rel="stylesheet" href="\css\welcome\bootstrap.min.css" >
@@ -146,15 +149,12 @@
             background: #0166D0;
             color: #ffffff;
         }
-        #Background_image{
-            background-image: url("/img/welcome.jpg");
-        }
     </style>
 @endsection
 
 @section('content')
 <div class="search-title">
-    <h1>List des {{$bein}} a {{$trans}} dans {{ $ville }}</h1>
+    <h1>List des {{$bein}} </h1>
 </div>
 
 <form action="" method="get">
@@ -298,15 +298,16 @@
             </div>
         </div>
     </section>
-    <script src="js/welcome/jquery-3.3.1.min.js"></script>
-    <script src="js/welcome/bootstrap.min.js"></script>
-    <script src="js/welcome/jquery.magnific-popup.min.js"></script>
-    <script src="js/welcome/mixitup.min.js"></script>
-    <script src="js/welcome/jquery-ui.min.js"></script>
-    <script src="js/welcome/jquery.nice-select.min.js"></script>
-    <script src="js/welcome/jquery.slicknav.js"></script>
-    <script src="js/welcome/owl.carousel.min.js"></script>
-    <script src="js/welcome/jquery.richtext.min.js"></script>
-    <script src="js/welcome/image-uploader.min.js"></script>
-    <script src="js/welcome/main.js"></script>
+    
+    <script src="\js\welcome\jquery-3.3.1.min.js"></script>
+    <script src="\js\welcome\bootstrap.min.js"></script>
+    <script src="\js\welcome\jquery.magnific-popup.min.js"></script>
+    <script src="\js\welcome\mixitup.min.js"></script>
+    <script src="\js\welcome\jquery-ui.min.js"></script>
+    <script src="\js\welcome\jquery.nice-select.min.js"></script>
+    <script src="\js\welcome\jquery.slicknav.js"></script>
+    <script src="\js\welcome\owl.carousel.min.js"></script>
+    <script src="\js\welcome\jquery.richtext.min.js"></script>
+    <script src="\js\welcome\image-uploader.min.js"></script>
+    <script src="\js\welcome\main.js"></script>
 @endsection

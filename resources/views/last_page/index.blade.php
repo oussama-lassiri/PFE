@@ -95,7 +95,7 @@
 @endsection
 
 @section('content')
-    <div class="big animate__animated animate__jackInTheBox">
+    <div class="big animate__animated animate__fadeInTopLeft">
         <div class="container mt-5">
             <form action="{{route('last_page.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -109,7 +109,7 @@
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                                <li>{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>

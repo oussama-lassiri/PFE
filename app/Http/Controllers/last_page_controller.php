@@ -71,7 +71,7 @@ class last_page_controller extends Controller
 
               $fileModal->save();
             //redirect
-             return back()->with('success', 'Créé avec succès  !');
+             return redirect()->route('resultat');
           }
     }
 
@@ -199,7 +199,7 @@ class last_page_controller extends Controller
                 foreach($les_annonce as $an){
                     if($an['user_ID'] == $user['id']){
                         $bein_type = $an['bein_type'];
-                        if($bein_type == "immoblier")
+                        if($bein_type == "immobilier")
                             $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
 
                         if($bein_type == "terrain")

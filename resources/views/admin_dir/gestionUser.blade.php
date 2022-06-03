@@ -10,6 +10,12 @@
 
     <div class="row">
 
+        @if($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{$message}}</p>
+            </div>
+        @endif
+
         <div class="col-xl-12">
             <div class="card m-b-30">
                 <div class="card-body">
@@ -43,14 +49,14 @@
                                     <td>
                                         <div>
                                             @if($u['etat'] == "active")
-                                            <a href="#" class="btn btn-primary btn-sm" >
+                                            <a href="{{ route('admin_user.etat') }}?u={{ $u['id'] }}" class="btn btn-primary btn-sm" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
                                                     <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                                 </svg>
                                             </a>
                                             @else
-                                            <a href="#" class="btn btn-success btn-sm" >
+                                            <a href="{{ route('admin_user.etat') }}?u={{ $u['id'] }}" class="btn btn-success btn-sm" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
                                                     <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
                                                     <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>

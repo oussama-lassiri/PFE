@@ -506,6 +506,12 @@ class second_page_controller extends Controller
         );
     }
 
+    public function admin_delete_user(Request $request)
+    {
+         User::find($request->input('u'))->delete();
+         return back();
+    }
+
     public function admin_annonce()
     {
         $les_annonce = annonce::all();
@@ -564,7 +570,7 @@ class second_page_controller extends Controller
             service::find($bein_id)->delete();
         }
 
-        return view('last_page.delete_annonce')->with(['annonceID'=>$annonceID]);
+        return view('last_page.delete_annonce')->with(['nnonceID'=>$annonceID]);
 
     }
 

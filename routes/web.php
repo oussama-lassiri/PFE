@@ -53,6 +53,7 @@ Route::get('admin',[second_page_controller::class,'admin_area'])->name('admin');
 Route::get('admin/utilisateur',[second_page_controller::class,'admin_user'])->name('admin_user');
 Route::get('admin/utilisateur/details',[second_page_controller::class,'display_user'])->name('admin_user.display');
 Route::get('admin/utilisateur/tools',[second_page_controller::class,'admin_gestion_user'])->name('admin_user.gestion');
+Route::get('admin/utilisateur/tools/delete',[second_page_controller::class,'admin_delete_user'])->name('admin_user.delete');
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
 Route::resource('last_page', last_page_controller::class);

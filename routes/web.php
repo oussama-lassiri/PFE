@@ -55,6 +55,7 @@ Route::get('admin/utilisateur/details',[second_page_controller::class,'display_u
 Route::get('admin/utilisateur/tools',[second_page_controller::class,'admin_gestion_user'])->name('admin_user.gestion');
 Route::get('admin/utilisateur/tools/delete',[second_page_controller::class,'admin_delete_user'])->name('admin_user.delete');
 Route::get('admin/utilisateur/tools/etat',[second_page_controller::class,'admin_etat_user'])->name('admin_user.etat');
+Route::get('admin/utilisateur/tools/etat/block',[second_page_controller::class,'admin_block_user'])->name('admin_user.block');
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
 Route::resource('last_page', last_page_controller::class);

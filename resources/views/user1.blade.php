@@ -199,7 +199,7 @@
 @section('content')
 <div class="container">
     <div class="main-body">
-      
+
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
@@ -211,7 +211,7 @@
           <!-- /Breadcrumb -->
 
           @if (isset($res))
-            
+
             @if ($res == "fail")
               <div class="row alert alert-danger" role="alert">
             @endif
@@ -384,7 +384,7 @@
                 </div>
   			</div>
           <div class="cont col-12">
-            @if ($message = Session::get('success'))
+            @if ($message = Session::has('success'))
               <div class="alert alert-success">
                   <strong>{{ $message }}</strong>
               </div>

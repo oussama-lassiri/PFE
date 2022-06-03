@@ -510,7 +510,32 @@ class second_page_controller extends Controller
     {
         $user = User::find($request->input('u'));
         $u_name = $user['name'];
-         User::find($user['id'])->delete();
+        $u_id = $user['id'];
+
+         $user->delete();
+
+         foreach (annonce::all() as $an)
+         {
+             if($u_id == $an['user_ID'])
+             {
+                 $bein_id = $an['bein_ID'];
+                 $bein_type = $an['bein_type'];
+                 if($bein_type == "immoblier")
+                 {
+                     immobilier::find($bein_id)->delete();
+                 }
+                 if($bein_type == "terrain")
+                 {
+                     terrain::find($bein_id)->delete();
+                 }
+                 if($bein_type == "service")
+                 {
+                     service::find($bein_id)->delete();
+                 }
+                 $an->delete();
+             }
+         }
+
          return back()->with('message',' Le profile  ` '.$u_name.' ` est supprimé avec succès.              ');
     }
 
@@ -525,8 +550,18 @@ class second_page_controller extends Controller
         {
             $user->etat = "active";
         }
+
         $user->update();
         return back()->with('message',' Etat du profile de ` '.$user['name'].' `  est modifié avec succès.              ');
+    }
+
+    public function admin_block_user(Request $request)
+    {
+        $user = user::find($request->input('u'));
+        $user->etat = "bloque";
+        $user->update();
+        return back()->with('message',' Etat du profile de ` '.$user['name'].' `  est modifié avec succès.              ');
+
     }
 
     public function admin_annonce()
@@ -569,8 +604,8 @@ class second_page_controller extends Controller
         return view('admin_dir.statistique');
     }
 
-    public function destroy_bien($id){
-        $annonce = annonce::find($id);
+    public function destroy_bien(Request $request){
+        $annonce = annonce::find($request->input('annonce'));
         $bein_id = $annonce['bein_ID'];
         $bein_type = $annonce['bein_type'];
         $annonceID = $annonce['id'];
@@ -586,8 +621,9 @@ class second_page_controller extends Controller
         {
             service::find($bein_id)->delete();
         }
+        $annonce->delete();
 
-        return view('last_page.delete_annonce')->with(['annonceID'=>$annonceID]);
+        return back()->with(['annonceID'=>$annonceID]);
 
     }
 

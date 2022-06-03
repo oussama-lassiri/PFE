@@ -9,7 +9,7 @@
         @if ($res == "fail")
         <div class="container big animate__animated animate__swing atte">
             <h1>Attention!</h1>
-            <h3>{{ $msg }}</h3>
+            <h3>{{ $msg }}.</h3>
         @endif
         @if ($res == "success")
         <div class="container big animate__animated animate__swing">

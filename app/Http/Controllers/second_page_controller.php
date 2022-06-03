@@ -508,8 +508,10 @@ class second_page_controller extends Controller
 
     public function admin_delete_user(Request $request)
     {
-         User::find($request->input('u'))->delete();
-         return back();
+        $user = User::find($request->input('u'));
+        $u_name = $user['name'];
+         User::find($user['id'])->delete();
+         return back()->with('message',' Le profile  ` '.$u_name.' ` est supprimé avec succès.              ');
     }
 
     public function admin_etat_user(Request $request)
@@ -524,7 +526,7 @@ class second_page_controller extends Controller
             $user->etat = "active";
         }
         $user->update();
-        return back()->with('message','Profile Updated');
+        return back()->with('message',' Etat du profile de ` '.$user['name'].' `  est modifié avec succès.              ');
     }
 
     public function admin_annonce()

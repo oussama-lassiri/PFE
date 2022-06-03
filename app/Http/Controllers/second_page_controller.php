@@ -148,8 +148,15 @@ class second_page_controller extends Controller
         ]);
     }
 
-    public function resultat(Request $resquest){
-
+    public function resultat(Request $request){
+        if( $request->get('res') != null )
+            if($request->get('res') == "fail"){
+                $msg = "Veuillez attendre l'activation de votre compte avant de pouvoir créer une annonce";
+                return view('resultat')->with([
+                    'res' => "fail",
+                    'msg' => $msg
+                ]);
+            }
         return view('resultat');
     }
 

@@ -335,7 +335,7 @@ class second_page_controller extends Controller
                 $annonce->update();
                 return view('resultat')->with([
                     "res" => "success",
-                    "msg" => "L'etat de votre annonce est change avec success"
+                    "msg" => "L'état de votre annonce est changé avec succès"
                 ]);
             }
             else{
@@ -575,7 +575,7 @@ class second_page_controller extends Controller
         foreach($les_annonce as $an){
             $nm_user = user::find($an['user_ID'])['name'];
             $bein_type = $an['bein_type'];
-            if($bein_type == "immoblier")
+            if($bein_type == "immobilier")
                 $bein_category[$i] = immobilier::find($an['bein_ID'])['category'];
 
             if($bein_type == "terrain")
@@ -597,6 +597,86 @@ class second_page_controller extends Controller
                 'user' => $user
             ]
         );
+    }
+
+    public function display_annonce(Request $request)
+    {
+        $annonce = annonce::find($request->input('an'));
+        $bein_type = $annonce['bein_type'];
+        $user = user::find($annonce['user_ID']);
+        $transaction = $annonce['transaction'];
+
+        if($bein_type == "immobilier")
+            $bein = immobilier::find($annonce['bein_ID']);
+
+        if($bein_type == "terrain")
+            $bein = terrain::find($annonce['bein_ID']);
+
+        if($bein_type == "service")
+            $bein = service::find($annonce['bein_ID']);
+
+        $data = Str::beforeLast(Str::after($annonce['images_path'], "[\""), "\"]");
+        $data = Str::remove("\"", $data);
+        $img = array();
+        while($data != ""){
+            $value = Str::afterLast($data, ",");
+            array_push($img, $value);
+            $data = Str::beforeLast($data, ",");
+            if(!Str::contains($data, ",")) {
+                $value = Str::afterLast($data, ",") ;
+                array_push($img, $value);
+                break;
+            }
+        }
+
+        $data = Str::beforeLast(Str::after($bein['supp'], "[\""), "\"]");
+        $data = Str::remove("\"", $data);
+        $supp = array();
+        while($data != ""){
+            $value = Str::afterLast($data, ",");
+            array_push($supp, $value);
+            $data = Str::beforeLast($data, ",");
+            if(!Str::contains($data, ",")) {
+                $value = Str::afterLast($data, ",");
+                array_push($supp, $value);
+                break;
+            }
+        }
+        if ($transaction == "vente"){
+            $trans = "vendre";
+        }
+        if($transaction == "location jour") {
+            $trans = "louer(jour)";
+        }
+        if($transaction == "location mois") {
+            $trans = "louer(mois)";
+        }
+
+
+        return view('admin_dir.displayAnnonce',[
+            'annonce' => $annonce,
+            'img' => $img,
+            'bein' => $bein,
+            'supp' => $supp,
+            'user' => $user,
+            'trans' => $trans
+        ]);
+    }
+
+    public function admin_etat_annonce(Request $request)
+    {
+        $an = annonce::find($request->input('a'));
+        if($an['etat'] == "active")
+        {
+            $an->etat = "desactive";
+        }
+        else
+        {
+            $an->etat = "active";
+        }
+
+        $an->update();
+        return back()->with('message',' Etat d`annonce est modifié avec succès.              ');
     }
 
     public function admin_statistique()

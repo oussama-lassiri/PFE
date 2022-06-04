@@ -1,4 +1,5 @@
 @extends('nav')
+
 @section('style')
     <title> testing image Desplay </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

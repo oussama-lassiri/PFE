@@ -282,6 +282,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         <?php $i= 0; ?>
                                         @foreach ($user as $u)
                                             <tr>
@@ -309,7 +310,10 @@
                                                 <td>{{ $u['phone'] }}</td>
                                                 <td>{{ $u['ville'] }}</td>
                                                 <td>{{ $u['created_at'] }}</td>
-                                        <?php $i++ ?>
+
+                                                <?php $i++ ?>
+
+                                                <!--buttons -->
                                                 <td>
                                                 <div>
                                                     <a href="{{route('admin_user.display')}}?u={{ $u['id'] }}" class="btn btn-primary btn-sm" >
@@ -346,7 +350,7 @@
                                                         </svg>
                                                     </a>
                                                 </div>
-                                            </td>
+                                                </td>
                                         </tr>
                                         @endforeach
 

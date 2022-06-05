@@ -61,10 +61,8 @@ Route::get('admin/utilisateur/tools/delete',[second_page_controller::class,'admi
 Route::get('admin/utilisateur/tools/etat',[second_page_controller::class,'admin_etat_user'])->name('admin_user.etat');
 Route::get('admin/utilisateur/tools/etat/block',[second_page_controller::class,'admin_block_user'])->name('admin_user.block');
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
-<<<<<<< HEAD
-Route::post('admin/ajout_user',[second_page_controller::class,'admin_ajout_user'])->name('admin_user.ajout');
-=======
->>>>>>> 7683f3593abcef84bcf67c1e93abb9bb85a897c4
+
+Route::post('admin/utilisateur/ajout',[second_page_controller::class,'admin_ajout_user'])->name('admin_user.ajout');
 Route::get('admin/annonce/details',[second_page_controller::class,'display_annonce'])->name('admin_annonce.display');
 Route::get('admin/annonce/tools/etat',[second_page_controller::class,'admin_etat_annonce'])->name('admin_annonce.etat');
 

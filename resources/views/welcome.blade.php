@@ -330,7 +330,7 @@
     </div>
 </section>
 
-{
+
 
 
 <script src="js/welcome/jquery-3.3.1.min.js"></script>

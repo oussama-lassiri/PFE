@@ -156,7 +156,7 @@
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Biens   </a>
                         <ul class="dropdown-menu">
 
-                          <li><a class="dropdown-item" href="#"> Habitable &raquo; </a>
+                          <li><a class="dropdown-item" href="#"> Immobilier &raquo; </a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
                                 <li><a class="dropdown-item" href=" {{ route('search')}}?bein=Appartement  ">appartement</a></li>
@@ -164,7 +164,7 @@
                                 <li><a class="dropdown-item" href=" {{ route('search')}}?bein=Villa  "> Villa</a></li>
                              </ul>
                           </li>
-                          <li><a class="dropdown-item" href=""> Entreprise &raquo; </a>
+                          <li><a class="dropdown-item" href=""> Service &raquo; </a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
                                 <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Bureaux ">Bureau</a></li>
@@ -172,7 +172,7 @@
                                 <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Magasin ">Magasin</a></li>
                              </ul>
                           </li>
-                          <li><a class="dropdown-item" href=""> Immobilier &raquo;</a>
+                          <li><a class="dropdown-item" href=""> Terrain &raquo;</a>
                             <!-- Dropdown sub-menu -->
                                <ul class="submenu dropdown-menu">
                                 <li><a class="dropdown-item" href=" {{ route('search') }}?bein=Terrain ">Terrain</a></li>
@@ -245,6 +245,6 @@
         @yield('content')
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        
+
     </body>
 </html>

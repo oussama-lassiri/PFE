@@ -126,15 +126,8 @@
                             <i class="icon-paper-sheet"></i>
                             <span> Annonces  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
-                                <li>
-                                    <a href="{{ route('admin_annonce') }}">
-                                        Gestion d'annonces
-                                        <span class="float-right menu-arrow">
-                                            <i class="mdi mdi-chevron-right"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
+                                <li><a href="{{ route('first_page.index') }}"> Ajout d'annonce</a></li>
+                                <li><a href="{{ route('admin_annonce') }}">Gestion d'annonces</a></li>
                             </ul>
                     </li>
 

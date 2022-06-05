@@ -299,7 +299,7 @@
                     <div class="col-sm-9 text-secondary">
                       {{ $user['etat'] }}
                       @if ($user['etat'] == "inactive")
-                          (en attente de l'activation de ce compte par un administrateur)
+                          (en attente de l'activation de ce compte par un administrateur )
                       @endif
                     </div>
                   </div>

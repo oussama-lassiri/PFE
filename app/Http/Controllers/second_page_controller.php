@@ -62,7 +62,7 @@ class second_page_controller extends Controller
             foreach($annonces as $annonce)
                 if($annonce['bein_type'] == $type){
 
-                if($annonce['bein_type'] == "immobilier" && immobilier::find($annonce['bein_ID'])['category'] == $bein) {
+                if($annonce['etat'] == "active" && $annonce['bein_type'] == "immobilier" && immobilier::find($annonce['bein_ID'])['category'] == $bein) {
                     array_unshift($beins, immobilier::find($annonce['bein_ID']));
                     array_unshift($an, $annonce);
                     $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
@@ -71,7 +71,7 @@ class second_page_controller extends Controller
                     array_unshift($imgs, $data);
                 }
 
-                if($annonce['bein_type'] == "service" && service::find($annonce['bein_ID'])['category'] == $bein){
+                if($annonce['etat'] == "active" && $annonce['bein_type'] == "service" && service::find($annonce['bein_ID'])['category'] == $bein){
                     array_unshift($beins, service::find($annonce['bein_ID']));
                     array_unshift($an, $annonce);
                     $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
@@ -80,7 +80,7 @@ class second_page_controller extends Controller
                     array_unshift($imgs, $data);
                 }
 
-                if($annonce['bein_type'] == "terrain" && terrain::find($annonce['bein_ID'])['category'] == $bein) {
+                if($annonce['etat'] == "active" && $annonce['bein_type'] == "terrain" && terrain::find($annonce['bein_ID'])['category'] == $bein) {
                     array_unshift($beins, terrain::find($annonce['bein_ID']));
                     array_unshift($an, $annonce);
                     $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
@@ -110,8 +110,7 @@ class second_page_controller extends Controller
 
         foreach($annonces as $annonce)
             if($annonce['transaction'] == $trans && $annonce['ville'] == $ville && $annonce['bein_type'] == $type){
-
-                if($annonce['bein_type'] == "immobilier" && immobilier::find($annonce['bein_ID'])['category'] == $bein) {
+                if($annonce['etat'] == "active" && $annonce['bein_type'] == "immobilier" && immobilier::find($annonce['bein_ID'])['category'] == $bein) {
                     array_unshift($beins, immobilier::find($annonce['bein_ID']));
                     array_unshift($an, $annonce);
                     $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
@@ -120,7 +119,7 @@ class second_page_controller extends Controller
                     array_unshift($imgs, $data);
                 }
 
-                if($annonce['bein_type'] == "service" && service::find($annonce['bein_ID'])['category'] == $bein){
+                if($annonce['etat'] == "active" && $annonce['bein_type'] == "service" && service::find($annonce['bein_ID'])['category'] == $bein){
                     array_unshift($beins, service::find($annonce['bein_ID']));
                     array_unshift($an, $annonce);
                     $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
@@ -129,7 +128,7 @@ class second_page_controller extends Controller
                     array_unshift($imgs, $data);
                 }
 
-                if($annonce['bein_type'] == "terrain" && terrain::find($annonce['bein_ID'])['category'] == $bein) {
+                if($annonce['etat'] == "active" && $annonce['bein_type'] == "terrain" && terrain::find($annonce['bein_ID'])['category'] == $bein) {
                     array_unshift($beins, terrain::find($annonce['bein_ID']));
                     array_unshift($an, $annonce);
                     $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
@@ -574,6 +573,8 @@ class second_page_controller extends Controller
         $i = 0;
 
         foreach($les_annonce as $an){
+            $users = user::find($an['user_ID']);
+            return $users;
             $nm_user = user::find($an['user_ID'])['name'];
             $bein_type = $an['bein_type'];
             if($bein_type == "immobilier")
@@ -708,7 +709,7 @@ class second_page_controller extends Controller
 
     }
 
-    public function admin_ajout_user(Request $request){
+    public function admin_user_add(Request $request){
         $user = new user();
 
         $user->name = $request->get('name');
@@ -720,6 +721,9 @@ class second_page_controller extends Controller
         $user->password = Hash::make($request->get('password'));
         $user->etat = 'inactive';
 
-        return $user;
+        $user->save();
+
+        return back()->with('message',' L\'utilsateur : ` '.$user['name'].' `  est creé avec succès.              ');
+
     }
 }

@@ -62,7 +62,7 @@ Route::get('admin/utilisateur/tools/etat',[second_page_controller::class,'admin_
 Route::get('admin/utilisateur/tools/etat/block',[second_page_controller::class,'admin_block_user'])->name('admin_user.block');
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
-Route::post('admin/utilisateur/ajout',[second_page_controller::class,'admin_ajout_user'])->name('admin_user.ajout');
+Route::post('admin/utilisateur/ajout',[second_page_controller::class,'admin_user_add'])->name('admin_user_add');
 Route::get('admin/annonce/details',[second_page_controller::class,'display_annonce'])->name('admin_annonce.display');
 Route::get('admin/annonce/tools/etat',[second_page_controller::class,'admin_etat_annonce'])->name('admin_annonce.etat');
 

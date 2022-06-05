@@ -155,7 +155,7 @@
 
             <h1>Creation d'un nouveau compte</h1>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('admin_ajout_user') }}">
                 @csrf
 
                 <div class="info-item">
@@ -220,11 +220,6 @@
                     <strong>{{ $message }}</strong>
                 </span>
                     @enderror
-                </div>
-
-                <div  class="info-item">
-                    <label class="icon" for="password-confirm"><i class="fas fa-unlock-alt"></i></label>
-                    <input type="password" name="password_confirmation" id="password-confirm" placeholder="Confirmer le mot de passe" required autocomplete="new-password"/>
                 </div>
 
                 <button type="submit" class="sbt">

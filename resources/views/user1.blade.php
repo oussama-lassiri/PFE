@@ -188,6 +188,20 @@
             outline: none ;
         }
 
+        .etat{
+          margin-bottom: 3%;
+        }
+
+        .block{
+          background-image: linear-gradient(to right top, #ff337c, #ff326c, #ff345c, #ff394b, #ff413a);
+          color: #ffffff;
+        }
+
+        .inac{
+          background-image: linear-gradient(to right top, #00ffc5, #00ffab, #00ff8c, #00ff65, #03ff2d);
+          color: #ffffff;
+        }
+
         @media (max-width: 401px) {
             .card{
                 width: unset;
@@ -199,27 +213,22 @@
 @section('content')
 <div class="container">
     <div class="main-body">
-      
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
 
-          @if (isset($res))
-            
-            @if ($res == "fail")
-              <div class="row alert alert-danger" role="alert">
-            @endif
-            @if ($res == "success")
-              <div class="row alert alert-info" role="alert">
-            @endif
-                <h5>$msg</h5>
+          @if ($user['etat'] == "inactive")
+            <div class="card etat inac">
+              <div class="card-body">
+                <h5>Veuillez patienter jusqu'à ce qu'un de nos administrateurs confirme les informations de votre compte.</h5>
+                <h6>Après la confirmation, vous aurez un accès complet à nos services.</h6>
               </div>
+            </div>
+          @endif
+          @if ($user['etat'] == "bloque")
+            <div class="card etat block">
+              <div class="card-body">
+                <h5>Ce compte a été bloqué en raison de la détection par notre système d'un mauvais comportement.</h5>
+                <h6>Pour plus d'informations, contactez-nous.</h6>
+              </div>
+            </div>
           @endif
 
           <div class="row gutters-sm col-md-12">
@@ -384,7 +393,7 @@
                 </div>
   			</div>
           <div class="cont col-12">
-            @if ($message = Session::get('success'))
+            @if ($message = Session::has('success'))
               <div class="alert alert-success">
                   <strong>{{ $message }}</strong>
               </div>

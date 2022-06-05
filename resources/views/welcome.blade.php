@@ -254,9 +254,6 @@
         <div class="row property-filter">
             @php
                 $i = 0; $cont = 8;
-                $pt = $mg = $br = 0 ;
-                $tr = $fm = 0 ;
-                $ap = $ms = $vl = 0 ;
             @endphp
             @foreach ($annonces as $annonce)
                 @if ($annonce['bein_type'] == "service")
@@ -294,10 +291,6 @@
                                             <li><i class="fa fa-bed"></i> {{ $item['chambre'] }}</li>
                                             <li><i class='Medium material-icons' >weekend </i> {{ $item['salon'] }}</li>
 
-                                                @if($item['category'] == "Appartement") $ap++;@endif
-                                                @if($item['category'] == "maisson") $ms++;@endif
-                                                @if($item['category'] == "villa") $vl++;@endif
-
                                         @endif
                                     @endforeach
                                 @endif
@@ -308,11 +301,6 @@
                                             <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
                                             <li><img src="https://img.icons8.com/ios-filled/50/000000/door-opened.png" width="20x20"/>{{ $item['nbr_piece'] }} </li>
                                             <li><img src="https://img.icons8.com/ios-glyphs/30/000000/stairs-up.png" width="20x20"/> {{ $item['etage'] }}</li>
-
-                                                @if($item['category'] == "plateaux") $pt++;@endif
-                                                @if($item['category'] == "magasin") $mg++;@endif
-                                                @if($item['category'] == "bereau") $br++;@endif
-
                                         @endif
                                     @endforeach
                                 @endif
@@ -322,10 +310,7 @@
                                         @if ($item['id'] == $annonce['bein_ID'])
                                             <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
                                             <li><img src="\img\zoning.png" alt="zone" width="10%">{{ $item['zonning'] }} </li>
-                                            @php
-                                                if($item['category'] == "terrain") $tr++;
-                                                if($item['category'] == "ferme") $fm++;
-                                            @endphp
+
                                         @endif
                                     @endforeach
                                 @endif
@@ -345,50 +330,7 @@
     </div>
 </section>
 
-{{-- statictics --}}
-<section class="team-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8">
-                <div class="section-title">
-                    <h4>Les statistic</h4>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="ts-item">
-                    <div class="ts-text">
-                        <img src="/img/real-estate.png"/>
-                        <h5>Immobilier</h5>
-                        <span>{{ $nbr_immo }}</span>
-                        <p>Maisson: {{$ms}} Appartement: {{$ap}} Villa: {{$vl}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ts-item">
-                    <div class="ts-text">
-                        <img src="/img/building.png"/>
-                        <h5>Service</h5>
-                        <span>{{ $nbr_serv }}</span>
-                        <p>Magasin: {{$mg}} Plateau: {{$pt}} Bureaux : {{$br}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ts-item">
-                    <div class="ts-text">
-                        <img src="/img/land.png">
-                        <h5>Terrain</h5>
-                        <span>{{ $nbr_terr }}</span>
-                        <p>Terrain: {{$tr}} Ferme: {{$fm}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{
 
 
 <script src="js/welcome/jquery-3.3.1.min.js"></script>

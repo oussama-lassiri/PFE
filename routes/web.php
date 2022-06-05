@@ -25,6 +25,10 @@ Route::get('nav', function () {
     return view('nav');
 })->name('nav');
 
+Route::get('contact', function () {
+    return view('contact.index');
+})->name('contact');
+
 Route::get('admin', function () {
     return view('admin_dir.theme');
 })->name('theme');
@@ -54,7 +58,12 @@ Route::get('admin/utilisateur',[second_page_controller::class,'admin_user'])->na
 Route::get('admin/utilisateur/details',[second_page_controller::class,'display_user'])->name('admin_user.display');
 Route::get('admin/utilisateur/tools',[second_page_controller::class,'admin_gestion_user'])->name('admin_user.gestion');
 Route::get('admin/utilisateur/tools/delete',[second_page_controller::class,'admin_delete_user'])->name('admin_user.delete');
+Route::get('admin/utilisateur/tools/etat',[second_page_controller::class,'admin_etat_user'])->name('admin_user.etat');
+Route::get('admin/utilisateur/tools/etat/block',[second_page_controller::class,'admin_block_user'])->name('admin_user.block');
 Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
+Route::post('admin/ajout_user',[second_page_controller::class,'admin_ajout_user'])->name('admin_user.ajout');
+Route::get('admin/annonce/details',[second_page_controller::class,'display_annonce'])->name('admin_annonce.display');
+Route::get('admin/annonce/tools/etat',[second_page_controller::class,'admin_etat_annonce'])->name('admin_annonce.etat');
 
 Route::resource('last_page', last_page_controller::class);
 

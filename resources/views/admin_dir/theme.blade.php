@@ -115,7 +115,7 @@
                         <ul class="submenu">
                             <li><a href="{{ route('admin_user') }}">Liste des utilisateurs</a></li>
                             <ul class="submenu">
-                                <li><a href="{{ route('register') }}"> Ajout d'utilisateur</a></li><!--route('admin_ajout_user')-->
+                                <li><a href="{{ route('admin_ajout_user') }}"> Ajout d'utilisateur</a></li><!--route('admin_ajout_user')-->
                                 <li><a href="{{ route('admin_user.gestion') }}">Gestion des comptes </a></li>
                             </ul>
                         </ul>

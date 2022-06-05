@@ -71,7 +71,7 @@
                 </div>
             </div>
         @endif
-        
+
         @if ($bein_type == "service")
             <div class="service">
                 <fieldset id="form">
@@ -117,12 +117,12 @@
             </div>
         @endif
 
-        @if ($bein['category'] == "maisson" || $bein['category'] == "villa")
+        @if ($bein['category'] == "Maisson" || $bein['category'] == "Villa")
             <div class="mv">
                 <fieldset id="form">
                     <div class="container">
                         <div class="title">
-                            <h1>Modifie les nformations de votre {{$bein['category']}} :</h1>
+                            <h1>Modifie les informations de votre {{$bein['category']}} :</h1>
                         </div>
                         <table>
                             <tr>

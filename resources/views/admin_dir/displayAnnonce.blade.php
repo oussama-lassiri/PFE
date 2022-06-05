@@ -3,7 +3,86 @@
 @section('style admin')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="\css\style.css">
+    <style>
+        .titre_annonce {
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            text-align: left;
+        }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        .secondTD {
+            text-align: center;
+        }
+        .firstTD {
+            text-align: left;
+        }
+        td {
+            padding: 15px;
+            //background-color: rgba(255, 255, 255, 0.2);
+            color: rgb(255, 255, 255);
+        }
+        th{
+            font-size: larger;
+            height: 40px;
+            text-align: center;
+            //background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+
+        .slider .photos {
+            position: relative;
+            height: 45%;
+            width: 45%;
+        }
+
+        .slider .photos img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .slider .photos img.shown {
+            opacity: 1;
+        }
+
+        .prev:before,
+        .next:before {
+            color: #fff;
+            font-size: 100px;
+            position: absolute;
+            top: 35%;
+            cursor: pointer;
+        }
+
+        .prev:before {
+            content: '<';
+            left: 0;
+        }
+
+        .next:before {
+            content: '>';
+            right: 0;
+        }
+
+    </style>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <style>
+        .trans{
+            text-decoration-color: #2b94e5;
+        }
+
+
+    </style>
     <script>
         import { Fancybox, Carousel, Panzoom } from "@fancyapps/ui";
     </script>
@@ -81,21 +160,7 @@
             }
         };
     </script>
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
-    />
-    <style>
-        .prix_trans{
-            background: #632c65;
-            background: -moz-linear-gradient(-45deg, #fca6ff 15%, #56a5e2 100%);
-            background: -webkit-linear-gradient(-45deg, #fca3ff 15%,#56a5e2 100%);
-            background: linear-gradient(135deg, #fdb8ff 15%,#56a5e2 100%);
-        }
-        .container{
-            margin-top: 6%;
-        }
-    </style>
+
 @endsection
 
 @section('page', 'Espace annonce ')
@@ -103,6 +168,17 @@
 @section('right content')
 
     <div class="row">
+
+            <div  class="col-xl-4">
+                <a href="{{ url()->previous() }}" class="btn btn-info me-md-2" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+                        <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+                    </svg>
+                    Retour
+                </a>
+                <br><br>
+            </div>
+            <br>
 
             <div id="myCarousel" class="carousel" align = "center">
                 @foreach ($img as $item)
@@ -115,11 +191,11 @@
             </div>
             <br>
 
-            <div class="col-8">
+            <div class="col-xl-8">
                 <span class="titre_annonce">{{$annonce['titre']}}</span>
                 <table>
-                    <tr class="table-info prix_trans">
-                        <td class="firstTD" colspan="2"><h3>À {{ $trans }}</h3></td>
+                    <tr >
+                        <td class="firstTD " colspan="2"><h3 class="trans">À {{ $trans }}</h3></td>
                         <td colspan="2"><h2><span class="badge bg-info">Prix: {{$annonce['prix']}} DH</span></h2></td>
                     </tr>
                     @if ($annonce['bein_type'] == "immobilier")
@@ -146,7 +222,12 @@
                             <tr>
                                 <td class="firstTD">
                                     <div class="p-2 flex-fill bd-highlight">
-                                        <img src="\img\etage.png" width="20%"> Etage
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                                        </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+                                            <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+                                        </svg> Etage
                                     </div>
                                 </td>
                                 <td class="secondTD">Numéro {{$bein['etage']}} </td>
@@ -155,12 +236,17 @@
                             <tr>
                                 <td class="firstTD">
                                     <div class="p-2 flex-fill bd-highlight">
-                                        <img src="\img\etage.png" width="20%"> Nombres d'étages
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                                        </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+                                            <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+                                        </svg> Nombre d'étages
                                     </div>
                                 </td>
                                 <td class="secondTD">{{$bein['nbr_etage']}} étage(s)</td>
                                 <td class="firstTD"><img src="\img\room.png">Surface habitable </td>
-                                <td class="secondTD">{{$bein['surface_habitable']}} m²</td>
+                                <td >{{$bein['surface_habitable']}} m²</td>
                             </tr>
                         @endif
                     @endif
@@ -257,13 +343,13 @@
                         <div class="card-body">
                             <a class="video-popup" href="yout" title="Virtual Tour">
                                 @if ($annonce['bein_type'] == "immoblier")
-                                    <img src="\img\property-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
+                                    <img src="" class="img-responsive wp-post-image" alt="visite virtuelle du bien ">
                                 @endif
                                 @if ($annonce['bein_type'] == "service")
-                                    <img src="\img\service-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
+                                    <img src="" class="" alt="visite virtuelle du bien">
                                 @endif
                                 @if ($annonce['bein_type'] == "terrain")
-                                    <img src="\img\terrain-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
+                                    <img src="" class="img-responsive wp-post-image" alt="visite virtuelle du bien">
                                 @endif
 
                             </a>

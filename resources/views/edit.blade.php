@@ -18,7 +18,7 @@
                 <fieldset id="form">
                     <div class="container">
                         <div class="title">
-                            <h1> modifei les Informations de votre appartement :</h1>
+                            <h1> Modifie les Informations de votre appartement :</h1>
                         </div>
                         <table>
                             <tr>
@@ -210,7 +210,8 @@
                                 </select>
                                 </th>
                             </tr>
-                    </table>
+                        </table>
+                    </div>
                 </fieldset>
                 <input type="text" name="type" value="terrain" hidden>
                 <input type="text" value="{{$bein['category']}}" name="category" hidden>
@@ -219,6 +220,7 @@
                 </div>
             </div>
         @endif
+
         <input type="text" name="annonceID" value="{{ $annonceID }}" hidden>
     </form>
 </div>
@@ -226,13 +228,13 @@
 <script>
     $(function() {
     // Multiple images preview with JavaScript
-    var multiImgPreview = function(input, imgPreviewPlaceholder) {
+    let multiImgPreview = function(input, imgPreviewPlaceholder) {
 
         if (input.files) {
-            var filesAmount = input.files.length;
+            let filesAmount = input.files.length;
 
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
+            for (let i = 0; i < filesAmount; i++) {
+                let reader = new FileReader();
 
                 reader.onload = function(event) {
                     $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);

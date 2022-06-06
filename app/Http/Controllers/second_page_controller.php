@@ -8,6 +8,7 @@ use App\Models\immobilier;
 use App\Models\service;
 use App\Models\user;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -435,8 +436,8 @@ class second_page_controller extends Controller
     public function admin_area(){
         $les_annonce = annonce::all();
         $an_totale = count($les_annonce);
-        $annonce = array();
-        $admin = User::find(Request('adminID'));
+
+        //$admin = User::find(Request('adminID'));
         $les_users = user::all();
         $user = array();
         $i = 0;
@@ -456,11 +457,38 @@ class second_page_controller extends Controller
             array_unshift($user,$u);
         }
 
-        return view('admin_dir.admin')->with(['admin'=> User::find(Request('adminID')),
+        $new_annonce = array();
+        $user_nom = array();
+        $new_user = array();
+        $st_a = 0;
+        foreach($les_annonce as $an) {
+
+            if ($an['etat'] == "inactive")
+            {
+                $st_a++;
+                $nm_user = user::find($an['user_ID'])['name'];
+                array_push($user_nom,$nm_user);
+                array_push($new_annonce,$an);
+            }
+        }
+        foreach ($les_users as $u)
+        {
+            if($u['etat'] == "inactive")
+            {
+                array_push($new_user,$u);
+            }
+        }
+
+
+        return view('admin_dir.admin')->with([//'admin'=> User::find(Request('adminID')),
                 'user'=> $user,
                 'nb_annonce' => $nb_annonce,
                 'users' => $users,
-                'an_totale' => $an_totale
+                'an_totale' => $an_totale,
+                'new_user' => $new_user,
+                'new_annonce' => $new_annonce,
+                'user_nom' => $user_nom,
+                'sta' => $st_a
             ]
         );
     }
@@ -548,10 +576,52 @@ class second_page_controller extends Controller
         if($user['etat'] == "active")
         {
             $user->etat = "desactive";
+            $u_id = $user['id'];
+            foreach (annonce::all() as $an)
+            {
+                if($u_id == $an['user_ID'])
+                {
+                    $bein_type = $an['bein_type'];
+                    if($bein_type == "immoblier")
+                    {
+                        $an->etat = "desactive";
+                    }
+                    if($bein_type == "terrain")
+                    {
+                        $an->etat = "desactive";
+                    }
+                    if($bein_type == "service")
+                    {
+                        $an->etat = "desactive";
+                    }
+                    $an->update();
+                }
+            }
         }
         else
         {
             $user->etat = "active";
+            $u_id = $user['id'];
+            foreach (annonce::all() as $an)
+            {
+                if($u_id == $an['user_ID'])
+                {
+                    $bein_type = $an['bein_type'];
+                    if($bein_type == "immoblier")
+                    {
+                        $an->etat = "active";
+                    }
+                    if($bein_type == "terrain")
+                    {
+                        $an->etat = "active";
+                    }
+                    if($bein_type == "service")
+                    {
+                        $an->etat = "active";
+                    }
+                    $an->update();
+                }
+            }
         }
 
         $user->update();
@@ -562,8 +632,47 @@ class second_page_controller extends Controller
     {
         $user = user::find($request->input('u'));
         $user->etat = "bloque";
+        $u_id = $user['id'];
+        foreach (annonce::all() as $an)
+        {
+            if($u_id == $an['user_ID'])
+            {
+                $bein_type = $an['bein_type'];
+                if($bein_type == "immoblier")
+                {
+                    $an->etat = "desactive";
+                }
+                if($bein_type == "terrain")
+                {
+                    $an->etat = "desactive";
+                }
+                if($bein_type == "service")
+                {
+                    $an->etat = "desactive";
+                }
+                $an->update();
+            }
+        }
         $user->update();
         return back()->with('message',' Etat du profile de ` '.$user['name'].' `  est modifié avec succès.              ');
+
+    }
+
+    public function admin_user_add(Request $request){
+        $user = new user();
+
+        $user->name = $request->get('name');
+        $user->genre = $request->get('genre');
+        $user->cin = $request->get('cin');
+        $user->ville = $request->get('ville');
+        $user->email = $request->get('email');
+        $user->phone = $request->get('phone');
+        $user->password = Hash::make($request->get('password'));
+        $user->etat = 'inactive';
+
+        $user->save();
+
+        return  Redirect::back()->with('message',' L\'utilsateur : ` '.$user['name'].' `  est creé avec succès.              ');
 
     }
 
@@ -576,7 +685,6 @@ class second_page_controller extends Controller
         $i = 0;
 
         foreach($les_annonce as $an){
-            $users = user::find($an['user_ID']);
             $nm_user = user::find($an['user_ID'])['name'];
             $bein_type = $an['bein_type'];
             if($bein_type == "immobilier")
@@ -592,7 +700,7 @@ class second_page_controller extends Controller
             $$an['images_path'] = Str::remove("\"", $an['images_path']);
             $an['images_path'] = Str::before($an['images_path'], ",") ;
             $an['images_path'] = Str::before($an['images_path'], "\"") ;
-            array_push($annonce, $an);
+            array_push($annonce,$an);
             array_push($user,$nm_user);
         }
         return view('admin_dir.annonce')->with([
@@ -683,6 +791,84 @@ class second_page_controller extends Controller
         return back()->with('message',' Etat d`annonce est modifié avec succès.              ');
     }
 
+    public function admin_gestion_annonce(Request $request)
+    {
+        $annonce = annonce::find($request->get('annonce'));
+
+        $bein_type = $annonce['bein_type'];
+        if($bein_type == "immobilier")
+            $bein = immobilier::find($annonce['bein_ID']);
+
+        if($bein_type == "terrain")
+            $bein = terrain::find($annonce['bein_ID']);
+
+        if($bein_type == "service")
+            $bein = service::find($annonce['bein_ID']);
+
+        return view('admin_dir.gestionAnnonce')->with([
+            'bein' => $bein,
+            'bein_type' => $bein_type,
+            'annonceID' => $annonce['id']
+        ]);
+    }
+
+    public function admin_edit_annonce(Request $request)
+    {
+        if($request->input('type') == "immobilier"){
+            $annonce = annonce::find($request->input('annonceID'));
+            $habit_table = immobilier::find($annonce['bein_ID']);
+            $habit_table->chambre = $request->input('chambre');
+            $habit_table->surface_totale = $request->input('surface_totale');
+            $habit_table->salon = $request->input('salon');
+            $habit_table->salle_de_bain = $request->input('salle_de_bain');
+            $habit_table->age_de_bien = $request->input('age_de_bien');
+            if(  $request->input('category') == 'Appartement'){
+                $habit_table->etage = $request->input('etage');
+                $habit_table->category = $request->input('category');
+                $habit_table->surface_habitable = null;
+                $habit_table->nbr_etage = null;
+            }
+            if($request->input('category') == 'maisson' || $request->input('category') == 'villa'){
+                $habit_table->etage = null;
+                $habit_table->surface_habitable = $request->input('surface_habitable');
+                $habit_table->category = $request->input('category');
+                $habit_table->nbr_etage = $request->input('nbr_etage');
+            }
+            //$habit_table->supp = implode(',', $request->get('supp'));
+
+            $habit_table->update();
+            return view('admin_dir.editAnnonce')->with(['beinID'=>$habit_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
+        }
+
+        if($request->input('type') == 'service'){
+            $annonce = annonce::find($request->input('annonceID'));
+            $service_table = service::find($annonce['bein_ID']);
+            $service_table->surface_totale = $request->input('surface_totale');
+            $service_table->surface_soupente = $request->input('surface_soupente');
+            $service_table->category = $request->input('category');
+            $service_table->etage = $request->input('etage');
+            $service_table->nbr_piece = $request->input('nbr_piece');
+            $service_table->category = $request->input('category');
+            // $service_table->supp = implode(',', $request->get('supp'));
+
+            $service_table->update();
+            return view('admin_dir.editAnnonce')->with(['beinID'=>$service_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
+        }
+
+        if($request->input('type') == 'terrain'){
+            $annonce = annonce::find($request->input('annonceID'));
+            $immob_table = terrain::find($annonce['bein_ID']);
+            $immob_table->surface_totale = $request->input('surface_totale');
+            $immob_table->category = $request->input('category');
+            $immob_table->zonning = $request->get('zonning');
+            $immob_table->category = $request->input('category');
+            // $immob_table->supp = implode(',', $request->get('supp'));
+
+            $immob_table->update();
+            return view('admin_dir.editAnnonce')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
+        }
+    }
+
     public function admin_statistique()
     {
         return view('admin_dir.statistique');
@@ -708,24 +894,6 @@ class second_page_controller extends Controller
         $annonce->delete();
 
         return back()->with(['annonceID'=>$annonceID]);
-
-    }
-
-    public function admin_user_add(Request $request){
-        $user = new user();
-
-        $user->name = $request->get('name');
-        $user->genre = $request->get('genre');
-        $user->cin = $request->get('cin');
-        $user->ville = $request->get('ville');
-        $user->email = $request->get('email');
-        $user->phone = $request->get('phone');
-        $user->password = Hash::make($request->get('password'));
-        $user->etat = 'inactive';
-
-        $user->save();
-
-        return back()->with('message',' L\'utilsateur : ` '.$user['name'].' `  est creé avec succès.              ');
 
     }
 }

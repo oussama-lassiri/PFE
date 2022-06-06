@@ -26,14 +26,17 @@ class second_page_controller extends Controller
         $nbr_terr = 0;
         $an = array();
         foreach($annonces as $annonce){
-            array_unshift($an, $annonce);
-            if($annonce['bein_type'] == "immobilier") {$nbr_immo++;}
-            if($annonce['bein_type'] == "service") {$nbr_serv++;}
-            if($annonce['bein_type'] == "terrain") {$nbr_terr++;}
-            $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
-            $data = Str::remove("\"", $data);
-            $data = Str::before($data, ",");
-            array_unshift($imgs, $data);
+            if($annonce['etat'] == "active"){
+                array_unshift($an, $annonce);
+                if($annonce['bein_type'] == "immobilier") {$nbr_immo++;}
+                if($annonce['bein_type'] == "service") {$nbr_serv++;}
+                if($annonce['bein_type'] == "terrain") {$nbr_terr++;}
+                $data = Str::before(Str::after($annonce['images_path'], "[\""), "\"]");
+                $data = Str::remove("\"", $data);
+                $data = Str::before($data, ",");
+                array_unshift($imgs, $data);
+            }
+            
         }
 
         return view('welcome')->with([
@@ -202,7 +205,7 @@ class second_page_controller extends Controller
                 $$an['images_path'] = Str::remove("\"", $an['images_path']);
                 $an['images_path'] = Str::before($an['images_path'], ",") ;
                 $an['images_path'] = Str::before($an['images_path'], "\"") ;
-                array_push($annonce, $an);
+                array_unshift($annonce, $an);
             }
         }
         return view('user1')->with(['user'=> $user,
@@ -317,7 +320,7 @@ class second_page_controller extends Controller
                 $$an['images_path'] = Str::remove("\"", $an['images_path']);
                 $an['images_path'] = Str::before($an['images_path'], ",") ;
                 $an['images_path'] = Str::before($an['images_path'], "\"") ;
-                array_push($annonce, $an);
+                array_unshift($annonce, $an);
             }
         }
         return view('user1')->with(['user'=> $user,
@@ -449,8 +452,8 @@ class second_page_controller extends Controller
                 }
 
             }
-            array_push($nb_annonce,$cmpt);
-            array_push($user,$u);
+            array_unshift($nb_annonce,$cmpt);
+            array_unshift($user,$u);
         }
 
         return view('admin_dir.admin')->with(['admin'=> User::find(Request('adminID')),
@@ -495,7 +498,7 @@ class second_page_controller extends Controller
                 }
 
             }
-            array_push($nb_annonce,$cmpt);
+            array_unshift($nb_annonce,$cmpt);
             array_push($user,$u);
         }
 
@@ -574,7 +577,6 @@ class second_page_controller extends Controller
 
         foreach($les_annonce as $an){
             $users = user::find($an['user_ID']);
-            return $users;
             $nm_user = user::find($an['user_ID'])['name'];
             $bein_type = $an['bein_type'];
             if($bein_type == "immobilier")
@@ -622,11 +624,11 @@ class second_page_controller extends Controller
         $img = array();
         while($data != ""){
             $value = Str::afterLast($data, ",");
-            array_push($img, $value);
+            array_unshift($img, $value);
             $data = Str::beforeLast($data, ",");
             if(!Str::contains($data, ",")) {
                 $value = Str::afterLast($data, ",") ;
-                array_push($img, $value);
+                array_unshift($img, $value);
                 break;
             }
         }
@@ -636,11 +638,11 @@ class second_page_controller extends Controller
         $supp = array();
         while($data != ""){
             $value = Str::afterLast($data, ",");
-            array_push($supp, $value);
+            array_unshift($supp, $value);
             $data = Str::beforeLast($data, ",");
             if(!Str::contains($data, ",")) {
                 $value = Str::afterLast($data, ",");
-                array_push($supp, $value);
+                array_unshift($supp, $value);
                 break;
             }
         }

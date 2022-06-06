@@ -68,84 +68,84 @@
     </style>
         <!--search bar settings -->
     <style>
-        *, *::before, *::after { box-sizing: border-box; }
+            *, *::before, *::after { box-sizing: border-box; }
 
-        body {
-        background: HSLA(0, 0%, 96%, 1.00);
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-        margin-top: 100px;
-        }
+            body {
+            background: HSLA(0, 0%, 96%, 1.00);
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+            margin-top: 100px;
+            }
 
-        .product-search {
-        display: flex;
-        align-items: center;
-        background: white;
-        border-radius: 5px;
-        margin: 0 auto;
-        box-shadow: rgba(0,0,0,.172549) 0 6px 12px 0;
-        cursor: pointer;
-        }
+            .product-search {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 5px;
+            margin: 0 auto;
+            box-shadow: rgba(0,0,0,.172549) 0 6px 12px 0;
+            cursor: pointer;
+            }
 
-        .search-element {
-        display: flex;
-        flex-grow: 2;
-        flex-direction: column;
-        border-right: 1px solid rgba(10,10,10,.1);
-        padding: 1em;
-        }
+            .search-element {
+            display: flex;
+            flex-grow: 2;
+            flex-direction: column;
+            border-right: 1px solid rgba(10,10,10,.1);
+            padding: 1em;
+            }
 
-        .search-label {
-        font-weight: 700;
-        }
+            .search-label {
+            font-weight: 700;
+            }
 
-        .search-input {
-        border: none;
-        appearance: none;
-        outline: none;
-        width: 100%;
-        font-size: 1.2em;
-        line-height: 1.2em;
-        margin-top: 5px;
-        }
+            .search-input {
+            border: none;
+            appearance: none;
+            outline: none;
+            width: 100%;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            margin-top: 5px;
+            }
 
-        .search-input:focus {
-        box-shadow: 0px 2px 0px 0px darkturquoise;
-        }
+            .search-input:focus {
+            box-shadow: 0px 2px 0px 0px darkturquoise;
+            }
 
-        #search-button {
-        display: inline-block;
-        flex-grow: 1;
-        height: 80px;
-        line-height: 80px;
-        padding: 0 2em;
-        text-align: center;
-        font-size: 1.2em;
-        font-weight: 100;
-        border: 0;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        color: white;
-
-        transition: background-color 1s ease;
-        }
-        <!--  /*0.8s*/  -->
-        #search-button:hover {
-        background-color: darkturquoise ;
-        }
-        .label{
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            padding: 3px 10px 2px;
+            #search-button {
             display: inline-block;
-            background: #0166D0;
-            color: #ffffff;
-        }
-        #Background_image{
-            background-image: url("/img/welcome.jpg");
-        }
+            flex-grow: 1;
+            height: 80px;
+            line-height: 80px;
+            padding: 0 2em;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 100;
+            border: 0;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            color: white;
+
+            transition: background-color 1s ease;
+            }
+            <!--  /*0.8s*/  -->
+            #search-button:hover {
+            background-color: darkturquoise ;
+            }
+            .label{
+                font-size: 12px;
+                font-weight: 600;
+                text-transform: uppercase;
+                padding: 3px 10px 2px;
+                display: inline-block;
+                background: #0166D0;
+                color: #ffffff;
+            }
+            #Background_image{
+                background-image: url("/img/welcome.jpg");
+            }
     </style>
 @endsection
 
@@ -172,7 +172,7 @@
     <!-- Background image -->
 
 <!--search bar -->
-<form action="#" method="get">
+<form action="{{ route('search') }}" method="get">
     <div class="product-search">
         <div class="search-element">
             <label class="search-label">le bien que vous cherchez ?</label>

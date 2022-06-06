@@ -8,6 +8,7 @@ use App\Models\immobilier;
 use App\Models\service;
 use App\Models\user;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -432,8 +433,8 @@ class second_page_controller extends Controller
     public function admin_area(){
         $les_annonce = annonce::all();
         $an_totale = count($les_annonce);
-        $annonce = array();
-        $admin = User::find(Request('adminID'));
+
+        //$admin = User::find(Request('adminID'));
         $les_users = user::all();
         $user = array();
         $i = 0;
@@ -453,11 +454,38 @@ class second_page_controller extends Controller
             array_push($user,$u);
         }
 
-        return view('admin_dir.admin')->with(['admin'=> User::find(Request('adminID')),
+        $new_annonce = array();
+        $user_nom = array();
+        $new_user = array();
+        $st_a = 0;
+        foreach($les_annonce as $an) {
+
+            if ($an['etat'] == "inactive")
+            {
+                $st_a++;
+                $nm_user = user::find($an['user_ID'])['name'];
+                array_push($user_nom,$nm_user);
+                array_push($new_annonce,$an);
+            }
+        }
+        foreach ($les_users as $u)
+        {
+            if($u['etat'] == "inactive")
+            {
+                array_push($new_user,$u);
+            }
+        }
+
+
+        return view('admin_dir.admin')->with([//'admin'=> User::find(Request('adminID')),
                 'user'=> $user,
                 'nb_annonce' => $nb_annonce,
                 'users' => $users,
-                'an_totale' => $an_totale
+                'an_totale' => $an_totale,
+                'new_user' => $new_user,
+                'new_annonce' => $new_annonce,
+                'user_nom' => $user_nom,
+                'sta' => $st_a
             ]
         );
     }
@@ -545,10 +573,52 @@ class second_page_controller extends Controller
         if($user['etat'] == "active")
         {
             $user->etat = "desactive";
+            $u_id = $user['id'];
+            foreach (annonce::all() as $an)
+            {
+                if($u_id == $an['user_ID'])
+                {
+                    $bein_type = $an['bein_type'];
+                    if($bein_type == "immoblier")
+                    {
+                        $an->etat = "desactive";
+                    }
+                    if($bein_type == "terrain")
+                    {
+                        $an->etat = "desactive";
+                    }
+                    if($bein_type == "service")
+                    {
+                        $an->etat = "desactive";
+                    }
+                    $an->update();
+                }
+            }
         }
         else
         {
             $user->etat = "active";
+            $u_id = $user['id'];
+            foreach (annonce::all() as $an)
+            {
+                if($u_id == $an['user_ID'])
+                {
+                    $bein_type = $an['bein_type'];
+                    if($bein_type == "immoblier")
+                    {
+                        $an->etat = "active";
+                    }
+                    if($bein_type == "terrain")
+                    {
+                        $an->etat = "active";
+                    }
+                    if($bein_type == "service")
+                    {
+                        $an->etat = "active";
+                    }
+                    $an->update();
+                }
+            }
         }
 
         $user->update();
@@ -559,8 +629,47 @@ class second_page_controller extends Controller
     {
         $user = user::find($request->input('u'));
         $user->etat = "bloque";
+        $u_id = $user['id'];
+        foreach (annonce::all() as $an)
+        {
+            if($u_id == $an['user_ID'])
+            {
+                $bein_type = $an['bein_type'];
+                if($bein_type == "immoblier")
+                {
+                    $an->etat = "desactive";
+                }
+                if($bein_type == "terrain")
+                {
+                    $an->etat = "desactive";
+                }
+                if($bein_type == "service")
+                {
+                    $an->etat = "desactive";
+                }
+                $an->update();
+            }
+        }
         $user->update();
         return back()->with('message',' Etat du profile de ` '.$user['name'].' `  est modifié avec succès.              ');
+
+    }
+
+    public function admin_user_add(Request $request){
+        $user = new user();
+
+        $user->name = $request->get('name');
+        $user->genre = $request->get('genre');
+        $user->cin = $request->get('cin');
+        $user->ville = $request->get('ville');
+        $user->email = $request->get('email');
+        $user->phone = $request->get('phone');
+        $user->password = Hash::make($request->get('password'));
+        $user->etat = 'inactive';
+
+        $user->save();
+
+        return  Redirect::back()->with('message',' L\'utilsateur : ` '.$user['name'].' `  est creé avec succès.              ');
 
     }
 
@@ -573,8 +682,6 @@ class second_page_controller extends Controller
         $i = 0;
 
         foreach($les_annonce as $an){
-            $users = user::find($an['user_ID']);
-            return $users;
             $nm_user = user::find($an['user_ID'])['name'];
             $bein_type = $an['bein_type'];
             if($bein_type == "immobilier")
@@ -590,7 +697,7 @@ class second_page_controller extends Controller
             $$an['images_path'] = Str::remove("\"", $an['images_path']);
             $an['images_path'] = Str::before($an['images_path'], ",") ;
             $an['images_path'] = Str::before($an['images_path'], "\"") ;
-            array_push($annonce, $an);
+            array_push($annonce,$an);
             array_push($user,$nm_user);
         }
         return view('admin_dir.annonce')->with([
@@ -787,21 +894,7 @@ class second_page_controller extends Controller
 
     }
 
-    public function admin_user_add(Request $request){
-        $user = new user();
 
-        $user->name = $request->get('name');
-        $user->genre = $request->get('genre');
-        $user->cin = $request->get('cin');
-        $user->ville = $request->get('ville');
-        $user->email = $request->get('email');
-        $user->phone = $request->get('phone');
-        $user->password = Hash::make($request->get('password'));
-        $user->etat = 'inactive';
 
-        $user->save();
 
-        return back()->with('message',' L\'utilsateur : ` '.$user['name'].' `  est creé avec succès.              ');
-
-    }
 }

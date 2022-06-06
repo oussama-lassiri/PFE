@@ -202,6 +202,11 @@
           color: #ffffff;
         }
 
+        .blur img {
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+        }
+
         @media (max-width: 401px) {
             .card{
                 width: unset;
@@ -225,7 +230,7 @@
           @if ($user['etat'] == "bloque")
             <div class="card etat block">
               <div class="card-body">
-                <h5>Ce compte a été bloqué en raison de la détection par notre système d'un mauvais comportement.</h5>
+                <h5>Ce compte a été bloqué en raison d'un mauvais comportement de votre part détecté par notre système.</h5>
                 <h6>Pour plus d'informations, contactez-nous.</h6>
               </div>
             </div>
@@ -401,7 +406,12 @@
             <?php $i= 0; ?>
               @foreach ($annonce as $item)
                 <div class="card1 col-8">
-                  <div class="card-header">
+                    @if($item['etat'] == "active")
+                        <div class="card-header ">
+                    @else
+                        <div class="card-header blur">
+                    @endif
+
                       <img src="\uploads\{{ $item['images_path'] }}" alt="bein" />
                   </div>
                   <div class="card-body1">

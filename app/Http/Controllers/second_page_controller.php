@@ -681,6 +681,84 @@ class second_page_controller extends Controller
         return back()->with('message',' Etat d`annonce est modifié avec succès.              ');
     }
 
+    public function admin_gestion_annonce(Request $request)
+    {
+        $annonce = annonce::find($request->get('annonce'));
+
+        $bein_type = $annonce['bein_type'];
+        if($bein_type == "immobilier")
+            $bein = immobilier::find($annonce['bein_ID']);
+
+        if($bein_type == "terrain")
+            $bein = terrain::find($annonce['bein_ID']);
+
+        if($bein_type == "service")
+            $bein = service::find($annonce['bein_ID']);
+
+        return view('admin_dir.gestionAnnonce')->with([
+            'bein' => $bein,
+            'bein_type' => $bein_type,
+            'annonceID' => $annonce['id']
+        ]);
+    }
+
+    public function admin_edit_annonce(Request $request)
+    {
+        if($request->input('type') == "immobilier"){
+            $annonce = annonce::find($request->input('annonceID'));
+            $habit_table = immobilier::find($annonce['bein_ID']);
+            $habit_table->chambre = $request->input('chambre');
+            $habit_table->surface_totale = $request->input('surface_totale');
+            $habit_table->salon = $request->input('salon');
+            $habit_table->salle_de_bain = $request->input('salle_de_bain');
+            $habit_table->age_de_bien = $request->input('age_de_bien');
+            if(  $request->input('category') == 'Appartement'){
+                $habit_table->etage = $request->input('etage');
+                $habit_table->category = $request->input('category');
+                $habit_table->surface_habitable = null;
+                $habit_table->nbr_etage = null;
+            }
+            if($request->input('category') == 'maisson' || $request->input('category') == 'villa'){
+                $habit_table->etage = null;
+                $habit_table->surface_habitable = $request->input('surface_habitable');
+                $habit_table->category = $request->input('category');
+                $habit_table->nbr_etage = $request->input('nbr_etage');
+            }
+            //$habit_table->supp = implode(',', $request->get('supp'));
+
+            $habit_table->update();
+            return view('admin_dir.editAnnonce')->with(['beinID'=>$habit_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
+        }
+
+        if($request->input('type') == 'service'){
+            $annonce = annonce::find($request->input('annonceID'));
+            $service_table = service::find($annonce['bein_ID']);
+            $service_table->surface_totale = $request->input('surface_totale');
+            $service_table->surface_soupente = $request->input('surface_soupente');
+            $service_table->category = $request->input('category');
+            $service_table->etage = $request->input('etage');
+            $service_table->nbr_piece = $request->input('nbr_piece');
+            $service_table->category = $request->input('category');
+            // $service_table->supp = implode(',', $request->get('supp'));
+
+            $service_table->update();
+            return view('admin_dir.editAnnonce')->with(['beinID'=>$service_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
+        }
+
+        if($request->input('type') == 'terrain'){
+            $annonce = annonce::find($request->input('annonceID'));
+            $immob_table = terrain::find($annonce['bein_ID']);
+            $immob_table->surface_totale = $request->input('surface_totale');
+            $immob_table->category = $request->input('category');
+            $immob_table->zonning = $request->get('zonning');
+            $immob_table->category = $request->input('category');
+            // $immob_table->supp = implode(',', $request->get('supp'));
+
+            $immob_table->update();
+            return view('admin_dir.editAnnonce')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
+        }
+    }
+
     public function admin_statistique()
     {
         return view('admin_dir.statistique');

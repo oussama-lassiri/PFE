@@ -65,6 +65,8 @@ Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->nam
 Route::post('admin/utilisateur/ajout',[second_page_controller::class,'admin_user_add'])->name('admin_user_add');
 Route::get('admin/annonce/details',[second_page_controller::class,'display_annonce'])->name('admin_annonce.display');
 Route::get('admin/annonce/tools/etat',[second_page_controller::class,'admin_etat_annonce'])->name('admin_annonce.etat');
+Route::put('admin/annonce/tools/edit_annonce', [second_page_controller::class, 'admin_edit_annonce'])->name('admin_annonce.edit');
+Route::get('admin/annonce/tools', [second_page_controller::class, 'admin_gestion_annonce'])->name('admin_annonce.gestion');
 
 Route::resource('last_page', last_page_controller::class);
 

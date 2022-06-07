@@ -1,5 +1,5 @@
 @extends('admin_dir.theme')
-
+@section('title admin','Statistique')
 @section('page','Statistique ')
 
 @section('right content')

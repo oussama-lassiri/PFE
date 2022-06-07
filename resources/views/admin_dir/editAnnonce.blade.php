@@ -1,5 +1,5 @@
 @extends('admin_dir.theme')
-
+@section('title admin','Gestion Annonce')
 @section('style admin')
 
     <style>

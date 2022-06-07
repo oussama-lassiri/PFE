@@ -28,7 +28,7 @@
                                 <span class="fa fa-map-marker"></span>
                             </div>
                             <div class="text">
-                            <p><span>Address:</span> Faculte De Science Agadir <br>B.P 8106, Agadir 80000, Morocco
+                            <p><span>Address:</span> Faculté De Science Agadir <br>B.P 8106, Agadir 80000, Morocco
                                                  </p>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <div class="col-md-7">
                                 <div class="contact-wrap w-100 p-md-5 p-4">
                                     <h3 class="mb-4">Contactez-nous</h3>
-                                    <div id="form-message-warning" class="mb-4"></div> 
+                                    <div id="form-message-warning" class="mb-4"></div>
                             <div id="form-message-success" class="mb-4">
                                 Votre message a été envoyé, merci !
                             </div>
@@ -80,7 +80,7 @@
                                                     <input type="text" class="form-control" name="name" id="name" placeholder="Nom">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6"> 
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="label" for="email">Email</label>
                                                     <input type="email" class="form-control" name="email" id="email" placeholder="Email">
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5 d-flex align-items-stretch">
-                                <div class="info-wrap w-100 p-5 img" style="background-image: url(img/logo.png);">
+                                <div class="info-wrap w-100  img" style="background-image: url(img/logo.png);">
                         </div>
                             </div>
                         </div>

@@ -203,11 +203,11 @@
                 <option value="Vente">Vente</option>
                 <option value="location mois">Location(mois)</option>
                 <option value="Location Jour">Location(jour)</option>
-            </select>        
+            </select>
         </div>
         <div id="search-button">
             <button class="btn btn-info btn-lg" type="submit" >Chercher</button>
-        </div > 
+        </div >
     </div>
 </form>
     <section class="property-section latest-property-section spad">
@@ -215,7 +215,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="section-title">
-                        <h4>List des bien</h4>
+                        <h4>Liste des biens</h4>
                     </div>
                 </div>
             </div>
@@ -227,10 +227,10 @@
                     @if ($annonce['bein_type'] == "service")
                         <div class="col-lg-4 col-md-6 mix all house">
                      @endif
-                    @if ($annonce['bein_type'] == "immobilier") 
+                    @if ($annonce['bein_type'] == "immobilier")
                         <div class="col-lg-4 col-md-6 mix all apart">
                     @endif
-                    @if ($annonce['bein_type'] == "terrain") 
+                    @if ($annonce['bein_type'] == "terrain")
                         <div class="col-lg-4 col-md-6 mix all office">
                     @endif
                         <div class="property-item">
@@ -263,7 +263,7 @@
                                             @endif
                                         @endforeach
                                     @endif
-    
+
                                     @if($annonce['bein_type'] == "service")
                                         @foreach ($beins as $item)
                                             @if ($item['id'] == $annonce['bein_ID'])
@@ -276,7 +276,7 @@
                                             @endif
                                         @endforeach
                                     @endif
-                                        
+
                                     @if($annonce['bein_type'] == "terrain")
                                         @foreach ($beins as $item)
                                             @if ($item['id'] == $annonce['bein_ID'])
@@ -292,13 +292,13 @@
                             </div>
                         </div>
                     </div>
-    
+
                 @endforeach
-                
+
             </div>
         </div>
     </section>
-    
+
     <script src="\js\welcome\jquery-3.3.1.min.js"></script>
     <script src="\js\welcome\bootstrap.min.js"></script>
     <script src="\js\welcome\jquery.magnific-popup.min.js"></script>

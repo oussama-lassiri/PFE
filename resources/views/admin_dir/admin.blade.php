@@ -1,5 +1,7 @@
 @extends('admin_dir.theme')
 
+@section('title admin','Dashboard')
+
 @section('page','Dashboard ')
 
 @section('right content')

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="{{asset('\img\logo.png')}}" sizes="16x16 32x32">
 <link rel="stylesheet" href="{{asset('assets/css/morris.css')}}">
 <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+<title>@yield('title admin')</title>
 @yield('style admin')
 <!-- jQuery  -->
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -65,14 +67,20 @@
                 <li class="dropdown notification-list list-inline-item">
                     <div class="dropdown notification-list nav-pro-img">
                         <a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/user-4.jpg" alt="user" class="rounded-circle">
+                            <img src="{{asset('https://bootdey.com/img/Content/avatar/avatar7.png')}}" alt="user" class="rounded-circle">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle"></i> Profile</a>
-                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings"></i> Settings</a>
+                            <a class="dropdown-item" href="{{ route('user_space', ['id' => Auth::user()->id]) }}"><i class="mdi mdi-account-circle"></i> Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                            <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                                   document.getElementById('logout-form').submit();"
+                            ><i class="mdi mdi-power text-danger"></i>
+                                {{ __('Quitter') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </li>

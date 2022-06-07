@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\annonce;
+use App\Models\comment;
 use App\Models\immobilier;
 use App\Models\service;
 use App\Models\terrain;
@@ -87,6 +88,7 @@ class last_page_controller extends Controller
         $bein_type = $annonce['bein_type'];
         $user = user::find($annonce['user_ID']);
         $transaction = $annonce['transaction'];
+        $comments = array();
 
         if($bein_type == "immobilier")
             $bein = immobilier::find($annonce['bein_ID']);
@@ -134,8 +136,13 @@ class last_page_controller extends Controller
             $trans = "louer(mois)";
         }
 
+        foreach(comment::all() as $cmt){
+            if($cmt['annonce_ID'] == $annonce['id'])
+            array_unshift($comments, $cmt);
+        }
 
         return view('last_page.show',[
+            'comments' => $comments,
             'annonce' => $annonce,
             'img' => $img,
             'bein' => $bein,

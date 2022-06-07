@@ -6,6 +6,7 @@ use App\Models\annonce;
 use App\Models\terrain;
 use App\Models\immobilier;
 use App\Models\service;
+use App\Models\comment;
 use App\Models\user;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -329,6 +330,19 @@ class second_page_controller extends Controller
                                     'bein_category' => $bein_category
                                     ]
                                 );
+    }
+
+    public function comment(Request $request){
+        
+        $cmt = new comment();
+        $cmt->annonce_ID = $request->get('annonce_ID');
+        $cmt->nom = $request->get('nom');
+        $cmt->email = $request->get('email');
+        $cmt->comment = $request->get('comment');
+        $cmt->etat = "inactive";
+        $cmt->save();
+
+        return redirect()->route('last_page.show', $request->get('annonce_ID'));
     }
 
     public function edit(Request $request){

@@ -86,7 +86,7 @@ th{
 .col-8{
     position: relative;
     margin-left: 0%;
-    width: 700px;
+    width:700px;
     bottom: 50%;
     padding-bottom: 0;
 }
@@ -196,3 +196,108 @@ transform: scale(1.1)
     content: '>';
     right: 0;
 }
+
+.prix_trans{
+    background: #632c65;
+    background: -moz-linear-gradient(-45deg, #fca6ff 15%, #56a5e2 100%);
+    background: -webkit-linear-gradient(-45deg, #fca3ff 15%,#56a5e2 100%);
+    background: linear-gradient(135deg, #fdb8ff 15%,#56a5e2 100%);
+}
+.container{
+    margin-top: 6%;
+}
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+form { max-width:420px; margin:50px auto; }
+
+.feedback-input {
+color:white;
+font-family: Helvetica, Arial, sans-serif;
+font-weight:500;
+font-size: 18px;
+border-radius: 5px;
+line-height: 22px;
+background-color: transparent;
+border:2px solid #00F6FF;
+transition: all 0.3s;
+padding: 13px;
+margin-bottom: 15px;
+width:100%;
+box-sizing: border-box;
+outline:0;
+}
+
+.feedback-input:focus { border:2px solid #01ff95; }
+
+textarea {
+height: 150px;
+line-height: 150%;
+resize:vertical;
+}
+
+[type="submit"] {
+font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+width: 100%;
+background-image: linear-gradient(to right top, #00f6ff, #00fbe8, #00fdc1, #00fc8a, #00f93f);
+border-radius:5px;
+border:0;
+cursor:pointer;
+color:white;
+font-size:24px;
+padding-top:10px;
+padding-bottom:10px;
+transition: all 0.3s;
+margin-top:-4px;
+font-weight:700;
+}
+[type="submit"]:hover { background:#CC4949; }
+
+.blockquote-wrapper {
+display: flex;
+padding: 0 20px;
+}
+
+/* Blockquote main style */
+.blockquote {
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    max-width: 720px;
+}
+
+/* Blockquote header */
+.blockquote h1 {
+    font-family: 'Abril Fatface', cursive;
+    position: relative; /* for pseudos */
+    color: #00aeff;
+    font-size: 1.8rem;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    border: 2px solid #fff;
+    border: solid 2px;
+    border-radius:20px;
+    padding: 25px;
+}
+
+.create-cmt{
+    background: #a7dbee;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #a7dbee);
+    background: linear-gradient(to right, #FFFFFF, #a7dbee);
+}
+
+.blockquote h4 {
+    position: relative;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    padding-top: 15px;
+    z-index: 1;
+    margin-left:20px;
+    padding-left:12px;
+}
+
+
+.blockquote h4:first-letter {
+margin-left:-12px;
+}
+

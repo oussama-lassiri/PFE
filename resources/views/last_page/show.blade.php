@@ -1,7 +1,7 @@
 @extends('nav')
 
 @section('style')
-    <title> testing image Desplay </title>
+    <title> {{ $annonce['titre'] }} </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="\css\style.css">
@@ -87,15 +87,7 @@
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
     />
     <style>
-        .prix_trans{
-            background: #632c65;
-            background: -moz-linear-gradient(-45deg, #fca6ff 15%, #56a5e2 100%);
-            background: -webkit-linear-gradient(-45deg, #fca3ff 15%,#56a5e2 100%);
-            background: linear-gradient(135deg, #fdb8ff 15%,#56a5e2 100%);
-        }
-        .container{
-            margin-top: 6%;
-        }
+        
     </style>
 @endsection
 
@@ -273,35 +265,34 @@
             </div><br>
 
             <div class="col" >
-                <h4 class="card-title">Video du bien</h4>
+                <h4 class="card-title">Les commentaires</h4>
                 <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
-                <div class="card video">
-                    <div class="card-body">
-                        <a class="video-popup" href="yout" title="Virtual Tour">
-                            @if ($annonce['bein_type'] == "immoblier")
-                                <img src="\img\property-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
-                            @endif
-                            @if ($annonce['bein_type'] == "service")
-                                <img src="\img\service-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
-                            @endif
-                            @if ($annonce['bein_type'] == "terrain")
-                                <img src="\img\terrain-video.jpg" class="img-responsive wp-post-image" alt="visite virtuelle">
-                            @endif
 
-                        </a>
+                @foreach ($comments as $comment)
+                    <div class="blockquote-wrapper">
+                        <div class="blockquote">
+                            <h4><img src="https://img.icons8.com/stickers/100/undefined/administrator-male.png" width="50x50"/>{{ $comment['nom'] }}<br></h4>
+                            <h1>{{ $comment['comment'] }}</h1>
+                        </div>
+                    </div> 
+                @endforeach
+
+                <div class="card video">
+                    <div class="card-body create-cmt">
+                        <h3>Créer un commentaire</h3>
+                        <hr>
+                        <form method="GET" action="{{ route('comment') }}"> 
+                            <input type="text" name="annonce_ID" value="{{ $annonce['id'] }}" hidden required/>     
+                            <input name="nom" type="text" class="feedback-input" placeholder="Nom" required/>   
+                            <input name="email" type="text" class="feedback-input" placeholder="Email" required/>
+                            <textarea name="comment" class="feedback-input" placeholder="Comment"></textarea>
+                            <input type="submit" value="Envoyer"/>
+                        </form>
                     </div>
                 </div>
                 <br>
             </div>
         </div>
-        <!-- End video area  -->
-
-        <!-- for youtube videos
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-      </div>
-        -->
-    </div>
     </div>
 
 

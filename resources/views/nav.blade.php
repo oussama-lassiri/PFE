@@ -134,7 +134,7 @@
 
         <div class="container-fluid">
                         <!-- NavBar Brand-->
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="{{ route('welcome') }}">
                         <img
                         src="\img\logo.png"
                         height="45"

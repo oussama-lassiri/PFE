@@ -1,5 +1,5 @@
 @extends('admin_dir.theme')
-
+@section('title admin','Gestion Annonce')
 @section('style admin')
     <link rel="stylesheet" href="{{asset('\css\second_page\second_page_style.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">

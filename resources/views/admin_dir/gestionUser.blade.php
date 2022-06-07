@@ -1,5 +1,5 @@
 @extends('admin_dir.theme')
-
+@section('title admin','Gestion Utilisateur')
 @section('style admin')
 
 @endsection

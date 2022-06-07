@@ -1,5 +1,5 @@
 @extends('admin_dir.theme')
-
+@section('title admin','Liste Utilisateurs')
 @section('page','Espace utilisateur ')
 
 

@@ -29,16 +29,6 @@ Route::get('contact', function () {
     return view('contact.index');
 })->name('contact');
 
-Route::get('admin', function () {
-    return view('admin_dir.theme');
-})->name('theme');
-
-Route::get('admin/statistiques', [second_page_controller::class,'admin_statistique'])->name('admin_statistique');
-
-Route::get('admin/utilisateur/ajout', function () {
-    return view('admin_dir.ajoutUser');
-})->name('admin_ajout_user');
-
 Route::get('/', [second_page_controller::class, 'welcome'])->name('welcome');
 Route::get('second_page/search', [second_page_controller::class, 'search'])->name('search');
 Route::get('second_page/resultat', [second_page_controller::class, 'resultat'])->name('resultat');
@@ -54,20 +44,36 @@ Route::put('second_page/update_annonce', [second_page_controller::class, 'update
 Route::get('second_page/edit', [second_page_controller::class, 'edit'])->name('second_page.edit');
 Route::get('second_page/delete',[second_page_controller::class,'destroy_bien'])->name('second_page.destroy_bien');
 Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->name('last_page.delete_annonce');
-Route::get('admin',[second_page_controller::class,'admin_area'])->name('admin');
-Route::get('admin/utilisateur',[second_page_controller::class,'admin_user'])->name('admin_user');
-Route::get('admin/utilisateur/details',[second_page_controller::class,'display_user'])->name('admin_user.display');
-Route::get('admin/utilisateur/tools',[second_page_controller::class,'admin_gestion_user'])->name('admin_user.gestion');
-Route::get('admin/utilisateur/tools/delete',[second_page_controller::class,'admin_delete_user'])->name('admin_user.delete');
-Route::get('admin/utilisateur/tools/etat',[second_page_controller::class,'admin_etat_user'])->name('admin_user.etat');
-Route::get('admin/utilisateur/tools/etat/block',[second_page_controller::class,'admin_block_user'])->name('admin_user.block');
-Route::get('admin/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
 
-Route::post('admin/utilisateur/ajout',[second_page_controller::class,'admin_user_add'])->name('admin_user_add');
-Route::get('admin/annonce/details',[second_page_controller::class,'display_annonce'])->name('admin_annonce.display');
-Route::get('admin/annonce/tools/etat',[second_page_controller::class,'admin_etat_annonce'])->name('admin_annonce.etat');
-Route::put('admin/annonce/tools/edit_annonce', [second_page_controller::class, 'admin_edit_annonce'])->name('admin_annonce.edit');
-Route::get('admin/annonce/tools', [second_page_controller::class, 'admin_gestion_annonce'])->name('admin_annonce.gestion');
+
+Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+    Route::get('/', function () {
+        return view('admin_dir.theme');
+    })->name('theme');
+
+    Route::get('/statistiques', [second_page_controller::class,'admin_statistique'])->name('admin_statistique');
+
+    Route::get('/utilisateur/ajout', function () {
+        return view('admin_dir.ajoutUser');
+    })->name('admin_ajout_user');
+
+    Route::get('/',[second_page_controller::class,'admin_area'])->name('admin');
+    Route::get('/utilisateur',[second_page_controller::class,'admin_user'])->name('admin_user');
+    Route::get('/utilisateur/details',[second_page_controller::class,'display_user'])->name('admin_user.display');
+    Route::get('/utilisateur/tools',[second_page_controller::class,'admin_gestion_user'])->name('admin_user.gestion');
+    Route::get('/utilisateur/tools/delete',[second_page_controller::class,'admin_delete_user'])->name('admin_user.delete');
+    Route::get('/utilisateur/tools/etat',[second_page_controller::class,'admin_etat_user'])->name('admin_user.etat');
+    Route::get('/utilisateur/tools/etat/block',[second_page_controller::class,'admin_block_user'])->name('admin_user.block');
+    Route::get('/annonce',[second_page_controller::class,'admin_annonce'])->name('admin_annonce');
+
+    Route::post('/utilisateur/ajout',[second_page_controller::class,'admin_user_add'])->name('admin_user_add');
+    Route::get('/annonce/details',[second_page_controller::class,'display_annonce'])->name('admin_annonce.display');
+    Route::get('/annonce/tools/etat',[second_page_controller::class,'admin_etat_annonce'])->name('admin_annonce.etat');
+    Route::put('/annonce/tools/edit_annonce', [second_page_controller::class, 'admin_edit_annonce'])->name('admin_annonce.edit');
+    Route::get('/annonce/tools', [second_page_controller::class, 'admin_gestion_annonce'])->name('admin_annonce.gestion');
+
+} );
+
 
 Route::resource('last_page', last_page_controller::class);
 

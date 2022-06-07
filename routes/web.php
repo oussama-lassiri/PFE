@@ -47,9 +47,7 @@ Route::get('last-page/delete',[last_page_controller::class,'delete_annonce'])->n
 
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/', function () {
-        return view('admin_dir.theme');
-    })->name('theme');
+    Route::get('/',[second_page_controller::class,'theme'])->name('theme');
 
     Route::get('/statistiques', [second_page_controller::class,'admin_statistique'])->name('admin_statistique');
 
@@ -72,6 +70,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::put('/annonce/tools/edit_annonce', [second_page_controller::class, 'admin_edit_annonce'])->name('admin_annonce.edit');
     Route::get('/annonce/tools', [second_page_controller::class, 'admin_gestion_annonce'])->name('admin_annonce.gestion');
 
+    Route::get('/comments',[second_page_controller::class,'admin_comment'])->name('admin_comment');
+    Route::get('/comments/tools/etat',[second_page_controller::class,'admin_etat_comment'])->name('admin_comment.etat');
+    Route::get('/comments/tools/delete',[second_page_controller::class,'admin_drop_comment'])->name('admin_comment.delete');
 } );
 
 

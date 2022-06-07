@@ -86,9 +86,7 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
     />
-    <style>
-        
-    </style>
+
 @endsection
 
 @section('content')
@@ -264,6 +262,8 @@
                 </div>
             </div><br>
 
+
+
             <div class="col" >
                 <h4 class="card-title">Les commentaires</h4>
                 <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
@@ -274,16 +274,16 @@
                             <h4><img src="https://img.icons8.com/stickers/100/undefined/administrator-male.png" width="50x50"/>{{ $comment['nom'] }}<br></h4>
                             <h1>{{ $comment['comment'] }}</h1>
                         </div>
-                    </div> 
+                    </div>
                 @endforeach
 
                 <div class="card video">
                     <div class="card-body create-cmt">
                         <h3>Créer un commentaire</h3>
                         <hr>
-                        <form method="GET" action="{{ route('comment') }}"> 
-                            <input type="text" name="annonce_ID" value="{{ $annonce['id'] }}" hidden required/>     
-                            <input name="nom" type="text" class="feedback-input" placeholder="Nom" required/>   
+                        <form method="GET" action="{{ route('comment') }}">
+                            <input type="text" name="annonce_ID" value="{{ $annonce['id'] }}" hidden required/>
+                            <input name="nom" type="text" class="feedback-input" placeholder="Nom" required/>
                             <input name="email" type="text" class="feedback-input" placeholder="Email" required/>
                             <textarea name="comment" class="feedback-input" placeholder="Comment"></textarea>
                             <input type="submit" value="Envoyer"/>
@@ -293,6 +293,8 @@
                 <br>
             </div>
         </div>
+
+
     </div>
 
 

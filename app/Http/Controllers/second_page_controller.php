@@ -38,7 +38,7 @@ class second_page_controller extends Controller
                 $data = Str::before($data, ",");
                 array_unshift($imgs, $data);
             }
-            
+
         }
 
         return view('welcome')->with([
@@ -333,7 +333,7 @@ class second_page_controller extends Controller
     }
 
     public function comment(Request $request){
-        
+
         $cmt = new comment();
         $cmt->annonce_ID = $request->get('annonce_ID');
         $cmt->nom = $request->get('nom');
@@ -507,12 +507,28 @@ class second_page_controller extends Controller
         );
     }
 
+    public function theme()
+    {
+        $us =  user::all();
+        $adm = array();
+        foreach ($us as $u)
+        {
+            if($u['role'] == '1')
+            {
+                $a = $u['name'];
+                array_push($adm,$a);
+            }
+        }
+        return view('admin_dir.theme')->with([
+            'adm' => $adm
+        ]);
+    }
+
     public function admin_user()
     {
         $les_users = user::all();
 
         return view('admin_dir.user')->with([
-                //'admin'=> User::find(Request('adminID')),
                 'user'=> $les_users
             ]
         );
@@ -881,6 +897,45 @@ class second_page_controller extends Controller
             $immob_table->update();
             return view('admin_dir.editAnnonce')->with(['beinID'=>$immob_table->id, 'type'=>$request->input('type'), "annonce"=>annonce::find($request->input('annonceID'))]);
         }
+    }
+
+    public function admin_comment()
+    {
+        $comment = comment::all();
+        $title_an = array();
+        foreach ($comment as $c)
+        {
+            $an = annonce::find($c['annonce_ID'])['titre'];
+            array_push($title_an,$an);
+        }
+        return view('admin_dir.commentaire')->with([
+           'comment' => $comment,
+            'tit' => $title_an
+        ]);
+    }
+
+    public function admin_etat_comment(Request $request)
+    {
+        $c = comment::find($request->input('c'));
+        if($c['etat'] == "active")
+        {
+            $c->etat = "desactive";
+        }
+        else
+        {
+            $c->etat = "active";
+        }
+
+        $c->update();
+        return back()->with('message',' Etat du commentaire est modifié avec succès.');
+    }
+
+    public function admin_drop_comment(Request $request)
+    {
+        $c = comment::find($request->input('c'));
+        $c_name = $c['nom'];
+        $c->delete();
+        return back()->with('message',' Le commentaire de  ` '.$c_name.' ` est supprimé avec succès. ');
     }
 
     public function admin_statistique()

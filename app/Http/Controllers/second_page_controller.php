@@ -55,6 +55,7 @@ class second_page_controller extends Controller
 
     public function search(Request $request){
         $bein = $request->get('bein');
+        
         if($bein == "Maisson" || $bein == "Villa" || $bein == "Appartement") $type = "immobilier";
         if($bein == "Bureaux" || $bein == "Plateaux" || $bein == "Magasin") $type = "service";
         if($bein == "Terrain" || $bein == "Ferme") $type = "terrain";

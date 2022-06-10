@@ -157,11 +157,11 @@
     <h1>Liste des {{$bein}}s </h1>
 </div>
 
-<form action="" method="get">
+<form action="{{ route('search') }}" method="get">
     <div class="product-search">
         <div class="search-element">
             <label class="search-label">le bien que vous cherchez ?</label>
-            <select class="select-css" name="bein">
+            <select name="bein">
                 <option value="Appartement">Appartement</option>
                 <option value="Maisson">Maisson</option>
                 <option value="Villa">Villa</option>
@@ -174,7 +174,7 @@
         </div>
         <div class="search-element">
             <label class="search-label">Où cherchez-vous ?</label>
-            <select class="select-css" name="ville">
+            <select name="ville">
                 <option value="Casablanca">Casablanca</option>
                 <option value="Rabat">Rabat</option>
                 <option value="Fes">Fes</option>
@@ -199,10 +199,10 @@
         </div>
         <div class="search-element">
             <label class="search-label">quelle type de transaction ?</label>
-            <select class="select-css" name="transaction">
-                <option value="Vente">Vente</option>
+            <select name="transaction">
+                <option value="vente">Vente</option>
                 <option value="location mois">Location(mois)</option>
-                <option value="Location Jour">Location(jour)</option>
+                <option value="location Jour">Location(jour)</option>
             </select>
         </div>
         <div id="search-button">

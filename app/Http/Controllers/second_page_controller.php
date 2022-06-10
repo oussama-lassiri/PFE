@@ -17,7 +17,7 @@ class second_page_controller extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['first_page','welcome','comment']]);
+        $this->middleware('auth', ['except' => ['first_page','welcome','comment','search']]);
     }
 
     public function welcome() {

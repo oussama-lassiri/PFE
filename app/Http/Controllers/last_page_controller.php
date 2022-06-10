@@ -137,7 +137,7 @@ class last_page_controller extends Controller
         }
 
         foreach(comment::all() as $cmt){
-            if($cmt['annonce_ID'] == $annonce['id'])
+            if($cmt['annonce_ID'] == $annonce['id'] && $cmt['etat'] == "active")
             array_unshift($comments, $cmt);
         }
 

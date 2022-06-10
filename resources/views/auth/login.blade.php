@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <style>
       body {
-        background: #FFEFBA;
-        background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-        background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+        background: #a7dbee;
+        background: -webkit-linear-gradient(to right, #FFFFFF, #a7dbee);
+        background: linear-gradient(to right, #FFFFFF, #a7dbee);
         }
       h1, h3, input {
       padding: 0;

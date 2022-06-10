@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="\css\welcome\magnific-popup.css" >
     <link rel="stylesheet" href="\css\welcome\slicknav.min.css" >
     <link rel="stylesheet" href="\css\welcome\style.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -146,6 +149,13 @@
             #Background_image{
                 background-image: url("/img/welcome.jpg");
             }
+
+            .style_txt{
+                font-family: 'Abril Fatface', cursive;
+                font-size: 40px;
+                text-decoration-color: aliceblue!important;
+            }
+
     </style>
 @endsection
 
@@ -172,8 +182,8 @@
         <div class="mask" style="background-color: rgba(6, 184, 255, 0.349);">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-black">
-                <h1 class="mb-3">Particulier à Particulier</h1>
-                <h5 class="mb-4">Annonces particulières pour vos biens particuliers</h5>
+                <h1 class="mb-3 style_txt">Particulier à Particulier</h1>
+                <h5 class="mb-4 ">Annonces particulières pour vos biens particuliers</h5>
                 <a class="btn btn-outline-light btn-lg m-2"
                     href="@if(isset(Auth::user()->etat)) @if(Auth::user()->etat == "inactive"){{route('resultat')}}?res=fail @else {{route('first_page.index')}} @endif @endif"
                     role="button"
@@ -272,83 +282,83 @@
                 </div>
             </div>
         </div>
-        <div class="row property-filter">
-            @php
-                $i = 0; $cont = 8;
-            @endphp
-            @foreach ($annonces as $annonce)
-                @if ($annonce['bein_type'] == "service")
-                    <div class="col-lg-4 col-md-6 mix all house">
-                 @endif
-                @if ($annonce['bein_type'] == "immobilier")
-                    <div class="col-lg-4 col-md-6 mix all apart">
-                @endif
-                @if ($annonce['bein_type'] == "terrain")
-                    <div class="col-lg-4 col-md-6 mix all office">
-                @endif
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="/uploads/{{ $imgs[$i] }}">
-                            @php
-                                $i++;
-                            @endphp
-                            <div class="label">{{ $annonce['transaction'] }}</div>
-                            <div class="btn-secondary type float-end">{{ $annonce['bein_type'] }}</div>
-                        </div>
-                        <div class="pi-text">
-                            <div class="pt-price">{{ $annonce['prix'] }} DH<span>
-                                @if ($annonce['transaction'] == "vente")@endif
-                                @if ($annonce['transaction'] == "location mois") \mois @endif
-                                @if ($annonce['transaction'] == "location jour") \jour @endif
-                            </span></div>
-                            <h5><a href="{{ route('last_page.show',$annonce['id']) }}">{{ $annonce['titre'] }}</a></h5>
-                            <p><img src="https://img.icons8.com/ios-filled/50/26e07f/marker.png" width="20x20"/> {{ $annonce['ville'] }}</p>
-                            <hr>
-                            <ul>
-                                @if($annonce['bein_type'] == "immobilier")
-                                    @foreach ($immobilier as $item)
-                                        @if ($item['id'] == $annonce['bein_ID'])
-                                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
-                                            <li><i class="fa fa-bathtub"></i> {{ $item['salle_de_bain'] }} </li>
-                                            <li><i class="fa fa-bed"></i> {{ $item['chambre'] }}</li>
-                                            <li><i class='Medium material-icons' >weekend </i> {{ $item['salon'] }}</li>
+            <div class="row property-filter">
+                @php
+                    $i = 0; $cont = 8;
+                @endphp
+                @foreach ($annonces as $annonce)
+                    @if ($annonce['bein_type'] == "service")
+                        <div class="col-lg-4 col-md-6 mix all house">
+                     @endif
+                    @if ($annonce['bein_type'] == "immobilier")
+                        <div class="col-lg-4 col-md-6 mix all apart">
+                    @endif
+                    @if ($annonce['bein_type'] == "terrain")
+                        <div class="col-lg-4 col-md-6 mix all office">
+                    @endif
+                        <div class="property-item">
+                            <div class="pi-pic set-bg" data-setbg="/uploads/{{ $imgs[$i] }}">
+                                @php
+                                    $i++;
+                                @endphp
+                                <div class="label">{{ $annonce['transaction'] }}</div>
+                                <div class="btn-secondary type float-end">{{ $annonce['bein_type'] }}</div>
+                            </div>
+                            <div class="pi-text">
+                                <div class="pt-price">{{ $annonce['prix'] }} DH<span>
+                                    @if ($annonce['transaction'] == "vente")@endif
+                                    @if ($annonce['transaction'] == "location mois") \mois @endif
+                                    @if ($annonce['transaction'] == "location jour") \jour @endif
+                                </span></div>
+                                <h5><a href="{{ route('last_page.show',$annonce['id']) }}">{{ $annonce['titre'] }}</a></h5>
+                                <p><img src="https://img.icons8.com/ios-filled/50/26e07f/marker.png" width="20x20"/> {{ $annonce['ville'] }}</p>
+                                <hr>
+                                <ul>
+                                    @if($annonce['bein_type'] == "immobilier")
+                                        @foreach ($immobilier as $item)
+                                            @if ($item['id'] == $annonce['bein_ID'])
+                                                <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
+                                                <li><i class="fa fa-bathtub"></i> {{ $item['salle_de_bain'] }} </li>
+                                                <li><i class="fa fa-bed"></i> {{ $item['chambre'] }}</li>
+                                                <li><i class='Medium material-icons' >weekend </i> {{ $item['salon'] }}</li>
 
-                                        @endif
-                                    @endforeach
-                                @endif
+                                            @endif
+                                        @endforeach
+                                    @endif
 
-                                @if($annonce['bein_type'] == "service")
-                                    @foreach ($service as $item)
-                                        @if ($item['id'] == $annonce['bein_ID'])
-                                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
-                                            <li><img src="https://img.icons8.com/ios-filled/50/000000/door-opened.png" width="20x20"/>{{ $item['nbr_piece'] }} </li>
-                                            <li><img src="https://img.icons8.com/ios-glyphs/30/000000/stairs-up.png" width="20x20"/> {{ $item['etage'] }}</li>
-                                        @endif
-                                    @endforeach
-                                @endif
+                                    @if($annonce['bein_type'] == "service")
+                                        @foreach ($service as $item)
+                                            @if ($item['id'] == $annonce['bein_ID'])
+                                                <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
+                                                <li><img src="https://img.icons8.com/ios-filled/50/000000/door-opened.png" width="20x20"/>{{ $item['nbr_piece'] }} </li>
+                                                <li><img src="https://img.icons8.com/ios-glyphs/30/000000/stairs-up.png" width="20x20"/> {{ $item['etage'] }}</li>
+                                            @endif
+                                        @endforeach
+                                    @endif
 
-                                @if($annonce['bein_type'] == "terrain")
-                                    @foreach ($terrain as $item)
-                                        @if ($item['id'] == $annonce['bein_ID'])
-                                            <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
-                                            <li><img src="\img\zoning.png" alt="zone" width="10%">{{ $item['zonning'] }} </li>
+                                    @if($annonce['bein_type'] == "terrain")
+                                        @foreach ($terrain as $item)
+                                            @if ($item['id'] == $annonce['bein_ID'])
+                                                <li><img src="https://img.icons8.com/ios/50/000000/surface.png" width="20x20"/>{{ $item['surface_totale'] }} </li>
+                                                <li><img src="\img\zoning.png" alt="zone" width="10%">{{ $item['zonning'] }} </li>
 
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </ul>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @php
-                if ($cont == 0) {
-                   break;
-                }else
-                    $cont--;
-                @endphp
-            @endforeach
 
-        </div>
+                @endforeach
+                        </div>
+                        </div>
+            </div>
     </div>
+
+
+
+
 </section>
 
 

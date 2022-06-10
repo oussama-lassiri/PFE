@@ -335,7 +335,7 @@
                         </ul>
                     </div>
                 </div><br>
-
+<!--
                 <div class="col" >
                     <h4 class="card-title">Video du bien</h4>
                     <hr style="height: 2px;width-left:50%;background-color: darkturquoise;">
@@ -357,7 +357,7 @@
                     </div>
                     <br>
                 </div>
-
+-->
                 <div class=" d-grid gap-2 d-md-flex justify-content-md-end">
                     <a href="{{ url()->previous() }}" class="btn btn-info me-md-2" type="button">Retour</a>
                 </div>

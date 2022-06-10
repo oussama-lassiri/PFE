@@ -154,7 +154,7 @@
 
 @section('content')
 <div class="search-title">
-    <h1>List des {{$bein}} </h1>
+    <h1>Liste des {{$bein}}s </h1>
 </div>
 
 <form action="" method="get">

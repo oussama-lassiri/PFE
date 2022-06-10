@@ -148,7 +148,7 @@
                             <span> Commentaire </span>
                         </a>
                     </li>
-
+<!--
                     <li>
                         <a href="{{ route('admin_statistique') }}" class="waves-effect">
                             <i class="icon-graph"></i>
@@ -156,8 +156,8 @@
                         </a>
 
                     </li>
+-->
 
-                    <li><a href="#">FAQs</a></li>
                     <!--
                                         <li>
                                             <a href="javascript:void(0);" class="waves-effect">

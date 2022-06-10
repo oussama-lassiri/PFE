@@ -945,6 +945,7 @@ class second_page_controller extends Controller
 
     public function destroy_bien(Request $request){
         $annonce = annonce::find($request->input('annonce'));
+        $comment = comment::all();
         $bein_id = $annonce['bein_ID'];
         $bein_type = $annonce['bein_type'];
         $annonceID = $annonce['id'];
@@ -961,6 +962,11 @@ class second_page_controller extends Controller
             service::find($bein_id)->delete();
         }
         $annonce->delete();
+        foreach($comment as $c)
+        {
+            if($c['annonce_ID'] == $bein_id)
+                $c->delete();
+        }
 
         return back()->with(['annonceID'=>$annonceID]);
 

@@ -17,7 +17,7 @@ class second_page_controller extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['first_page','welcome','comment','search']]);
+        $this->middleware('auth', ['except' => ['welcome','comment','search']]);
     }
 
     public function welcome() {
@@ -152,6 +152,11 @@ class second_page_controller extends Controller
             "trans" => $trans,
             "ville" =>  $ville
         ]);
+    }
+
+    public function first_page(){
+
+        return view('first_page.index');
     }
 
     public function resultat(Request $request){
@@ -669,17 +674,17 @@ class second_page_controller extends Controller
             if($u_id == $an['user_ID'])
             {
                 $bein_type = $an['bein_type'];
-                if($bein_type == "immoblier")
+                if($bein_type == "immobilier")
                 {
-                    $an->etat = "desactive";
+                    $an->etat = "bloque";
                 }
                 if($bein_type == "terrain")
                 {
-                    $an->etat = "desactive";
+                    $an->etat = "bloque";
                 }
                 if($bein_type == "service")
                 {
-                    $an->etat = "desactive";
+                    $an->etat = "bloque";
                 }
                 $an->update();
             }

@@ -78,9 +78,15 @@ h1, h3 {
     font-size: 4rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position: absolute;
-    left: +20px;
+    left: 50px;
     top: 20%;
     }
+
+.imb{
+    top: 70;
+    left: -30px;
+    position: fixed;
+}
 
 .quotes .box .explique{
     position: absolute;
@@ -238,9 +244,3 @@ h1, h3 {
         position: absolute;
         left: 23%;
     }
-
-.terrainp{
-        position: relative;
-        padding-right: 80%;
-        margin-right: 80%;
-}

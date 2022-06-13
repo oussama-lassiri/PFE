@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/first_page', function(){
-    return view('first_page.index');
-})->name('first_page.index');
-
 Route::get('nav', function () {
     return view('nav');
 })->name('nav');
@@ -30,6 +26,7 @@ Route::get('contact', function () {
 })->name('contact');
 
 Route::get('/', [second_page_controller::class, 'welcome'])->name('welcome');
+Route::get('/first_page',[second_page_controller::class, 'first_page'])->name('first_page');
 Route::get('second_page/search', [second_page_controller::class, 'search'])->name('search');
 Route::get('second_page/resultat', [second_page_controller::class, 'resultat'])->name('resultat');
 Route::get('second_page/appartement', [second_page_controller::class, 'appartement']);

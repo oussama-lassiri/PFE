@@ -7,6 +7,7 @@
 <link href="{{ asset('assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+<link rel="icon" href="\img\logo.png" sizes="16x16 32x32">
 <title>@yield('title admin')</title>
 @yield('style admin')
 <!-- jQuery  -->
@@ -134,7 +135,7 @@
                             <i class="icon-paper-sheet"></i>
                             <span> Annonces  <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                             <ul class="submenu">
-                                <li><a href="{{ route('first_page.index') }}"> Ajout d'annonce</a></li>
+                                <li><a href="{{ route('first_page') }}"> Ajout d'annonce</a></li>
                                 <li><a href="{{ route('admin_annonce') }}">Gestion d'annonces</a></li>
                             </ul>
                     </li>

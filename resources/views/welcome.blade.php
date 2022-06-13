@@ -185,7 +185,7 @@
                 <h1 class="mb-3 style_txt">Particulier à Particulier</h1>
                 <h5 class="mb-4 ">Annonces particulières pour vos biens particuliers</h5>
                 <a class="btn btn-outline-light btn-lg m-2"
-                    href="@if(isset(Auth::user()->etat)) @if(Auth::user()->etat == "inactive"){{route('resultat')}}?res=fail @else {{route('first_page.index')}} @endif @endif"
+                    href="@if(isset(Auth::user()->etat)) @if(Auth::user()->etat == "inactive" || Auth::user()->etat == "desactive" || Auth::user()->etat == "bloque"){{route('resultat')}}?res=fail @endif @else {{route('first_page')}} @endif"
                     role="button"
                     rel="nofollow"
                     target="_blank">Cree annonce</a>

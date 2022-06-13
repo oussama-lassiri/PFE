@@ -10,7 +10,7 @@
     <div class="quotes">
         <div class="card">
             <div class="box box1 animate__animated animate__bounceInLeft">
-                <p >Immobilier</p>
+                <div class="imb"><p>Immobilier</p></div>
                 <div class="explique">(Maison, Villa, Appartement)</div>
                 <button class="noselect" onclick="toggleText(1)"></button>
             </div>
